@@ -2,6 +2,7 @@ import os
 import subprocess
 
 import config
+import util_os
 
 def run_process_and_get_output(path_to_proc, arguments, working_directory):
     if config.IS_VERBOSE:
@@ -12,4 +13,5 @@ def run_process_and_get_output(path_to_proc, arguments, working_directory):
     return result
 
 def open_windows_explorer_at(path_to_dir):
-    os.startfile(path_to_dir)
+    if util_os.is_windows():
+        os.startfile(path_to_dir)
