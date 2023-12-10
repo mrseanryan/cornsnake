@@ -7,3 +7,7 @@ branches = ['main']
 file_extensions = "" # ".log,.zip,.js.map"
 
 blob_size = "512K"
+
+# SYSTEM CONFIG
+IS_COLOR_ENABLED = True
+IS_INTERACTIVE = False # Normally True. Set to False for 'hands free' mode for automation
