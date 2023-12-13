@@ -99,6 +99,10 @@ def get_all_origin_branches(path_to_local_repo):
             branches.append(raw_branch)
     return branches
 
+def get_config(key, path_to_local_repo):
+    result = execute_command('config', ['--get', key], path_to_local_repo)
+    return result
+
 def delete_branches_except(branches_to_keep, path_to_local_repo):
     branches = get_all_origin_branches(path_to_local_repo)
     branches_to_delete = util_list.except_for(branches, branches_to_keep)

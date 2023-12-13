@@ -25,5 +25,18 @@ def list_with_first_or_empty(my_list):
 def not_none_and_unique(my_list):
     return list(set(filter(lambda f: (f is not None), my_list)))
 
+def remove_empty_strings(list_of_strings):
+    parts_filtered = []
+    for part in list_of_strings:
+        if part and len(part) > 0:
+            parts_filtered.append(part)
+    return parts_filtered
+
+def strip_strings(list_of_strings):
+    parts_stripped = []
+    for part in list_of_strings:
+        parts_stripped.append(part.strip())
+    return parts_stripped
+
 def unique(my_list):
     return list(set(my_list))
