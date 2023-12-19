@@ -6,6 +6,9 @@ def ensure_dir_exists(temp_git_fixer_dir):
     if not os.path.exists(temp_git_fixer_dir):
         os.makedirs(temp_git_fixer_dir)
 
+def get_directory_of_this_script():
+    return os.path.dirname(os.path.realpath(__file__))
+
 def get_total_dir_size_in_bytes(start_path):
     total_size = 0
     for dirpath, dirnames, filenames in os.walk(start_path):
