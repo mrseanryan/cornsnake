@@ -22,3 +22,9 @@ def get_total_dir_size_in_bytes(start_path):
 
 def get_total_dir_size_in_gigabytes(start_path):
     return get_total_dir_size_in_bytes(start_path) / TOTAL_BYTES_IN_GIGABYTE
+
+def is_empty_directory(path_to_file):
+    if os.path.isfile(path_to_file):
+        return False
+    contents = os.listdir(path_to_file)
+    return len(contents) == 0
