@@ -1,3 +1,5 @@
+import logging
+
 IS_VERBOSE = False
 PATH_TO_GIT = r"C:\Program Files\Git\cmd\git.exe"
 
@@ -11,3 +13,5 @@ blob_size = "512K"
 # SYSTEM CONFIG
 IS_COLOR_ENABLED = True
 IS_INTERACTIVE = False # Normally True. Set to False for 'hands free' mode for automation
+LOGGING_LEVEL = logging.INFO
+LOG_FILENAME = 'my-log.log'

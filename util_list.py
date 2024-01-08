@@ -1,5 +1,3 @@
-# import itertools
-
 def chunk(list_a, n):
     for i in range(0, len(list_a), n):
         yield list_a[i:i + n]
