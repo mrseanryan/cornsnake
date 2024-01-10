@@ -6,6 +6,15 @@ def ensure_dir_exists(temp_git_fixer_dir):
     if not os.path.exists(temp_git_fixer_dir):
         os.makedirs(temp_git_fixer_dir)
 
+def find_files_by_extension(dir_path, extension):
+    found_files = []
+    contents = os.listdir(dir_path)
+    for content in contents:
+        path_to_sub = os.path.join(dir_path, content)
+        if os.path.isfile(path_to_sub) and path_to_sub.endswith(extension):
+            found_files.append(path_to_sub)
+    return found_files
+
 def get_directory_of_this_script():
     return os.path.dirname(os.path.realpath(__file__))
 
