@@ -15,3 +15,4 @@ IS_COLOR_ENABLED = True
 IS_INTERACTIVE = False # Normally True. Set to False for 'hands free' mode for automation
 LOGGING_LEVEL = logging.INFO
 LOG_FILENAME = 'my-log.log'
+MINIMIZE_PROGRESS_BAR_OUTPUT = False  # Normally False. Set to True for CI/CD build or other log-first environment.
