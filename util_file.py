@@ -1,13 +1,21 @@
 import os
+import shutil
 
 import util_pdf
 import util_text
+
+def copy_file(from_path, to_path):
+    shutil.copyfile(from_path, to_path)
 
 def read_lines_from_file(filepath):
     lines = []
     with open(filepath, encoding='utf-8') as file:
         lines = [line.rstrip() for line in file]
     return lines
+
+def read_text_from_file(filepath):
+    with open(filepath, encoding='utf-8') as file:
+        return file.read()
 
 def read_text_from_text_or_pdf_file_skipping_comments(filepath):
     if util_pdf.is_pdf(filepath):

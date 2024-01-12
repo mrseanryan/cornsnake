@@ -1,15 +1,14 @@
 import sys
 
-import config
+import config_system
 
 previous_percent = 0
-def progress(count, total, status='', bar_len=60):
+def progress(count, total):
     global previous_percent
-    filled_len = int(round(bar_len * count / float(total)))
 
     percent = round(100.0 * count / float(total), 1)
 
-    if config.MINIMIZE_PROGRESS_BAR_OUTPUT:
+    if config_system.MINIMIZE_PROGRESS_BAR_OUTPUT:
         if percent < previous_percent:
             # reset:
             previous_percent = percent
@@ -18,9 +17,19 @@ def progress(count, total, status='', bar_len=60):
                 return
     previous_percent = percent
 
+    _update_progress(percent)
+
+def _update_progress(percent):
+    bar_len = 60
+    filled_len = int(round(bar_len * percent / float(100)))
+
     bar = '=' * filled_len + '-' * (bar_len - filled_len)
 
-    fmt = '[%s] %s%s ...%s' % (bar, percent, '%', status)
+    fmt = '[%s] %s%s ...' % (bar, percent, '%')
     print('\b' * len(fmt), end='')  # clears the line
     sys.stdout.write(fmt)
     sys.stdout.flush()
+
+def complete():
+    _update_progress(100)
+    print("")  # ensure a new line

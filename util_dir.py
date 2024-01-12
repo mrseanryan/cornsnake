@@ -1,6 +1,10 @@
 import os
+import shutil
 
 TOTAL_BYTES_IN_GIGABYTE = 1000000000
+
+def copy_directory(from_path, to_path):
+    shutil.copytree(from_path, to_path)
 
 def ensure_dir_exists(temp_git_fixer_dir):
     if not os.path.exists(temp_git_fixer_dir):
