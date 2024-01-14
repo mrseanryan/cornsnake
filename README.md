@@ -7,7 +7,7 @@ Functions that I find myself writing time and again, on various OSS and personal
 ## Install
 
 ```
-python -m pip install cornsnake
+python -m pip install --upgrade cornsnake
 ```
 
 ## Dependencies
@@ -15,7 +15,7 @@ python -m pip install cornsnake
 - Python 3.12 or higher
 
 ```
-pip install fitz frontend
+pip install fitz PyMuPDF
 ```
 
 - fitz is for PDF parsing (requires frontend)

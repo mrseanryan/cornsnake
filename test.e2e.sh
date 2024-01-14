@@ -1,4 +1,5 @@
 pushd e2e
 
-python -m pip install --upgrade cornsnake
+pip install PyMuPDF
+python -m pip install --upgrade cornsnake 
 python -m main
