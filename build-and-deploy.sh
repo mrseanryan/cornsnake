@@ -1,5 +1,3 @@
-set -e
-
 # git should have no changes
 if [[ `git status --porcelain` ]]; then
   # Changes
@@ -13,6 +11,8 @@ fi
 # patch
 
 ./bump_patch.sh
+
+set -e # only AFTER bump, which can fail
 
 git diff
 
