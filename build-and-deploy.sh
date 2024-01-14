@@ -23,4 +23,6 @@ git add . && git commit -m "Bump patch"
 ./build.sh
 ./publish.sh
 
+echo To test the published package, run ./test.e2e.sh
+
 git status
