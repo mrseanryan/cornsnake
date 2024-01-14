@@ -1,8 +1,8 @@
 import logging
 import os
 
-import config
-import util_color
+from . import config
+from . import util_color
 
 # ref https://realpython.com/python-logging/
 log_format = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'

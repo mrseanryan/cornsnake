@@ -1,9 +1,9 @@
 import os
 import subprocess
 
-import config
-import util_log
-import util_os
+from . import config
+from . import util_log
+from . import util_os
 
 logger = util_log.getLogger(__name__)
 

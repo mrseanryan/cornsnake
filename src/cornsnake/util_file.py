@@ -1,8 +1,8 @@
 import os
 import shutil
 
-import util_pdf
-import util_text
+from . import util_pdf
+from . import util_text
 
 def copy_file(from_path, to_path):
     shutil.copyfile(from_path, to_path)

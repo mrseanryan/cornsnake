@@ -1,7 +1,7 @@
 import os
 import sys
 
-import util_git
+from . import util_git
 
 PY_MAJOR = 3
 PY_MIN_MINOR = 12

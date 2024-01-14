@@ -1,8 +1,8 @@
 import os
 import re
 
-import config
-import util_date
+from . import config
+from . import util_date
 
 def _check_is_boolean(value, name):
     if not isinstance(value, bool):

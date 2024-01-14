@@ -1,9 +1,9 @@
 import os
 
-import config
-import util_file
-import util_list
-import util_proc
+from . import config
+from . import util_file
+from . import util_list
+from . import util_proc
 
 COMMIT_PARTS_SEPARTOR="_||_"
 

@@ -1,6 +1,6 @@
 import sys
 
-import config_system
+from . import config
 
 previous_percent = 0
 def progress(count, total):
@@ -8,7 +8,7 @@ def progress(count, total):
 
     percent = round(100.0 * count / float(total), 1)
 
-    if config_system.MINIMIZE_PROGRESS_BAR_OUTPUT:
+    if config.MINIMIZE_PROGRESS_BAR_OUTPUT:
         if percent < previous_percent:
             # reset:
             previous_percent = percent

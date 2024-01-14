@@ -1,9 +1,9 @@
 import os
 
-import config
-import util_color
-import util_validate
-import util_date
+from . import config
+from . import util_color
+from . import util_validate
+from . import util_date
 
 prompt_token = " >"
 
