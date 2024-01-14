@@ -1,4 +1,4 @@
-import config
+from . import config
 
 class bcolors:
     HEADER = '\033[95m'
