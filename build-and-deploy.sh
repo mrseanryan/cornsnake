@@ -22,3 +22,5 @@ git add . && git commit -m "Bump patch"
 
 ./build.sh
 ./publish.sh
+
+git status
