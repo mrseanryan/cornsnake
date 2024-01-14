@@ -7,9 +7,8 @@ If you are contributing to this project, then you can install these extra dev de
 ```
 pip install build parameterized twine
 
-python -m pip install pip-tools
+python -m pip install pip-tools bumpver
 ```
-
 
 - bumpver for release versioning
 - parameterized for unit tests

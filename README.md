@@ -15,10 +15,10 @@ python -m pip install cornsnake
 - Python 3.12 or higher
 
 ```
-pip install fitz
+pip install fitz frontend
 ```
 
-- fitz is for PDF parsing
+- fitz is for PDF parsing (requires frontend)
 
 ## Usage
 

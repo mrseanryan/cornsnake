@@ -16,7 +16,7 @@ classifiers = [
 ]
 keywords = ["python", "files", "lists", "utils", "dates", "processes"]
 dependencies = [
-    "fitz"
+    "fitz", "frontend"
 ]
 requires-python = ">=3.12"
 
