@@ -10,12 +10,16 @@ Functions that I find myself writing time and again, on various OSS and personal
 
 [![MIT License][img_license]][url_license]
 [![Supported Python Versions][img_pyversions]][url_pyversions]
+[![cornsnake][img_version]][url_version]
 [![PyPI Releases][img_pypi]][url_pypi]
 
 [img_license]: https://img.shields.io/badge/License-MIT-blue.svg
 [url_license]: https://github.com/mrseanryan/cornsnake/blob/master/LICENSE
 
 [url_version]: https://pypi.org/project/cornsnake/
+
+[img_version]: https://img.shields.io/static/v1.svg?label=SemVer&message=cornsnake&color=blue
+[url_version]: https://pypi.org/project/bumpver/
 
 [img_pypi]: https://img.shields.io/badge/PyPI-wheels-green.svg
 [url_pypi]: https://pypi.org/project/cornsnake/#files
