@@ -14,6 +14,7 @@ from . import util_markdown_table
 from . import util_os
 from . import util_pdf
 from . import util_pick
+from . import util_print
 from . import util_proc
 from . import util_progress
 from . import util_robust_delete
