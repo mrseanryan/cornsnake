@@ -9,6 +9,8 @@ else
   echo "git status OK"
 fi
 
+[ -d "./dist" ] && rm -rf dist
+
 ./test.sh
 
 python -m build
