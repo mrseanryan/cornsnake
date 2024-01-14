@@ -4,6 +4,25 @@ A small library wrapping common Python utilities for working with files, git, ZI
 
 Functions that I find myself writing time and again, on various OSS and personal projects - so collecting in one place, in case it is of use!
 
+
+[url_repo]: https://github.com/mrseanryan/cornsnake
+[url_semver_org]: https://semver.org/
+
+[![MIT License][img_license]][url_license]
+[![Supported Python Versions][img_pyversions]][url_pyversions]
+[![PyPI Releases][img_pypi]][url_pypi]
+
+[img_license]: https://img.shields.io/badge/License-MIT-blue.svg
+[url_license]: https://github.com/mrseanryan/cornsnake/blob/master/LICENSE
+
+[url_version]: https://pypi.org/project/cornsnake/
+
+[img_pypi]: https://img.shields.io/badge/PyPI-wheels-green.svg
+[url_pypi]: https://pypi.org/project/cornsnake/#files
+
+[img_pyversions]: https://img.shields.io/pypi/pyversions/cornsnake.svg
+[url_pyversions]: https://pypi.python.org/pypi/cornsnake
+
 ## Install
 
 ```
