@@ -41,3 +41,7 @@ def is_empty_directory(path_to_file):
         return False
     contents = os.listdir(path_to_file)
     return len(contents) == 0
+
+def write_text_to_file(text, filepath):
+    with open(filepath, "w", encoding='utf-8') as f:
+        f.write(text)
