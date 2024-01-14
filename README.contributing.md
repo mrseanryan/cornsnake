@@ -36,34 +36,10 @@ OR:
 pip-compile pyproject.toml
 ```
 
-2. git should have no changes
+2. deploy
 
 ```
-git status
-```
-
-3. patch
-
-(sometimes need to run this twice)
-
-```
-./bump_patch.sh
-```
-
-```
-git add . && git commit -m "Bump patch"
-```
-
-4. build (and test)
-
-```
-./build.sh
-```
-
-5. publish
-
-```
-./publish.sh
+./build-and-deploy.sh
 ```
 
 ## e2e Tests (after publishing)
