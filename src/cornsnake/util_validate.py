@@ -90,6 +90,7 @@ def _check_is_blob_size(value, name):
         return f"{name} must be like 256K or 1M or 1G"
     return None
 
+# Example of how to check configuration
 def _get_config_error():
     # required
     error = _check_is_boolean(config.IS_VERBOSE, "IS_VERBOSE")

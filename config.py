@@ -1,9 +1,10 @@
+"""Globally accessible config object. Can be configured by for example reading from command line arguments or TOML file (via tomllib), and then writing to the properties in-memory."""
 import logging
 
 IS_VERBOSE = False
 PATH_TO_GIT = r"C:\Program Files\Git\cmd\git.exe"
 
-path_to_repo_dir = r'C:\MxApps\git-fix-apps\t2\6aaf3500-ea19-464e-b1fd-cca4baa3660f'
+path_to_repo_dir = r'C:\src\github\my-repo'
 date_param = '2023-06-01'
 branches = ['main']
 file_extensions = "" # ".log,.zip,.js.map"
