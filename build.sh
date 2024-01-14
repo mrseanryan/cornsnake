@@ -13,3 +13,5 @@ fi
 
 python -m build
 twine check dist/*
+
+ls -al dist
