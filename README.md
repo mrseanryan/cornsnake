@@ -1,4 +1,4 @@
-# cornsnake [{version}]
+# cornsnake
 
 A small library wrapping common Python utilities for working with files, lists, processes, dates and times.
 
@@ -19,3 +19,9 @@ pip install fitz
 ```
 
 - fitz is for PDF parsing
+
+## Usage
+
+Functions are organised in logical groups like `util_file` or `util_print`.
+
+To see what funcations are available, see the [source code](https://github.com/mrseanryan/cornsnake/tree/master/src/cornsnake).
