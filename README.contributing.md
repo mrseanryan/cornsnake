@@ -59,3 +59,7 @@ git status
 ```
 ./publish.sh
 ```
+
+## e2e Tests (after publishing)
+
+./test.e2e.sh
