@@ -3,7 +3,6 @@ import unittest
 
 import util_string
 
-
 class TestUtilString(unittest.TestCase):
 
     @ parameterized.expand([

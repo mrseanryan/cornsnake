@@ -1,4 +1,4 @@
-# cornsnake
+# cornsnake [{version}]
 
 A small library wrapping common Python utilities for working with files, lists, processes, dates and times.
 
@@ -9,20 +9,7 @@ Functions that I find myself writing time and again, on various OSS and personal
 - Python 3.12 or higher
 
 ```
-pip install fitz parameterized
+pip install fitz
 ```
 
 - fitz is for PDF parsing
-- parameterized is for unit tests only
-
-## Unit Tests
-
-```
-python -m unittest  
-```
-
-OR:
-
-```
-test.unit.bat
-```

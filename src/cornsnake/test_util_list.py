@@ -3,7 +3,6 @@ import unittest
 
 import util_list
 
-
 class TestUtilList(unittest.TestCase):
 
     @ parameterized.expand([
