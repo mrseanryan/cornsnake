@@ -45,7 +45,7 @@ git status
 3. patch
 
 ```
-./bump_patch.sh
+./bump_patch.sh && git commit -m "Bump patch"
 ```
 
 4. build (and test)
