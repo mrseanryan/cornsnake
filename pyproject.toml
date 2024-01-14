@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "cornsnake"
 version = "0.0.13"
-description = "Wrap common Python utilities for working with files, lists, processes, dates and times."
+description = "Wrap common Python utilities for working with files, git, ZIP, lists, processes, dates and times."
 readme = "README.md"
 authors = [{ name = "Sean Ryan", email = "mr.sean.ryan@gmail.com" }]
 license = { file = "LICENSE" }
@@ -16,7 +16,7 @@ classifiers = [
 ]
 keywords = ["python", "files", "lists", "utils", "dates", "processes"]
 dependencies = [
-    "fitz", "frontend"
+    "PyMuPDF"
 ]
 requires-python = ">=3.12"
 
