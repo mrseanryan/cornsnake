@@ -1,5 +1,6 @@
 __version__ = "0.0.9"
 
+from . import config
 from . import util_color
 from . import util_dependencies
 from . import util_dir
