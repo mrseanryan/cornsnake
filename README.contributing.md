@@ -30,7 +30,7 @@ OR:
 
 ## Publishing
 
-1. update dependencies (requirements.txt)
+1. [OPTIONAL][if dependencies have changed] update dependencies (requirements.txt)
 
 ```
 pip-compile pyproject.toml
