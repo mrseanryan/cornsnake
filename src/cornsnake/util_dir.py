@@ -1,5 +1,6 @@
 import os
 import shutil
+from pathlib import Path
 
 TOTAL_BYTES_IN_GIGABYTE = 1000000000
 
@@ -21,6 +22,9 @@ def find_files_by_extension(dir_path, extension):
 
 def get_directory_of_this_script():
     return os.path.dirname(os.path.realpath(__file__))
+
+def get_parent_dir(my_path):
+    return Path(my_path).parent.absolute()
 
 def get_total_dir_size_in_bytes(start_path):
     total_size = 0
