@@ -6,6 +6,9 @@ def excluding(list1, list2):
     # list1 less list2
     return [x for x in list1 if x not in list2]
 
+def intersecting(list1, list2):
+    return [value for value in list1 if value in list2]
+
 def first_or_none(my_list):
     if (len(my_list) > 0):
         return my_list[0]
