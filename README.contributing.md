@@ -44,3 +44,7 @@ pip-compile pyproject.toml
 ## e2e Tests (after publishing)
 
 ./test.e2e.sh
+
+## References
+
+- https://realpython.com/pypi-publish-python-package/
