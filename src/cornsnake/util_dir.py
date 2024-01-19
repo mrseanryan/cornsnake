@@ -46,6 +46,20 @@ def is_empty_directory(path_to_file):
     contents = os.listdir(path_to_file)
     return len(contents) == 0
 
+def is_empty_directory_only_subdirectories(path_to_file):
+    if os.path.isfile(path_to_file):
+        return False
+    contents = os.listdir(path_to_file)
+    for content in contents:
+        path_to_sub = os.path.join(path_to_file, content)
+        if os.path.isfile(path_to_sub):
+            return False
+        if not os.path.isfile(path_to_sub):
+            is_empty = is_empty_directory_only_subdirectories(path_to_sub)
+            if not is_empty:
+                return False
+    return True
+
 def write_text_to_file(text, filepath):
     with open(filepath, "w", encoding='utf-8') as f:
         f.write(text)
