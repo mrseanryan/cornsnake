@@ -26,3 +26,5 @@ git add . && git commit -m "Bump patch"
 echo To test the published package, run ./test.e2e.sh
 
 git status
+
+read -p "Press Enter to continue" </dev/tty
