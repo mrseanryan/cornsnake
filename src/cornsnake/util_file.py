@@ -7,24 +7,30 @@ from . import util_text
 def copy_file(from_path, to_path):
     shutil.copyfile(from_path, to_path)
 
-def read_lines_from_file(filepath):
+def read_lines_from_file(filepath, skip_comments = False):
     lines = []
     with open(filepath, encoding='utf-8') as file:
         lines = [line.strip() for line in file]
+    if skip_comments:
+        lines = _remove_comments(lines)
     return lines
 
 def read_text_from_file(filepath):
     with open(filepath, encoding='utf-8') as file:
         return file.read()
 
-def read_text_from_text_or_pdf_file_skipping_comments(filepath):
-    if util_pdf.is_pdf(filepath):
-        return util_pdf.extract_text_from_pdf(filepath)
-    lines = read_lines_from_file(filepath)
+def _remove_comments(lines):
     filtered_lines = []
     for line in lines:
         if not line.startswith('#'):
             filtered_lines.append(line)
+    return filtered_lines
+
+def read_text_from_text_or_pdf_file_skipping_comments(filepath):
+    if util_pdf.is_pdf(filepath):
+        return util_pdf.extract_text_from_pdf(filepath)
+    lines = read_lines_from_file(filepath)
+    filtered_lines = _remove_comments(lines)
     return util_text.LINE_END.join(filtered_lines)
 
 def write_text_lines_to_file(lines, filepath):
