@@ -4,7 +4,6 @@ A small library wrapping common Python utilities for working with files, git, ZI
 
 Functions that I find myself writing time and again, on various OSS and personal projects - so collecting in one place, in case it is of use!
 
-
 [url_repo]: https://github.com/mrseanryan/cornsnake
 [url_semver_org]: https://semver.org/
 
@@ -35,7 +34,7 @@ python -m pip install --upgrade cornsnake
 
 ## Dependencies
 
-- Python 3.12 or higher
+- Python 3.11 or higher
 
 ```
 pip install PyMuPDF
@@ -50,3 +49,8 @@ Functions are organised in logical groups like `util_file` or `util_print`.
 To see what functions are available, see the [source code](https://github.com/mrseanryan/cornsnake/tree/master/src/cornsnake).
 
 For an example, see the [e2e tests](https://github.com/mrseanryan/cornsnake/tree/master/e2e).
+
+## References
+
+- [github repo](https://github.com/mrseanryan/cornsnake)
+- [pypi package](https://pypi.org/project/cornsnake/)

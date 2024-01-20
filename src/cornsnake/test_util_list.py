@@ -92,9 +92,9 @@ class TestUtilList(unittest.TestCase):
 
     @ parameterized.expand([
         ('unique [1,2,3]', [1, 2, 3], [1, 2, 3]),
-        ('unique [1,2,3,None]', [1, 2, 3, None], [None, 1, 2, 3]),
-        ('unique [1,2,3,3,4,4,4,None]',
-         [1, 2, 3, 3, 4, 4, 4, None], [None, 1, 2, 3, 4]),
+        ('unique [None,1,2,3]', [None, 1, 2, 3], [1, 2, 3, None]),
+        ('unique [None,1,2,3,3,4,4,4]',
+         [None, 1, 2, 3, 3, 4, 4, 4], [1, 2, 3, 4, None]),
         ('unique [1]', [1], [1]),
         ('unique []', [], []),
         ('unique [None]', [None], [None]),
