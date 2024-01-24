@@ -2,6 +2,8 @@ import os
 import shutil
 from pathlib import Path
 
+import util_os
+
 TOTAL_BYTES_IN_GIGABYTE = 1000000000
 
 def copy_directory(from_path, to_path):
@@ -33,7 +35,7 @@ def get_total_dir_size_in_bytes(start_path):
             fp = os.path.join(dirpath, f)
             # skip if it is symbolic link
             if not os.path.islink(fp):
-                fp_allow_long_path = u"\\\\?\\" + fp
+                fp_allow_long_path = u"\\\\?\\" + fp if util_os.is_windows() else fp
                 total_size += os.path.getsize(fp_allow_long_path)
 
     return total_size
