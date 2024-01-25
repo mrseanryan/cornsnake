@@ -2,7 +2,7 @@ import os
 import shutil
 from pathlib import Path
 
-import util_os
+from . import util_os
 
 TOTAL_BYTES_IN_GIGABYTE = 1000000000
 
