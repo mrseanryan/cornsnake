@@ -12,6 +12,7 @@ from . import util_json
 from . import util_list
 from . import util_log
 from . import util_markdown_table
+from . import util_network
 from . import util_object
 from . import util_os
 from . import util_pdf
