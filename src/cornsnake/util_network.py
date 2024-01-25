@@ -1,5 +1,6 @@
 import urllib.request
-import util_log
+
+from . import util_log
 
 logger = util_log.getLogger(__name__)
 
