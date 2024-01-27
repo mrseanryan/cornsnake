@@ -1,4 +1,5 @@
 import os
+import platform
 
 from . import util_log
 
@@ -6,6 +7,12 @@ logger = util_log.getLogger(__name__)
 
 def is_windows():
     return os.name == 'nt'
+
+def is_mac():
+    return platform.system() == 'Darwin'
+
+def is_unix():
+    return not is_windows() and not is_mac()
 
 if is_windows():
     import winreg
@@ -26,3 +33,17 @@ if is_windows():
         if value is None:
             return False
         return str(value) == '1'
+
+def log_os():
+    logger.info("=== OS ===")
+    logger.info(f"OS: {_os_platform()}")
+    logger.info(f"DETAILS: {platform.system()} - {os.name} - {platform.release()}")
+
+def _os_platform():
+    if is_windows():
+        return "Windows"
+    if is_mac():
+        return "Mac"
+    if is_unix():
+        return "Unix"
+    return "(unknown)"
