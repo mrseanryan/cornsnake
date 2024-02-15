@@ -1,11 +1,26 @@
 import os
 import shutil
 
+from . import util_os
 from . import util_pdf
 from . import util_text
 
 def copy_file(from_path, to_path):
     shutil.copyfile(from_path, to_path)
+
+def _get_long_file_path(path_to_file):
+    return u"\\\\?\\" + path_to_file if util_os.is_windows() else path_to_file
+
+def is_empty_file(path_to_file):
+    if not os.path.isfile(path_to_file):
+        return False
+    # skip if it is symbolic link
+    if os.path.islink(path_to_file):
+        return False
+
+    fp_allow_long_path = _get_long_file_path(path_to_file)
+    size = os.path.getsize(fp_allow_long_path)
+    return size == 0
 
 def read_lines_from_file(filepath, skip_comments = False):
     lines = []
