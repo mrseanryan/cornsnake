@@ -11,6 +11,20 @@ def copy_file(from_path, to_path):
 def _get_long_file_path(path_to_file):
     return u"\\\\?\\" + path_to_file if util_os.is_windows() else path_to_file
 
+def is_empty_directory_only_subdirectories(path_to_file):
+    if os.path.isfile(path_to_file):
+        return is_empty_file(path_to_file)
+    contents = os.listdir(path_to_file)
+    for content in contents:
+        path_to_sub = os.path.join(path_to_file, content)
+        if os.path.isfile(path_to_sub):
+            return is_empty_file(path_to_sub)
+        if not os.path.isfile(path_to_sub):
+            is_empty = is_empty_directory_only_subdirectories(path_to_sub)
+            if not is_empty:
+                return False
+    return True
+
 def is_empty_file(path_to_file):
     if not os.path.isfile(path_to_file):
         return False
