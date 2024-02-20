@@ -1,8 +1,11 @@
 import os
 import shutil
+import stat
 
 def _rmrf(temp_dir):
-    os.chmod(temp_dir, 0o777)
+    # Give this user read, write, execute permissions (so we can navigate and delete) but without affecting other users:
+    st = os.stat(temp_dir)
+    os.chmod(temp_dir, st.st_mode | stat.S_IXUSR | stat.S_IRUSR | stat.S_IWUSR)
     shutil.rmtree(temp_dir)
 
 def _delete_files_recursively(temp_dir):
