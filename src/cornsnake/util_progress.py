@@ -31,5 +31,5 @@ def _update_progress(percent):
     sys.stdout.flush()
 
 def complete():
-    _update_progress(100)
+    _update_progress(float(100))
     print("")  # ensure a new line
