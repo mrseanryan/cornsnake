@@ -5,6 +5,11 @@ from . import util_log
 
 logger = util_log.getLogger(__name__)
 
+def percent(num, denom, ndigits = 0):
+    if denom == 0:
+        return format(0, f'.{ndigits}f')
+    return str(round((num * 100.0) / denom, ndigits)) + '%'
+
 def print_custom(text):
     print(text)
     logger.info(text)
