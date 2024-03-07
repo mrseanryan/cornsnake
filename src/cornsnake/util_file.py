@@ -8,6 +8,12 @@ from . import util_text
 def copy_file(from_path, to_path):
     shutil.copyfile(from_path, to_path)
 
+def get_this_script_dir(this_file):
+    """
+    Call like this: get_this_script_dir(__file__)
+    """
+    return os.path.dirname(os.path.realpath(this_file))
+
 def _get_long_file_path(path_to_file):
     return u"\\\\?\\" + path_to_file if util_os.is_windows() else path_to_file
 
