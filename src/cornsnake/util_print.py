@@ -10,6 +10,10 @@ def percent(num, denom, ndigits = 0):
         return format(0, f'.{ndigits}f')
     return str(round((num * 100.0) / denom, ndigits)) + '%'
 
+def print_no_endline(text):
+    print(text, end='')
+    logger.info(text)
+
 def print_custom(text):
     print(text)
     logger.info(text)
