@@ -55,4 +55,4 @@ def print_result(text):
     print_with_color(text, util_color.RESULT_COLOR)
 
 def print_warning(text):
-    print_with_color("WARNING: " + text, util_color.WARNING_COLOR)
+    print_with_color("WARNING: " + str(text), util_color.WARNING_COLOR)
