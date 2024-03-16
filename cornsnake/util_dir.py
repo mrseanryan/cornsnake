@@ -22,6 +22,15 @@ def find_files_by_extension(dir_path, extension):
             found_files.append(path_to_sub)
     return found_files
 
+def find_files(dir_path):
+    found_files = []
+    contents = os.listdir(dir_path)
+    for content in contents:
+        path_to_sub = os.path.join(dir_path, content)
+        if os.path.isfile(path_to_sub):
+            found_files.append(path_to_sub)
+    return found_files
+
 def get_directory_of_this_script():
     return os.path.dirname(os.path.realpath(__file__))
 
