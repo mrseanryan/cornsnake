@@ -43,4 +43,3 @@ def _write_data_to_config(data, config_object, filename):
 
     for data_attribute in data_attributes:
         util_object.set_attribute_value(config_object, data_attribute, data[data_attribute])
-
