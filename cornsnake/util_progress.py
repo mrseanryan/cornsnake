@@ -1,9 +1,24 @@
+"""
+Functions for tracking progress and updating a progress bar.
+"""
+
 import sys
 
 from . import config
 
 previous_percent = 0
+
 def progress(count, total):
+    """
+    Function to update progress based on count and total.
+
+    Args:
+    count (int): The current count.
+    total (int): The total count.
+
+    Returns:
+    None
+    """
     global previous_percent
 
     percent = round(100.0 * count / float(total), 1)
@@ -20,6 +35,15 @@ def progress(count, total):
     _update_progress(percent)
 
 def _update_progress(percent):
+    """
+    Function to update the progress bar based on percentage.
+
+    Args:
+    percent (float): The percentage of progress.
+
+    Returns:
+    None
+    """
     bar_len = 60
     filled_len = int(round(bar_len * percent / float(100)))
 
@@ -31,5 +55,11 @@ def _update_progress(percent):
     sys.stdout.flush()
 
 def complete():
+    """
+    Function to complete the progress bar by updating it to 100% and printing a new line.
+
+    Returns:
+    None
+    """
     _update_progress(float(100))
     print("")  # ensure a new line

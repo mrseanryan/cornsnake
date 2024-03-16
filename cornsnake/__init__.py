@@ -1,5 +1,7 @@
 """
-Common Python utilities for working with files, git, ZIP, lists, processes, dates and times.
+A collection of utilities for working with files, git, ZIP, lists, processes, dates and times.
+
+- This documentation was mostly written by an AI via [gpt-code-commenter](https://github.com/mrseanryan/gpt-code-commenter)
 
 [Homepage](https://github.com/mrseanryan/cornsnake) | [Documentation](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/) | [Donate](https://ko-fi.com/K3K73ALBJ)
 """
