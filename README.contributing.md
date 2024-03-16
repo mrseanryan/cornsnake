@@ -22,7 +22,7 @@ Setup a virtual environment:
 If you are contributing to this project, then you need to install these extra dev dependencies:
 
 ```
-python -m pip install build==1.0.3 bumpver==2023.1129 flake8==6.1.0 parameterized==0.9.0 pip-tools==7.3.0 twine==4.0.2
+python -m pip install build==1.0.3 bumpver==2023.1129 flake8==6.1.0 parameterized==0.9.0 pdoc==14.4.0 pip-tools==7.3.0 twine==4.0.2
 ```
 
 - bumpver for release versioning

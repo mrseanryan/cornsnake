@@ -1,3 +1,7 @@
+"""
+Common Python utilities for working with files, git, ZIP, lists, processes, dates and times.
+"""
+
 __version__ = "0.0.36"
 
 from . import config
