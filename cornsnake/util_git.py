@@ -45,6 +45,12 @@ def get_current_branch(local_repo_location):
     return execute_command('rev-parse', ['--abbrev-ref', 'HEAD'], local_repo_location).strip()
 
 def get_last_commit_id(path_to_repo_dir, file_only=None):
+    """Get the last commit ID based on the given path to the repository directory and an optional file parameter.
+    Args:
+    path_to_repo_dir (str): The path to the repository directory.
+    file_only (str): Optional parameter to specify a specific file.
+    Returns:
+    str: The last commit ID."""
     # git log -n 1 --pretty=format:"%H_|\_%ad_|\_%s" --date=short BUILD.plz
     git_args = ['log', '-n', '1', f'--pretty=format:"%H{COMMIT_PARTS_SEPARTOR}%ad{COMMIT_PARTS_SEPARTOR}%s"', '--date=short']
     if file_only is not None:
@@ -57,24 +63,51 @@ def get_last_commit_id(path_to_repo_dir, file_only=None):
     return commit
 
 def execute_command(command, git_args, working_dir):
+    """Execute a Git command with specified arguments in the given working directory.
+    Args:
+    command (str): The Git command to execute.
+    git_args (list): List of arguments for the Git command.
+    working_dir (str): The working directory to execute the command in.
+    Returns:
+    str: The output of the command."""
     git_args_with_command = [command] + git_args
     return util_proc.run_process_and_get_output(config.PATH_TO_GIT, git_args_with_command, working_dir)
 
 # execute git command with too many parameters - so we chunk
 def execute_command_in_chunks(command, git_args, git_extra_args_to_chunk, working_dir):
+    """Execute a Git command with arguments provided in chunks to avoid exceeding the parameter limit.
+    Args:
+    command (str): The Git command to execute.
+    git_args (list): List of arguments for the Git command.
+    git_extra_args_to_chunk (list): List of additional arguments to chunk and execute.
+    working_dir (str): The working directory to execute the command in."""
     CHUNK_SIZE = 20
     chunks = util_list.chunk(git_extra_args_to_chunk, CHUNK_SIZE)
     for chunk in chunks:
         execute_command(command, git_args + chunk, working_dir)
 
 def fetch_notes(working_dir):
+    """Fetch notes from a Git repository using the specified working directory.
+    Args:
+    working_dir (str): The working directory of the repository."""
     execute_command('fetch', ['origin', 'refs/notes/*:refs/notes/*', '--force'], working_dir)
 
 def checkout_branch(branch, path_to_repo_dir):
+    """Check out the specified branch in the Git repository at the given path.
+    Args:
+    branch (str): The branch to check out.
+    path_to_repo_dir (str): The path to the repository directory.
+    Returns:
+    str: The result of the checkout command."""
     result = execute_command('checkout', [branch], path_to_repo_dir)
     return result
 
 def checkout_at_start_of_date(local_repo_location, branch, start_date):
+    """Check out the branch at the start of the specified date in the local repository location.
+    Args:
+    local_repo_location (str): The local repository location.
+    branch (str): The branch to check out.
+    start_date (str): The start date for checking out the branch."""
     # git rev-list -n 1 --first-parent --before="2023-12-22 00:00" main
     last_commit = execute_command('rev-list', ['-n', '1', '--first-parent', f'--before="{start_date} 00:00"', branch], local_repo_location)
     last_commit = last_commit.strip()
@@ -84,9 +117,16 @@ def checkout_at_start_of_date(local_repo_location, branch, start_date):
     return False
 
 def checkout_head(local_repo_location, branch):
+    """Check out the HEAD of the specified branch in the local repository location.
+    Args:
+    local_repo_location (str): The local repository location.
+    branch (str): The branch to check out."""
     checkout_branch(branch, local_repo_location)
 
 def check_has_no_changes(path_to_local_repo):
+    """Check if the local repository at the specified path has any changes.
+    Args:
+    path_to_local_repo (str): The path to the local repository directory."""
     # should return empty, if no changes
     result = execute_command('status', ['--porcelain'], path_to_local_repo)
     if len(result) > 0:
@@ -94,6 +134,13 @@ def check_has_no_changes(path_to_local_repo):
         raise RuntimeError(message)
 
 def _prepare_local_clone(path_to_repo_dir, temp_git_fixer_dir, is_mirror):
+    """Prepare a local clone of the repository with the specified parameters.
+    Args:
+    path_to_repo_dir (str): The path to the repository directory.
+    temp_git_fixer_dir (str): The temporary directory for fixing Git issues.
+    is_mirror (bool): A flag indicating whether the clone is a mirror.
+    Returns:
+    str: The path to the prepared local clone directory."""
     local_clone_dir = os.path.join(temp_git_fixer_dir, "lm")  # lm = local_mirror (keeping path short)
     util_file.ensure_dir_exists(local_clone_dir)
     args = [path_to_repo_dir]
@@ -110,32 +157,72 @@ def _prepare_local_clone(path_to_repo_dir, temp_git_fixer_dir, is_mirror):
     return os.path.join(local_clone_dir, local_repo_name)
 
 def prepare_local_full_clone(path_to_repo_dir, temp_git_fixer_dir):
+    """Prepare a full local clone of the repository using the specified paths.
+    Args:
+    path_to_repo_dir (str): The path to the repository directory.
+    temp_git_fixer_dir (str): The temporary directory for fixing Git issues.
+    Returns:
+    str: The path to the prepared full local clone directory."""
     return _prepare_local_clone(path_to_repo_dir, temp_git_fixer_dir, False)
 
 def prepare_local_mirror_clone(path_to_repo_dir, temp_git_fixer_dir):
+    """Prepare a mirror local clone of the repository using the specified paths.
+    Args:
+    path_to_repo_dir (str): The path to the repository directory.
+    temp_git_fixer_dir (str): The temporary directory for fixing Git issues.
+    Returns:
+    str: The path to the prepared mirror local clone directory."""
     return _prepare_local_clone(path_to_repo_dir, temp_git_fixer_dir, True)
 
 def gc_expire_reflog(repo_dir):
+    """Expire the reflog in the repository to aid in garbage collection.
+    Args:
+    repo_dir (str): The repository directory path."""
     # Expires the reflog, which helps a following 'gc prune' to remove more garbage
     execute_command('reflog', ['expire', '--expire=now', '--all'], repo_dir)
 
 def gc_prune_aggressive(mirror_clone_dir):
+    """Aggressively prune the repository to remove garbage using the mirror clone directory.
+    Args:
+    mirror_clone_dir (str): The mirror clone directory path.
+    Returns:
+    str: The result of the pruning operation."""
     result = execute_command('gc', ['--prune=now', '--aggressive'], mirror_clone_dir)
     return result
 
 def gc_prune_now(repo_dir):
+    """Prune the repository immediately to remove unnecessary objects.
+    Args:
+    repo_dir (str): The repository directory path."""
     execute_command('gc', ['--prune=now'], repo_dir)
 
 def gc_prune_safe(repo_dir):
+    """Safely prune the repository to optimize object storage.
+    Args:
+    repo_dir (str): The repository directory path."""
     execute_command('gc', [], repo_dir)
 
 def remove_origin_and_remote_branches(repo_dir):
+    """Remove the origin and remote branches from the repository.
+    Args:
+    repo_dir (str): The repository directory path."""
     execute_command('remote', ['remove', 'origin'], repo_dir)
 
 def remove_tag(repo_dir, tag):
+    """Remove the specified tag from the repository.
+    Args:
+    repo_dir (str): The repository directory path.
+    tag (str): The tag to be removed."""
     execute_command('tag', ['-d', tag], repo_dir)
 
 def get_commits_after_date(repo_dir, branches, start_date):
+    """Get all commits after the specified date in the given branches of the repository.
+    Args:
+    repo_dir (str): The repository directory path.
+    branches (list): List of branches to check commits from.
+    start_date (str): The start date for filtering commits.
+    Returns:
+    list: A list of commits after the specified date."""
     commits = []
     for branch in branches:
         checkout_branch(branch, repo_dir)
@@ -151,6 +238,11 @@ def get_commits_after_date(repo_dir, branches, start_date):
     return cleaned_commits
 
 def get_git_text_editor_or_none(local_repo_location):
+    """Get the default Git text editor or return None if not found.
+    Args:
+    local_repo_location (str): The local repository location.
+    Returns:
+    tuple: A tuple containing the path to the text editor program and its arguments, or (None, None) if not found."""
     path_to_text_editor = get_config('core.editor', local_repo_location)
     if path_to_text_editor is None or len(path_to_text_editor) == 0:
         return (None, None)
@@ -174,6 +266,11 @@ def get_git_text_editor_or_none(local_repo_location):
     return (None, None)
 
 def get_all_tags(path_to_local_repo):
+    """Get all tags from the specified local repository.
+    Args:
+    path_to_local_repo (str): The path to the local repository directory.
+    Returns:
+    list: A list of all tags in the repository."""
     tags = []
     result = execute_command('tag', [], path_to_local_repo)
     raw_tags = result.split('\n')
@@ -184,10 +281,18 @@ def get_all_tags(path_to_local_repo):
     return tags
 
 def delete_all_tags(path_to_local_repo):
+    """Delete all tags from the specified local repository.
+    Args:
+    path_to_local_repo (str): The path to the local repository directory."""
     tags = get_all_tags(path_to_local_repo)
     execute_command_in_chunks('push', ['--delete', 'origin', '--quiet'], tags, path_to_local_repo)
 
 def get_all_origin_branches(path_to_local_repo):
+    """Get all origin branches from the specified local repository.
+    Args:
+    path_to_local_repo (str): The path to the local repository directory.
+    Returns:
+    list: A list of all origin branches in the repository."""
     branches = []
     result = execute_command('branch', ['-r'], path_to_local_repo)
     raw_branches = result.split('\n')
@@ -203,6 +308,10 @@ def get_all_origin_branches(path_to_local_repo):
     return branches
 
 def delete_branches_except(branches_to_keep, path_to_local_repo):
+    """Delete branches in the local repository except for the specified ones to keep.
+    Args:
+    branches_to_keep (list): List of branches to retain.
+    path_to_local_repo (str): The path to the local repository directory."""
     # original bash:
     #   git branch -r | grep -Eo 'origin/.*' | grep -v 'origin/main$' | sed 's/origin\///' | xargs git push origin -v --delete
     # OR this one seems more reliable:
@@ -213,6 +322,12 @@ def delete_branches_except(branches_to_keep, path_to_local_repo):
     execute_command_in_chunks('push', ['-d', 'origin'], branches_to_delete, path_to_local_repo)
 
 def get_config(key, path_to_local_repo):
+    """Get the Git configuration setting value for the specified key in the local repository.
+    Args:
+    key (str): The configuration key to retrieve.
+    path_to_local_repo (str): The path to the local repository directory.
+    Returns:
+    str: The value of the configuration setting for the key."""
     result = ""
     try:
         result = execute_command('config', ['--get', key], path_to_local_repo, False)
@@ -226,7 +341,9 @@ def get_config(key, path_to_local_repo):
     return result
 
 def log_git_config(path_to_local_repo):
-    # Log interesting config settings that can cause issues, especially with text files:
+    """Log interesting Git configuration settings that can impact text file handling.
+    Args:
+    path_to_local_repo (str): The path to the local repository directory."""
     interesting_settings = [
         'i18n.filesencoding',
         'core.ignorecase',  # Probably best set to false.
@@ -248,6 +365,12 @@ settings_best_set_to_false = [
 ]
 
 def is_git_ignored(directory, filename):
+    """Check if a file is ignored by Git in the specified directory.
+    Args:
+    directory (str): The directory containing the file.
+    filename (str): The name of the file to check.
+    Returns:
+    bool: True if the file is ignored, False otherwise."""
     try:
         execute_command('check-ignore', [filename], directory, False)
     except RuntimeError as re:
