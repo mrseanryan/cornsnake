@@ -1,5 +1,5 @@
 """
-This Python file contains two functions for randomly selecting text. The `pick_one_random` function chooses a random text from a list. The `pick_one_by_prompt` function prompts the user to pick a text from a list.
+Functions for randomly selecting text. The `pick_one_random` function chooses a random text from a list. The `pick_one_by_prompt` function prompts the user to pick a text from a list.
 """
 
 import random

@@ -1,5 +1,5 @@
 """
-This Python file defines a constant variable for line ending.
+Defines text constant variables - including for line endings.
 """
 
 LINE_END = '\n'

@@ -1,5 +1,5 @@
 """
-This Python file contains a setup configuration for a Python package using setuptools.
+A setup configuration for a Python package using setuptools.
 """
 
 from setuptools import setup

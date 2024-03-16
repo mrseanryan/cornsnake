@@ -18,6 +18,10 @@ def _check_is_boolean(value, name):
     Returns:
     str: An error message if value is not a boolean, None otherwise.
     """
+    if not isinstance(value, bool):
+        return f"{name} must be a boolean (True or False)"
+
+    return None
 
 def _check_is_string_or_empty(value, name):
     """
