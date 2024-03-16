@@ -213,4 +213,3 @@ def validate():
     error = _get_config_error()
     if error is not None:
         raise SystemExit(f"CONFIG ERROR: {error}. Please check the settings in config.py")
-
