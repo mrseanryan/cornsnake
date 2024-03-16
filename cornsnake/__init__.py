@@ -6,7 +6,7 @@ Common Python utilities for working with files, git, ZIP, lists, processes, date
 [Documentation](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/)
 """
 
-__version__ = "0.0.36"
+__version__ = "0.0.37"
 
 from . import config
 from . import util_color
