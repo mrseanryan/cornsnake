@@ -50,6 +50,7 @@ def find_files_by_extension(dir_path, extension):
     return found_files
 
 def find_files(dir_path):
+    """Find all files in the given directory."""
     found_files = []
     contents = os.listdir(dir_path)
     for content in contents:
@@ -59,9 +60,11 @@ def find_files(dir_path):
     return found_files
 
 def get_directory_of_this_script():
+    """Get the directory that contains this script."""
     return os.path.dirname(os.path.realpath(__file__))
 
 def get_parent_dir(my_path):
+    """Get the absolute path of the parent directory of the given directory."""
     return Path(my_path).parent.absolute()
 
 def get_total_dir_size_in_bytes(start_path):
@@ -77,15 +80,30 @@ def get_total_dir_size_in_bytes(start_path):
     return total_size
 
 def get_total_dir_size_in_gigabytes(start_path):
+    """Calculate the total size of a directory in gigabytes.
+    Args:
+    start_path (str): The path of the directory to calculate size of.
+    Returns:
+    float: The total size of the directory in gigabytes."""
     return get_total_dir_size_in_bytes(start_path) / TOTAL_BYTES_IN_GIGABYTE
 
 def is_empty_directory(path_to_file):
+    """Check if a directory is empty.
+    Args:
+    path_to_file (str): The path of the directory to check.
+    Returns:
+    bool: True if the directory is empty, False otherwise."""
     if os.path.isfile(path_to_file):
         return False
     contents = os.listdir(path_to_file)
     return len(contents) == 0
 
 def is_empty_directory_only_subdirectories(path_to_file):
+    """Check if a directory is empty by inspecting subdirectories.
+    Args:
+    path_to_file (str): The path of the directory to check.
+    Returns:
+    bool: True if the directory is empty or only contains empty subdirectories, False otherwise."""
     if os.path.isfile(path_to_file):
         return False
     contents = os.listdir(path_to_file)
@@ -100,5 +118,9 @@ def is_empty_directory_only_subdirectories(path_to_file):
     return True
 
 def write_text_to_file(text, filepath):
+    """Write text to a file.
+    Args:
+    text (str): The text to write to the file.
+    filepath (str): The path of the file to write to."""
     with open(filepath, "w", encoding='utf-8') as f:
         f.write(text)
