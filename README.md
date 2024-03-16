@@ -10,7 +10,9 @@ Functions that I find myself writing time and again, on various OSS and personal
 [![MIT License][img_license]][url_license]
 [![Supported Python Versions][img_pyversions]][url_pyversions]
 [![cornsnake][img_version]][url_version]
+
 [![PyPI Releases][img_pypi]][url_pypi]
+[![PyPI - Downloads](https://img.shields.io/pypi/dm/cornsnake.svg)](https://pypi.org/project/cornsnake)
 
 [img_license]: https://img.shields.io/badge/License-MIT-blue.svg
 [url_license]: https://github.com/mrseanryan/cornsnake/blob/master/LICENSE
@@ -25,6 +27,8 @@ Functions that I find myself writing time and again, on various OSS and personal
 
 [img_pyversions]: https://img.shields.io/pypi/pyversions/cornsnake.svg
 [url_pyversions]: https://pypi.python.org/pypi/cornsnake
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/K3K73ALBJ)
 
 ## Install
 
