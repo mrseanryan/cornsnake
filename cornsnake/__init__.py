@@ -1,5 +1,9 @@
 """
 Common Python utilities for working with files, git, ZIP, lists, processes, dates and times.
+
+[Homepage](https://github.com/mrseanryan/cornsnake)
+
+[Documentation](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/)
 """
 
 __version__ = "0.0.36"
