@@ -1,7 +1,7 @@
 from parameterized import parameterized
 import unittest
 
-import util_list
+from cornsnake_src import util_list
 
 class TestUtilList(unittest.TestCase):
 

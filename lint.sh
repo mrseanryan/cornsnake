@@ -12,16 +12,16 @@ echo Linting ...
 FLAKE8_TO_IGNORE=E302,E305,E501
 
 # Disable flake8 warning about unused import
-FLAKE8_FILES_TO_IGNORE="./src\cornsnake\__init__.py:F401"
+FLAKE8_FILES_TO_IGNORE="__init__.py:F401"
 
 # Unix
 if [ -f /usr/bin/python3.11 ]; then
   echo Using python at /usr/bin/python3.11
-  /usr/bin/python3.11 -m flake8 --extend-ignore $FLAKE8_TO_IGNORE --per-file-ignores $FLAKE8_FILES_TO_IGNORE ./src
+  /usr/bin/python3.11 -m flake8 --extend-ignore $FLAKE8_TO_IGNORE --per-file-ignores $FLAKE8_FILES_TO_IGNORE cornsnake_src
 else
   # Windows
   echo Using python at python
-  python -m flake8 --extend-ignore $FLAKE8_TO_IGNORE --per-file-ignores=$FLAKE8_FILES_TO_IGNORE ./src
+  python -m flake8 --extend-ignore $FLAKE8_TO_IGNORE --per-file-ignores=$FLAKE8_FILES_TO_IGNORE cornsnake_src
 fi
 
 echo [done]

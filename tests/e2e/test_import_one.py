@@ -1,4 +1,4 @@
-from cornsnake import util_print, util_progress, util_string, util_wait, __version__
+from cornsnake_src import util_print, util_progress, util_string, util_wait, __version__
 
 print(f"Using cornsnake [{__version__}] - 'from import X'")
 

@@ -46,7 +46,7 @@ pip install PyMuPDF
 
 Functions are organised in logical groups like `util_file` or `util_print`.
 
-To see what functions are available, see the [source code](https://github.com/mrseanryan/cornsnake/tree/master/src/cornsnake).
+To see what functions are available, see the [source code](https://github.com/mrseanryan/cornsnake/tree/master/cornsnake).
 
 For an example, see the [e2e tests](https://github.com/mrseanryan/cornsnake/tree/master/e2e).
 
