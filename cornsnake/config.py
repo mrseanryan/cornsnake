@@ -1,6 +1,6 @@
 """Globally accessible config object. Can be configured by for example reading from command line arguments or TOML file (via tomllib), and then writing to the properties in-memory.
 
-- see read_config_ini_file.py for an example of reading from an ini file (TOML format).
+- see util_toml.py for an example of reading from an ini file (TOML format).
 """
 import logging
 
