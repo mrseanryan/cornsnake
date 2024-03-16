@@ -4,7 +4,7 @@ Functions for working with object attributes. The `get_attributes` function retr
 
 def get_attributes(object):
     """
-    Get all non-private attributes of an object.
+    Dynamically get all non-private attributes of an object (reflection).
 
     Args:
     object: The object to retrieve attributes from.
@@ -21,7 +21,7 @@ def get_attributes(object):
 
 def get_attribute_value(object, attribute_name):
     """
-    Get the value of a specific attribute of an object.
+    Dynamically get the value of a specific attribute of an object.
 
     Args:
     object: The object to retrieve the attribute value from.
@@ -31,3 +31,12 @@ def get_attribute_value(object, attribute_name):
     The value of the specified attribute of the object.
     """
     return getattr(object, attribute_name)
+
+def set_attribute_value(object, attribute_name, value):
+    """Dynamically set the value of the given attribute of that object.
+
+    Args:
+    object: The object upon which to set the attribute value.
+    attribute_name: The name of the attribute to set the value of.
+    """
+    setattr(object, attribute_name, value)
