@@ -1,3 +1,7 @@
+"""
+Running processes and opening Windows Explorer at a specified directory.
+"""
+
 import os
 import subprocess
 
@@ -8,16 +12,43 @@ from . import util_os
 logger = util_log.getLogger(__name__)
 
 def _proc_print(message):
+    """
+    Logs the message using the logger and prints it if config.IS_VERBOSE is True.
+
+    Args:
+    message (str): The message to log and possibly print.
+    """
     logger.info(message)
     if config.IS_VERBOSE:
         print(message)
 
 def _proc_print_debug(message):
+    """
+    Logs the message at debug level using the logger and prints it if config.IS_VERBOSE is True.
+
+    Args:
+    message (str): The message to log and possibly print.
+    """
     logger.debug(message)
     if config.IS_VERBOSE:
         print(message)
 
 def run_process_and_get_output(path_to_proc, arguments, working_directory, output_errors=True):
+    """
+    Executes a process with specified arguments and working directory, capturing the output.
+
+    Args:
+    path_to_proc (str): The path to the process to execute.
+    arguments (list): List of arguments for the process.
+    working_directory (str): The working directory for the process.
+    output_errors (bool): Flag to output errors. Default is True.
+
+    Returns:
+    str: The standard output of the process.
+
+    Raises:
+    RuntimeError: If the process returns a non-zero exit code.
+    """
     _proc_print_debug(f"EXECUTING: '{path_to_proc} {arguments}' - at {working_directory}")
 
     pipes = subprocess.Popen([path_to_proc] + arguments, stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd=working_directory)
@@ -49,6 +80,12 @@ def run_process_and_get_output(path_to_proc, arguments, working_directory, outpu
     return std_out
 
 def open_windows_explorer_at(path_to_dir):
+    """
+    Opens Windows Explorer at the specified directory if the OS is Windows.
+
+    Args:
+    path_to_dir (str): The path to the directory to open in Windows Explorer.
+    """
     if util_os.is_windows():
         _proc_print(f"Openning explorer at {path_to_dir}")
         os.startfile(path_to_dir)

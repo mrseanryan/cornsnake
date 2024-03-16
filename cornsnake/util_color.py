@@ -1,3 +1,6 @@
+"""
+Defines color constants and a function for colorizing text output for terminal.
+"""
 from . import config
 
 class bcolors:
@@ -15,6 +18,16 @@ class bcolors:
     UNDERLINE = '\033[4m'
 
 def colorize(text, color):
+    """
+    Function to colorize text output for terminal.
+
+    Args:
+    text (str): The text to be colorized.
+    color (str): The color to apply to the text.
+
+    Returns:
+    str: The colorized text.
+    """
     start_color = color if config.IS_COLOR_ENABLED else ""
     end_color = bcolors.ENDC if config.IS_COLOR_ENABLED else ""
     colorized = f"{start_color}{text}{end_color}"

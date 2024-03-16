@@ -1,3 +1,7 @@
+"""
+Functions for handling user input with various formats and validations.
+"""
+
 import os
 
 from . import config
@@ -10,6 +14,16 @@ prompt_token = " >"
 QUESTION_COLOR = util_color.bcolors.OKCYAN
 
 def input_custom(question, default):
+    """
+    Function to get user input with default value.
+
+    Args:
+    question (str): The question to prompt the user.
+    default: The default value for the input.
+
+    Returns:
+    str: The user input value.
+    """
     if isinstance(default, str):
         default = default.strip()
     if not config.IS_INTERACTIVE:
@@ -18,6 +32,16 @@ def input_custom(question, default):
     return input(question).strip() or default
 
 def input_with_format_date(question, default):
+    """
+    Function to get user input with date format validation.
+
+    Args:
+    question (str): The question to prompt the user.
+    default: The default value for the input.
+
+    Returns:
+    str: The user input date value.
+    """
     question = util_color.colorize(question, QUESTION_COLOR) + f" [format = yyyy-mm-dd] [default is {default}]" + prompt_token
     while True:
         answer = input_custom(question, default)
@@ -25,11 +49,30 @@ def input_with_format_date(question, default):
             return answer
 
 def boolToYorN(value):
+    """
+    Function to convert boolean value to Y or N.
+
+    Args:
+    value: Boolean value to convert.
+
+    Returns:
+    str: 'Y' if True, 'N' if False.
+    """
     if value:
         return "Y"
     return "N"
 
 def input_list_of_branches(question, default):
+    """
+    Function to get a list of branch names from user input.
+
+    Args:
+    question (str): The question to prompt the user.
+    default: The default value for the input.
+
+    Returns:
+    list: List of branch names.
+    """
     if not config.IS_INTERACTIVE:
         return default
     items = []
@@ -51,6 +94,16 @@ def input_list_of_branches(question, default):
     return items
 
 def input_branch_name_required(question, default):
+    """
+    Function to get a required branch name from user input.
+
+    Args:
+    question (str): The question to prompt the user.
+    default: The default value for the input.
+
+    Returns:
+    str: The user input branch name.
+    """
     question = util_color.colorize(question, QUESTION_COLOR) + f"[Default = {default}]"
     while True:
         answer = input_custom(question, default)
@@ -62,6 +115,16 @@ def input_branch_name_required(question, default):
                 return answer
 
 def input_required__dir_path(question, default):
+    """
+    Function to get a required directory path from user input.
+
+    Args:
+    question (str): The question to prompt the user.
+    default: The default value for the input.
+
+    Returns:
+    str: The user input directory path.
+    """
     question = util_color.colorize(question, QUESTION_COLOR) + f" [default is {default}]" + prompt_token
     while True:
         answer = input_custom(question, default)
@@ -72,6 +135,16 @@ def input_required__dir_path(question, default):
                 return answer
 
 def input_with_format_y_or_n(question, default):
+    """
+    Function to get user input with Y or N format validation.
+
+    Args:
+    question (str): The question to prompt the user.
+    default: The default value for the input.
+
+    Returns:
+    bool: True for 'Y', False for 'N'.
+    """
     question = util_color.colorize(question, QUESTION_COLOR) + f" [Y or N] [default is {boolToYorN(default)}]" + prompt_token
     while True:
         answer = input_custom(question, default)
@@ -85,6 +158,16 @@ def input_with_format_y_or_n(question, default):
             return False
 
 def input_with_format_git_filter_repo_size(question, default):
+    """
+    Function to get user input with Git filter repo size format validation.
+
+    Args:
+    question (str): The question to prompt the user.
+    default: The default value for the input.
+
+    Returns:
+    str: The user input Git filter repo size.
+    """
     question = util_color.colorize(question, QUESTION_COLOR) + f"[Values are like 256K or 1M or 1G][Default = {default}]" + prompt_token
     while True:
         answer = input_custom(question, default)
@@ -94,6 +177,16 @@ def input_with_format_git_filter_repo_size(question, default):
             return answer
 
 def input_optional(question, default):
+    """
+    Function to get optional user input.
+
+    Args:
+    question (str): The question to prompt the user.
+    default: The default value for the input.
+
+    Returns:
+    str: The user input value.
+    """
     question = util_color.colorize(question, QUESTION_COLOR) + f"[Default = {default}]"
     answer = input_custom(question, default)
     return answer

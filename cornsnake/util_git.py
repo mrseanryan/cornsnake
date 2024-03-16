@@ -1,3 +1,7 @@
+"""
+Functions for interacting with a Git repository. It includes functions for executing Git commands, checking out branches, handling commits, and managing Git configuration settings.
+"""
+
 import os
 
 from . import config
@@ -13,6 +17,15 @@ COMMIT_PARTS_SEPARTOR = "_||_"
 logger = util_log.getLogger(__name__)
 
 def _parse_result(result):
+    """
+    Function to parse the result obtained from executing Git commands.
+
+    Args:
+    result (str): The result string to be parsed.
+
+    Returns:
+    list: A list of cleaned parts obtained by splitting the result string.
+    """
     parts = result.split(COMMIT_PARTS_SEPARTOR)
     parts_cleaned = []
     for part in parts:
@@ -20,6 +33,15 @@ def _parse_result(result):
     return parts_cleaned
 
 def get_current_branch(local_repo_location):
+    """
+    Function to get the current branch of the Git repository.
+
+    Args:
+    local_repo_location (str): The local repository location.
+
+    Returns:
+    str: The name of the current branch.
+    """
     return execute_command('rev-parse', ['--abbrev-ref', 'HEAD'], local_repo_location).strip()
 
 def get_last_commit_id(path_to_repo_dir, file_only=None):

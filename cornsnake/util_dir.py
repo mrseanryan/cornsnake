@@ -1,3 +1,7 @@
+"""
+Working with directories, files, and file paths.
+"""
+
 import os
 import shutil
 from pathlib import Path
@@ -7,13 +11,36 @@ from . import util_os
 TOTAL_BYTES_IN_GIGABYTE = 1000000000
 
 def copy_directory(from_path, to_path):
+    """
+    Copy a directory from one location to another.
+
+    Args:
+    from_path (str): The path of the directory to copy from.
+    to_path (str): The path of the directory to copy to.
+    """
     shutil.copytree(from_path, to_path)
 
 def ensure_dir_exists(temp_git_fixer_dir):
+    """
+    Ensure that a directory exists, creating it if necessary.
+
+    Args:
+    temp_git_fixer_dir (str): The path of the directory to ensure existence of.
+    """
     if not os.path.exists(temp_git_fixer_dir):
         os.makedirs(temp_git_fixer_dir)
 
 def find_files_by_extension(dir_path, extension):
+    """
+    Find files in a directory by a specific file extension.
+
+    Args:
+    dir_path (str): The path of the directory to search for files.
+    extension (str): The file extension to search for.
+
+    Returns:
+    list: A list of file paths with the specified extension.
+    """
     found_files = []
     contents = os.listdir(dir_path)
     for content in contents:

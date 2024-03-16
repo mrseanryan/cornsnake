@@ -1,3 +1,6 @@
+"""
+Functions for checking and validating configuration settings in the config.py file.
+"""
 import os
 import re
 
@@ -5,12 +8,28 @@ from . import config
 from . import util_date
 
 def _check_is_boolean(value, name):
-    if not isinstance(value, bool):
-        return f"{name} must be a boolean (True or False)"
+    """
+    Check if a value is a boolean.
 
-    return None
+    Args:
+    value (bool): The value to check.
+    name (str): The name of the value.
+
+    Returns:
+    str: An error message if value is not a boolean, None otherwise.
+    """
 
 def _check_is_string_or_empty(value, name):
+    """
+    Check if a value is a string and not empty.
+
+    Args:
+    value (str): The value to check.
+    name (str): The name of the value.
+
+    Returns:
+    str: An error message if value is not a string or empty, None otherwise.
+    """
     if not isinstance(value, str):
         return f"{name} must be a string"
     if len(value.strip()) != len(value):
