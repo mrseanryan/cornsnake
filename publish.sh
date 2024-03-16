@@ -1,5 +1,7 @@
 set -e
 
+./test.sh
+
 twine check dist/*
 
 # twine upload -r testpypi dist/*

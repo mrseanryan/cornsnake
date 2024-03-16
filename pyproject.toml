@@ -25,6 +25,8 @@ dev = ["bumpver", "parameterized"]
 
 [project.urls]
 Homepage = "https://github.com/mrseanryan/cornsnake"
+Documentation = "http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/"
+Issues = "https://github.com/mrseanryan/cornsnake/issues"
 
 [tool.bumpver]
 current_version = "0.0.36"
@@ -40,7 +42,7 @@ push = true
 
 [tool.bumpver.file_patterns]
 "pyproject.toml" = ['current_version = "{version}"', 'version = "{version}"']
-"cornsnake_src/__init__.py" = ["{version}"]
+"cornsnake/__init__.py" = ["{version}"]
 "README.md" = [
     "{version}"
 ]

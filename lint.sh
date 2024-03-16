@@ -17,11 +17,11 @@ FLAKE8_FILES_TO_IGNORE="__init__.py:F401"
 # Unix
 if [ -f /usr/bin/python3.11 ]; then
   echo Using python at /usr/bin/python3.11
-  /usr/bin/python3.11 -m flake8 --extend-ignore $FLAKE8_TO_IGNORE --per-file-ignores $FLAKE8_FILES_TO_IGNORE cornsnake_src
+  /usr/bin/python3.11 -m flake8 --extend-ignore $FLAKE8_TO_IGNORE --per-file-ignores $FLAKE8_FILES_TO_IGNORE cornsnake
 else
   # Windows
   echo Using python at python
-  python -m flake8 --extend-ignore $FLAKE8_TO_IGNORE --per-file-ignores=$FLAKE8_FILES_TO_IGNORE cornsnake_src
+  python -m flake8 --extend-ignore $FLAKE8_TO_IGNORE --per-file-ignores=$FLAKE8_FILES_TO_IGNORE cornsnake
 fi
 
 echo [done]
