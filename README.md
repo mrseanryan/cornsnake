@@ -4,7 +4,7 @@ A small library wrapping common Python utilities for working with files, git, ZI
 
 Functions that I find myself writing time and again, on various OSS and personal projects - so collecting in one place, in case it is of use!
 
-[Documentation](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/)
+For more details, see the [documentation](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/).
 
 [url_repo]: https://github.com/mrseanryan/cornsnake
 [url_semver_org]: https://semver.org/
@@ -52,11 +52,12 @@ pip install PyMuPDF
 
 Functions are organised in logical groups like `util_file` or `util_print`.
 
-To see what functions are available, see the [source code](https://github.com/mrseanryan/cornsnake/tree/master/cornsnake).
+To see what functions are available, see the [Documentation](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/) or [source code](https://github.com/mrseanryan/cornsnake/tree/master/cornsnake).
 
-For an example, see the [e2e tests](https://github.com/mrseanryan/cornsnake/tree/master/e2e).
+For examples see the [unit tests](https://github.com/mrseanryan/cornsnake/tree/master/tests/unit) and [e2e tests](https://github.com/mrseanryan/cornsnake/tree/master/tests/e2e).
 
 ## References
 
 - [github repo](https://github.com/mrseanryan/cornsnake)
 - [pypi package](https://pypi.org/project/cornsnake/)
+- [documentation](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/)
