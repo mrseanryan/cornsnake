@@ -4,6 +4,8 @@ A small library wrapping common Python utilities for working with files, git, ZI
 
 Functions that I find myself writing time and again, on various OSS and personal projects - so collecting in one place, in case it is of use!
 
+[Documentation](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/)
+
 [url_repo]: https://github.com/mrseanryan/cornsnake
 [url_semver_org]: https://semver.org/
 
