@@ -42,7 +42,7 @@ def is_empty_file(path_to_file):
     size = os.path.getsize(fp_allow_long_path)
     return size == 0
 
-def read_lines_from_file(filepath, skip_comments = False):
+def read_lines_from_file(filepath, skip_comments=False):
     lines = []
     with open(filepath, encoding='utf-8') as file:
         lines = [line.strip() for line in file]

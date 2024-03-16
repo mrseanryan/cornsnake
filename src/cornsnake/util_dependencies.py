@@ -3,6 +3,9 @@ import sys
 
 from . import util_git
 from . import util_print
+from . import util_log
+
+logger = util_log.getLogger(__name__)
 
 PY_MAJOR = 3
 PY_MIN_MINOR = 12

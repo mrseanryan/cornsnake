@@ -72,7 +72,7 @@ def _check_is_date_or_none(value, name):
         date_value = util_date.parse_yyyy_mm_dd(value)
         if not date_value:
             return error_message
-    except:
+    except Exception:
         return error_message
     return None
 

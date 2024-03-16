@@ -8,7 +8,7 @@ from . import util_print
 from . import util_log
 from . import util_proc
 
-COMMIT_PARTS_SEPARTOR="_||_"
+COMMIT_PARTS_SEPARTOR = "_||_"
 
 logger = util_log.getLogger(__name__)
 
@@ -22,7 +22,7 @@ def _parse_result(result):
 def get_current_branch(local_repo_location):
     return execute_command('rev-parse', ['--abbrev-ref', 'HEAD'], local_repo_location).strip()
 
-def get_last_commit_id(path_to_repo_dir, file_only = None):
+def get_last_commit_id(path_to_repo_dir, file_only=None):
     # git log -n 1 --pretty=format:"%H_|\_%ad_|\_%s" --date=short BUILD.plz
     git_args = ['log', '-n', '1', f'--pretty=format:"%H{COMMIT_PARTS_SEPARTOR}%ad{COMMIT_PARTS_SEPARTOR}%s"', '--date=short']
     if file_only is not None:
@@ -72,7 +72,7 @@ def check_has_no_changes(path_to_local_repo):
         raise RuntimeError(message)
 
 def _prepare_local_clone(path_to_repo_dir, temp_git_fixer_dir, is_mirror):
-    local_clone_dir = os.path.join(temp_git_fixer_dir, "lm") # lm = local_mirror (keeping path short)
+    local_clone_dir = os.path.join(temp_git_fixer_dir, "lm")  # lm = local_mirror (keeping path short)
     util_file.ensure_dir_exists(local_clone_dir)
     args = [path_to_repo_dir]
     if is_mirror:
