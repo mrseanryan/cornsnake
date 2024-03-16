@@ -1,3 +1,5 @@
 set -e
 
-python -m unittest discover -v src/cornsnake
+./lint.sh
+
+python -m unittest discover -v tests

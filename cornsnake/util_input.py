@@ -23,11 +23,11 @@ def input_with_format_date(question, default):
         answer = input_custom(question, default)
         if util_date.is_valid_date_yyyy_mm_dd(answer):
             return answer
-   
+
 def boolToYorN(value):
-   if value:
-      return "Y"
-   return "N"
+    if value:
+        return "Y"
+    return "N"
 
 def input_list_of_branches(question, default):
     if not config.IS_INTERACTIVE:
@@ -67,7 +67,7 @@ def input_required__dir_path(question, default):
         answer = input_custom(question, default)
         if len(answer) > 0:
             if (not os.path.isdir(answer)):
-                print(f" ! ERROR: That directory does not exist")
+                print(" ! ERROR: That directory does not exist")
             else:
                 return answer
 
@@ -78,18 +78,18 @@ def input_with_format_y_or_n(question, default):
         if not config.IS_INTERACTIVE:
             return answer
         if len(answer) == 0 and default is not None:
-           return default
+            return default
         if answer == "Y":
-           return True
+            return True
         if answer == "N":
-           return False
+            return False
 
 def input_with_format_git_filter_repo_size(question, default):
     question = util_color.colorize(question, QUESTION_COLOR) + f"[Values are like 256K or 1M or 1G][Default = {default}]" + prompt_token
     while True:
         answer = input_custom(question, default)
         if len(answer) == 0:
-           return default
+            return default
         if util_validate.is_valid_blob_size(answer):
             return answer
 

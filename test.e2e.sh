@@ -1,4 +1,4 @@
-pushd e2e
+pushd tests\e2e
 
 pip install PyMuPDF --quiet
 python -m pip install --upgrade cornsnake --quiet

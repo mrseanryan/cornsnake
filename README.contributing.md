@@ -22,15 +22,19 @@ Setup a virtual environment:
 If you are contributing to this project, then you need to install these extra dev dependencies:
 
 ```
-pip install build parameterized twine
-
-python -m pip install pip-tools bumpver
+python -m pip install build==1.0.3 bumpver==2023.1129 flake8==6.1.0 parameterized==0.9.0 pdoc==14.4.0 pip-tools==7.3.0 twine==4.0.2
 ```
 
 - bumpver for release versioning
 - parameterized for unit tests
 - build and twine are for publishing to pypi
 - pip-tools is for compiling requirements.txt
+
+## Linting
+
+```
+./lint.sh
+```
 
 ## Unit Tests
 
@@ -61,6 +65,20 @@ pip-compile pyproject.toml --strip-extras
 ## e2e Tests (after publishing)
 
 ./test.e2e.sh
+
+## Documentation
+
+Generate docs:
+
+```
+./doc.sh
+```
+
+Currently docs are stored on S3 as a bucket exposed as static website.
+
+To deploy docs, you need to upload the new files to S3.
+
+Bucket: docs.mrseanryan.cornsnake [eu-west-1]
 
 ## References
 

@@ -1,7 +1,7 @@
 from parameterized import parameterized
 import unittest
 
-import util_string
+from cornsnake import util_string
 
 class TestUtilString(unittest.TestCase):
 
