@@ -61,9 +61,16 @@ def find_files(dir_path):
             found_files.append(path_to_sub)
     return found_files
 
-def get_directory_of_this_script():
-    """Get the directory that contains this script."""
-    return os.path.dirname(os.path.realpath(__file__))
+def get_directory_of_this_script(____file__):
+    """
+    Get the directory that contains this script.
+
+    Args:
+    __file__ (str): The path to this Python script file.
+    Returns:
+    The absolute path to directory containing your Python script file.
+    """
+    return os.path.dirname(os.path.realpath(____file__))
 
 def get_parent_dir(my_path):
     """Get the absolute path of the parent directory of the given directory."""
