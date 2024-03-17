@@ -1,5 +1,7 @@
 """
 Functions for checking and validating configuration settings in the config.py file.
+
+[Documentation](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/cornsnake/util_validate.html)
 """
 import os
 import re

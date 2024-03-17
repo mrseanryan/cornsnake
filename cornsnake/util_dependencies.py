@@ -1,5 +1,7 @@
 """
 Functions for checking the versions of Python and Git. It ensures that the major and minor versions of these dependencies meet the required criteria.
+
+[Documentation](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/cornsnake/util_dependencies.html)
 """
 import os
 import sys

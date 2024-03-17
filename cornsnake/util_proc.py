@@ -1,5 +1,7 @@
 """
 Running processes and opening Windows Explorer at a specified directory.
+
+[Documentation](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/cornsnake/util_proc.html)
 """
 
 import os

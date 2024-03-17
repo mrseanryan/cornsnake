@@ -2,6 +2,8 @@
 A Single entry point for printing - so can add custom printing with color and logging.
 
 Functions for printing with different colors, logging messages, printing sections, and handling warnings.
+
+[Documentation](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/cornsnake/util_print.html)
 """
 
 from . import util_color

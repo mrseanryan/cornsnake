@@ -1,5 +1,7 @@
 """
 Making a POST request using the urllib library.
+
+[Documentation](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/cornsnake/util_network.html)
 """
 
 import urllib.request

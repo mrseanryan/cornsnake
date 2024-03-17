@@ -1,5 +1,7 @@
 """
 Functions for date manipulation. It includes functions to parse, format, add days to, and validate dates in the yyyy-mm-dd format.
+
+[Documentation](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/cornsnake/util_date.html)
 """
 
 from datetime import datetime, timedelta

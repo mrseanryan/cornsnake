@@ -1,5 +1,7 @@
 """
 Generating Markdown content. Functions like adding row separators, generating Markdown images, and generating italicized text are included.
+
+[Documentation](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/cornsnake/util_markdown_table.html)
 """
 
 MARKDOWN_COLUMN_SEPARATOR = "|"

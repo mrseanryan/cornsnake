@@ -1,5 +1,7 @@
 """
 Defines color constants and a function for colorizing text output for terminal.
+
+[Documentation](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/cornsnake/util_color.html)
 """
 from . import config
 

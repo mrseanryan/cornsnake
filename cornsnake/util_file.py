@@ -1,5 +1,7 @@
 """
 File operations including copying, reading, and writing text to files.
+
+[Documentation](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/cornsnake/util_file.html)
 """
 
 import os

@@ -1,5 +1,7 @@
 """
 Functions for handling user input with various formats and validations.
+
+[Documentation](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/cornsnake/util_input.html)
 """
 
 import os

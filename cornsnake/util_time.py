@@ -1,5 +1,7 @@
 """
 Functions for timing operations. The `start_timer` function starts a timer, `end_timer` ends the timer and calculates elapsed time, and `describe_elapsed_seconds` describes the elapsed time in seconds.
+
+[Documentation](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/cornsnake/util_time.html)
 """
 
 from datetime import timedelta

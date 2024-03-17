@@ -1,5 +1,7 @@
 """
 Functions for tracking progress and updating a progress bar.
+
+[Documentation](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/cornsnake/util_progress.html)
 """
 
 import sys

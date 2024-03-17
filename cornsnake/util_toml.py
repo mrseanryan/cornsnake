@@ -1,4 +1,8 @@
-"""Reading TOML (ini) files and updating the global config in memory (from config.py)."""
+"""
+Reading TOML (ini) files and updating the global config in memory (from config.py).
+
+[Documentation](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/cornsnake/util_toml.html)
+"""
 import tomllib
 import sys
 

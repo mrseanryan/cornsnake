@@ -1,5 +1,7 @@
 """
 Functions for checking the operating system and logging OS information. The functions determine if the OS is Windows, Mac, or Unix, and log relevant OS details.
+
+[Documentation](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/cornsnake/util_os.html)
 """
 
 import os

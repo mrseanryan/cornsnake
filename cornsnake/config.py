@@ -1,6 +1,8 @@
 """Globally accessible config object. Can be configured by for example reading from command line arguments or TOML file (via tomllib), and then writing to the properties in-memory.
 
 - see util_toml.py for an example of reading from an ini file (TOML format).
+
+[Documentation](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/cornsnake/config.html)
 """
 import logging
 

@@ -1,5 +1,7 @@
 """
 Functions for interacting with a Git repository. It includes functions for executing Git commands, checking out branches, handling commits, and managing Git configuration settings.
+
+[Documentation](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/cornsnake/util_git.html)
 """
 
 import os

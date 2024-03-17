@@ -1,5 +1,7 @@
 """
 Functions for manipulating lists of data. Functions include chunking lists, excluding elements from one list that are present in another, finding the intersection of two lists, and various other list operations.
+
+[Documentation](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/cornsnake/util_list.html)
 """
 
 def chunk(list_a, n):

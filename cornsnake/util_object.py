@@ -1,5 +1,7 @@
 """
 Functions for working with object attributes. The `get_attributes` function retrieves all non-private attributes of an object. The `get_attribute_value` function returns the value of a specific attribute of an object.
+
+[Documentation](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/cornsnake/util_object.html)
 """
 
 def get_attributes(object):
