@@ -118,11 +118,3 @@ def is_empty_directory_only_subdirectories(path_to_file):
             if not is_empty:
                 return False
     return True
-
-def write_text_to_file(text, filepath):
-    """Write text to a file.
-    Args:
-    text (str): The text to write to the file.
-    filepath (str): The path of the file to write to."""
-    with open(filepath, "w", encoding='utf-8') as f:
-        f.write(text)
