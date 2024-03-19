@@ -35,6 +35,25 @@ def _proc_print_debug(message):
     if config.IS_VERBOSE:
         print(message)
 
+def is_process_running(process_name):
+    """
+    Checks if the given process (identified by program filename) is running.
+
+    Args:
+    process_name (str): The filename of the process. For example 'notepad.exe'.
+    """
+    if util_os.is_windows():
+        progs = str(subprocess.check_output('tasklist'))
+        if process_name in progs:
+            return True
+        else:
+            return False
+    else:
+        try:
+            subprocess.check_output(["pgrep", process_name])
+        except subprocess.CalledProcessError:
+            return False
+
 def run_process_and_get_output(path_to_proc, arguments, working_directory, output_errors=True):
     """
     Executes a process with specified arguments and working directory, capturing the output.
