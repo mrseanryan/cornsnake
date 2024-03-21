@@ -11,6 +11,15 @@ from . import util_os
 from . import util_pdf
 from . import util_text
 
+def backup_file_by_copying(path_to_file, description, backup_dir, backup_filename):
+    """
+    Backup the given file by copying it to a new uniquely named file.
+    """
+    path_to_backup = os.path.join(backup_dir, backup_filename)
+    path_to_backup = get_unique_filepath(path_to_backup)
+    copy_file(path_to_file, path_to_backup)
+    return path_to_backup
+
 def copy_file(from_path, to_path):
     """
     Copy a file from one path to another.
@@ -20,6 +29,18 @@ def copy_file(from_path, to_path):
     to_path (str): The destination path to copy the file to.
     """
     shutil.copyfile(from_path, to_path)
+
+def get_unique_filepath(path_to_file):
+    """
+    Get a unique new filepath, similar to the given path.
+    """
+    filename_no_extension, extension = os.path.splitext(path_to_file)
+
+    suffix = 2
+    while os.path.exists(path_to_file):
+        path_to_file = f"{filename_no_extension}-{suffix:02}{extension}"
+        suffix += 1
+    return path_to_file
 
 def get_this_script_dir(this_file):
     """
