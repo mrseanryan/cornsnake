@@ -34,6 +34,16 @@ def _parse_result(result):
         parts_cleaned.append(part.replace('"', ''))
     return parts_cleaned
 
+
+def get_branches_with_commits_in_origin_not_local(repo_dir, branches):
+    branches_with_missing_commits = []
+    for branch in branches:
+        checkout_branch(branch, repo_dir)
+        result = execute_command('rev-list', [f'HEAD..origin/{branch}'], repo_dir)
+        if result.strip():
+            branches_with_missing_commits.append(branch)
+    return branches_with_missing_commits
+
 def get_current_branch(local_repo_location):
     """
     Function to get the current branch of the Git repository.
