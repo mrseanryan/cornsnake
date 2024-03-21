@@ -36,6 +36,9 @@ def _parse_result(result):
 
 
 def get_branches_with_commits_in_origin_not_local(repo_dir, branches):
+    """
+    For all the given branches, find any missing commits: commits that are on origin but not this copy of the repository.
+    """
     branches_with_missing_commits = []
     for branch in branches:
         checkout_branch(branch, repo_dir)
