@@ -8,6 +8,7 @@ from . import config
 class bcolors:
     HEADER = '\033[95m'
     DARK_BLUE = '\033[34m'
+    MAGENTA = '\033[95m'
     DARK_MAGENTA = '\033[35m'
     DARK_CYAN = '\033[36m'
     OKBLUE = '\033[94m'
