@@ -96,6 +96,13 @@ def get_total_dir_size_in_gigabytes(start_path):
     float: The total size of the directory in gigabytes."""
     return get_total_dir_size_in_bytes(start_path) / TOTAL_BYTES_IN_GIGABYTE
 
+def get_unique_dirpath(path_to_dir):
+    suffix = 2
+    while os.path.exists(path_to_dir):
+        path_to_dir = f"{path_to_dir}-{suffix:02}"
+        suffix += 1
+    return path_to_dir
+
 def is_empty_directory(path_to_file):
     """Check if a directory is empty.
     Args:
@@ -125,3 +132,6 @@ def is_empty_directory_only_subdirectories(path_to_file):
             if not is_empty:
                 return False
     return True
+
+def move_directory(path_to_dir, path_to_dir_renamed):
+    shutil.move(path_to_dir, path_to_dir_renamed)

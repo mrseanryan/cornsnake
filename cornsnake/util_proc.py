@@ -102,13 +102,18 @@ def run_process_and_get_output(path_to_proc, arguments, working_directory, outpu
 
 def open_windows_explorer_at(path_to_dir):
     """
-    Opens Windows Explorer at the specified directory if the OS is Windows.
+    Opens Windows Explorer or Mac Finder at the specified directory if the OS is Windows.
 
     Args:
     path_to_dir (str): The path to the directory to open in Windows Explorer.
     """
     if util_os.is_windows():
-        _proc_print(f"Openning explorer at {path_to_dir}")
+        _proc_print(f"Opening Explorer at {path_to_dir}")
         os.startfile(path_to_dir)
+        return
+    if util_os.is_mac():
+        _proc_print(f"Opening Finder at {path_to_dir}")
+        os.system(f"open {path_to_dir}")
+        return
     else:
-        _proc_print("NOT openning explorer - not Windows OS")
+        _proc_print(f"NOT opening {path_to_dir} - not Windows OS and not Mac")
