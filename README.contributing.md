@@ -80,6 +80,8 @@ To deploy docs, you need to upload the new files to S3.
 
 Bucket: docs.mrseanryan.cornsnake [eu-west-1]
 
+Docs website: http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/
+
 ## References
 
 - https://realpython.com/pypi-publish-python-package/
