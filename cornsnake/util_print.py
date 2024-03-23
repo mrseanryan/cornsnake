@@ -11,6 +11,7 @@ from . import util_log
 
 logger = util_log.getLogger(__name__)
 
+
 def percent(num, denom, ndigits=0):
     """
     Calculate the percentage of two numbers.
@@ -24,8 +25,9 @@ def percent(num, denom, ndigits=0):
     str: The percentage as a string.
     """
     if denom == 0:
-        return format(0, f'.{ndigits}f')
-    return str(round((num * 100.0) / denom, ndigits)) + '%'
+        return format(0, f".{ndigits}f")
+    return str(round((num * 100.0) / denom, ndigits)) + "%"
+
 
 def print_no_endline(text):
     """
@@ -34,8 +36,9 @@ def print_no_endline(text):
     Args:
     text (str): The text to print.
     """
-    print(text, end='')
+    print(text, end="")
     logger.info(text)
+
 
 def print_custom(text):
     """
@@ -46,6 +49,7 @@ def print_custom(text):
     """
     print(text)
     logger.info(text)
+
 
 def print_custom_with_logger(text, given_logger):
     """
@@ -58,6 +62,7 @@ def print_custom_with_logger(text, given_logger):
     print(text)
     given_logger.info(text)
 
+
 def print_with_color(text, color):
     """
     Print text with a specified color.
@@ -68,6 +73,7 @@ def print_with_color(text, color):
     """
     print_custom(util_color.colorize(text, color))
 
+
 def print_error(message):
     """
     Print an error message with a specific color.
@@ -77,6 +83,7 @@ def print_error(message):
     """
     print_with_color(message, util_color.ERROR_COLOR)
 
+
 def print_important(text):
     """
     Print important text with a specific color.
@@ -85,6 +92,7 @@ def print_important(text):
     text (str): The important text to print.
     """
     print_with_color(text, util_color.IMPORTANT)
+
 
 def _print_section(title, color, section_id):
     """
@@ -97,7 +105,10 @@ def _print_section(title, color, section_id):
     """
     print_with_color(f"=== === ===\t[{section_id}] {title}\t=== === ===", color)
 
+
 test_section_id = 1
+
+
 def print_test_section(title):
     """
     Print a test section with a specific color.
@@ -109,7 +120,10 @@ def print_test_section(title):
     _print_section(title, util_color.TEST_SECTION_COLOR, test_section_id)
     test_section_id += 1
 
+
 section_id = 1
+
+
 def print_section(title, color=util_color.SECTION_COLOR, _section_id=None):
     """
     Print a section with a specific color and section ID.
@@ -124,12 +138,14 @@ def print_section(title, color=util_color.SECTION_COLOR, _section_id=None):
     print_with_color(f"=== === ===\t[{section_id}] {title}\t=== === ===", color)
     section_id += 1
 
+
 def reset_section_count():
     """
     Reset the section count back to 1.
     """
     global section_id
     section_id = 1
+
 
 def print_result(text):
     """
@@ -139,6 +155,7 @@ def print_result(text):
     text (str): The result message to print.
     """
     print_with_color(text, util_color.RESULT_COLOR)
+
 
 def print_warning(text):
     """

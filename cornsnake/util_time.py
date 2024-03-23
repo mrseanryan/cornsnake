@@ -7,6 +7,7 @@ Functions for timing operations. The `start_timer` function starts a timer, `end
 from datetime import timedelta
 import time
 
+
 def start_timer():
     """
     Function to start a timer.
@@ -15,6 +16,7 @@ def start_timer():
     float: The current time when the timer is started.
     """
     return time.time()
+
 
 def end_timer(start):
     """
@@ -29,6 +31,7 @@ def end_timer(start):
     end = time.time()
     seconds_elapsed = end - start
     return seconds_elapsed
+
 
 def describe_elapsed_seconds(seconds_elapsed):
     """

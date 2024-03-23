@@ -3,9 +3,11 @@ Functions for reading from and writing to a JSON file. The `read_from_json_file`
 
 [Documentation](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/cornsnake/util_json.html)
 """
+
 import json
 
-def read_from_json_file(path_to_json, encoding='utf-8'):
+
+def read_from_json_file(path_to_json, encoding="utf-8"):
     """
     Function to read JSON data from a file.
 
@@ -20,7 +22,8 @@ def read_from_json_file(path_to_json, encoding='utf-8'):
         data = json.load(f)
         return data
 
-def write_to_json_file(dict, file_path, encoding='utf-8', indent=2):
+
+def write_to_json_file(dict, file_path, encoding="utf-8", indent=2):
     """
     Function to write JSON data to a file.
 

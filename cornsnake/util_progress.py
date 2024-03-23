@@ -10,6 +10,7 @@ from . import config
 
 previous_percent = 0
 
+
 def progress(count, total):
     """
     Function to update progress based on count and total.
@@ -36,6 +37,7 @@ def progress(count, total):
 
     _update_progress(percent)
 
+
 def _update_progress(percent):
     """
     Function to update the progress bar based on percentage.
@@ -49,12 +51,13 @@ def _update_progress(percent):
     bar_len = 60
     filled_len = int(round(bar_len * percent / float(100)))
 
-    bar = '=' * filled_len + '-' * (bar_len - filled_len)
+    bar = "=" * filled_len + "-" * (bar_len - filled_len)
 
-    fmt = '[%s] %s%s ...' % (bar, percent, '%')
-    print('\b' * len(fmt), end='')  # clears the line
+    fmt = "[%s] %s%s ..." % (bar, percent, "%")
+    print("\b" * len(fmt), end="")  # clears the line
     sys.stdout.write(fmt)
     sys.stdout.flush()
+
 
 def complete():
     """

@@ -13,6 +13,7 @@ from . import util_os
 
 TOTAL_BYTES_IN_GIGABYTE = 1000000000
 
+
 def copy_directory(from_path, to_path):
     """
     Copy a directory from one location to another.
@@ -23,6 +24,7 @@ def copy_directory(from_path, to_path):
     """
     shutil.copytree(from_path, to_path)
 
+
 def ensure_dir_exists(temp_git_fixer_dir):
     """
     Ensure that a directory exists, creating it if necessary.
@@ -32,6 +34,7 @@ def ensure_dir_exists(temp_git_fixer_dir):
     """
     if not os.path.exists(temp_git_fixer_dir):
         os.makedirs(temp_git_fixer_dir)
+
 
 def find_files_by_extension(dir_path, extension):
     """
@@ -52,6 +55,7 @@ def find_files_by_extension(dir_path, extension):
             found_files.append(path_to_sub)
     return found_files
 
+
 def find_files(dir_path):
     """Find all files in the given directory."""
     found_files = []
@@ -62,15 +66,17 @@ def find_files(dir_path):
             found_files.append(path_to_sub)
     return found_files
 
+
 def get_dir_parts(path_to_file):
     """
     Get the directory components of the given file path.
 
-    Example: 'c:\temp\x\my-file.txt' -> ['c','temp','x']
+    Example: 'c:\\temp\\x\\my-file.txt' -> ['c','temp','x']
     """
     path_to_dir = os.path.dirname(path_to_file)
     path = os.path.normpath(path_to_dir)
     return path.split(os.sep)
+
 
 def get_directory_of_this_script(____file__):
     """
@@ -83,9 +89,11 @@ def get_directory_of_this_script(____file__):
     """
     return os.path.dirname(os.path.realpath(____file__))
 
+
 def get_parent_dir(my_path):
     """Get the absolute path of the parent directory of the given directory."""
     return Path(my_path).parent.absolute()
+
 
 def get_total_dir_size_in_bytes(start_path):
     total_size = 0
@@ -94,10 +102,11 @@ def get_total_dir_size_in_bytes(start_path):
             fp = os.path.join(dirpath, f)
             # skip if it is symbolic link
             if not os.path.islink(fp):
-                fp_allow_long_path = u"\\\\?\\" + fp if util_os.is_windows() else fp
+                fp_allow_long_path = "\\\\?\\" + fp if util_os.is_windows() else fp
                 total_size += os.path.getsize(fp_allow_long_path)
 
     return total_size
+
 
 def get_total_dir_size_in_gigabytes(start_path):
     """Calculate the total size of a directory in gigabytes.
@@ -112,8 +121,9 @@ def get_unique_dirpath(path_to_dir):
     """
     Get a unique directory path similar to the given path.
     """
+
     def _ends_with_hyphen_number(path):
-        m = re.search(r'-\d+$', path)
+        m = re.search(r"-\d+$", path)
         return m is not None
 
     # Avoid appending like x-01-02-03
@@ -127,6 +137,7 @@ def get_unique_dirpath(path_to_dir):
         suffix += 1
     return path_to_dir_new
 
+
 def is_empty_directory(path_to_file):
     """Check if a directory is empty.
     Args:
@@ -137,6 +148,7 @@ def is_empty_directory(path_to_file):
         return False
     contents = os.listdir(path_to_file)
     return len(contents) == 0
+
 
 def is_empty_directory_only_subdirectories(path_to_file):
     """Check if a directory is empty by inspecting subdirectories.
@@ -156,6 +168,7 @@ def is_empty_directory_only_subdirectories(path_to_file):
             if not is_empty:
                 return False
     return True
+
 
 def move_directory(path_to_dir, path_to_dir_renamed):
     shutil.move(path_to_dir, path_to_dir_renamed)

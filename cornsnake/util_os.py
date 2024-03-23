@@ -11,6 +11,7 @@ from . import util_log
 
 logger = util_log.getLogger(__name__)
 
+
 def is_windows():
     """
     Check if the current OS is Windows.
@@ -18,7 +19,8 @@ def is_windows():
     Returns:
     bool: True if the OS is Windows, False otherwise.
     """
-    return os.name == 'nt'
+    return os.name == "nt"
+
 
 def is_mac():
     """
@@ -27,7 +29,8 @@ def is_mac():
     Returns:
     bool: True if the OS is Mac, False otherwise.
     """
-    return platform.system() == 'Darwin'
+    return platform.system() == "Darwin"
+
 
 def is_unix():
     """
@@ -37,6 +40,7 @@ def is_unix():
     bool: True if the OS is Unix, False otherwise.
     """
     return not is_windows() and not is_mac()
+
 
 if is_windows():
     import winreg
@@ -68,12 +72,13 @@ if is_windows():
         Returns:
         bool: True if the max path setting is enabled, False otherwise.
         """
-        path = r'SYSTEM\CurrentControlSet\Control\FileSystem'  # HKEY_LOCAL_MACHINE is implied
-        key = 'LongPathsEnabled'
+        path = r"SYSTEM\CurrentControlSet\Control\FileSystem"  # HKEY_LOCAL_MACHINE is implied
+        key = "LongPathsEnabled"
         value = get_registry_key(winreg.HKEY_LOCAL_MACHINE, path, key)
         if value is None:
             return False
-        return str(value) == '1'
+        return str(value) == "1"
+
 
 def log_os():
     """
@@ -82,6 +87,7 @@ def log_os():
     logger.info("=== OS ===")
     logger.info(f"OS: {_os_platform()}")
     logger.info(f"DETAILS: {platform.system()} - {os.name} - {platform.release()}")
+
 
 def _os_platform():
     """

@@ -13,6 +13,7 @@ from . import util_os
 
 logger = util_log.getLogger(__name__)
 
+
 def _proc_print(message):
     """
     Logs the message using the logger and prints it if config.IS_VERBOSE is True.
@@ -23,6 +24,7 @@ def _proc_print(message):
     logger.info(message)
     if config.IS_VERBOSE:
         print(message)
+
 
 def _proc_print_debug(message):
     """
@@ -35,6 +37,7 @@ def _proc_print_debug(message):
     if config.IS_VERBOSE:
         print(message)
 
+
 def is_process_running(process_name):
     """
     Checks if the given process (identified by program filename) is running.
@@ -43,7 +46,7 @@ def is_process_running(process_name):
     process_name (str): The filename of the process. For example 'notepad.exe'.
     """
     if util_os.is_windows():
-        progs = str(subprocess.check_output('tasklist'))
+        progs = str(subprocess.check_output("tasklist"))
         if process_name in progs:
             return True
         else:
@@ -54,7 +57,10 @@ def is_process_running(process_name):
         except subprocess.CalledProcessError:
             return False
 
-def run_process_and_get_output(path_to_proc, arguments, working_directory, output_errors=True):
+
+def run_process_and_get_output(
+    path_to_proc, arguments, working_directory, output_errors=True
+):
     """
     Executes a process with specified arguments and working directory, capturing the output.
 
@@ -70,9 +76,16 @@ def run_process_and_get_output(path_to_proc, arguments, working_directory, outpu
     Raises:
     RuntimeError: If the process returns a non-zero exit code.
     """
-    _proc_print_debug(f"EXECUTING: '{path_to_proc} {arguments}' - at {working_directory}")
+    _proc_print_debug(
+        f"EXECUTING: '{path_to_proc} {arguments}' - at {working_directory}"
+    )
 
-    pipes = subprocess.Popen([path_to_proc] + arguments, stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd=working_directory)
+    pipes = subprocess.Popen(
+        [path_to_proc] + arguments,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        cwd=working_directory,
+    )
     std_out, std_err = pipes.communicate()
 
     if not isinstance(std_out, str):
@@ -99,6 +112,7 @@ def run_process_and_get_output(path_to_proc, arguments, working_directory, outpu
     _proc_print_debug(f" >>> {std_out}")
 
     return std_out
+
 
 def open_windows_explorer_at(path_to_dir):
     """

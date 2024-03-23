@@ -10,6 +10,7 @@ from . import util_log
 
 logger = util_log.getLogger(__name__)
 
+
 def post_request(api_url, headers, timeout):
     """
     Function to make a POST request to a specified API URL.
@@ -22,7 +23,14 @@ def post_request(api_url, headers, timeout):
     Returns:
     bool: True if the POST request is successful (status code 200), False otherwise.
     """
-    req = urllib.request.Request(url=api_url, data=None, headers=headers, origin_req_host=None, unverifiable=False, method="POST")
+    req = urllib.request.Request(
+        url=api_url,
+        data=None,
+        headers=headers,
+        origin_req_host=None,
+        unverifiable=False,
+        method="POST",
+    )
     with urllib.request.urlopen(req, timeout=timeout) as response:
         if response.status == 200:
             return True

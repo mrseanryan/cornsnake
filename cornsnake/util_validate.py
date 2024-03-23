@@ -3,11 +3,13 @@ Functions for checking and validating configuration settings in the config.py fi
 
 [Documentation](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/cornsnake/util_validate.html)
 """
+
 import os
 import re
 
 from . import config
 from . import util_date
+
 
 def _check_is_boolean(value, name):
     """
@@ -24,6 +26,7 @@ def _check_is_boolean(value, name):
         return f"{name} must be a boolean (True or False)"
 
     return None
+
 
 def _check_is_string_or_empty(value, name):
     """
@@ -43,6 +46,7 @@ def _check_is_string_or_empty(value, name):
 
     return None
 
+
 def _check_is_string_not_empty(value, name):
     """Check if a value is a string and not empty.
     Args:
@@ -56,6 +60,7 @@ def _check_is_string_not_empty(value, name):
     if len(value.strip()) == 0:
         return f"{name} must not be empty"
     return None
+
 
 def _check_is_list_of_strings_or_empty(value, name):
     """Check if a value is a list of strings or empty.
@@ -72,6 +77,7 @@ def _check_is_list_of_strings_or_empty(value, name):
             return error
     return None
 
+
 def _check_is_path_to_file_or_directory(value, name):
     """Check if a value is a path to an existing file or directory.
     Args:
@@ -85,6 +91,7 @@ def _check_is_path_to_file_or_directory(value, name):
     if not os.path.exists(value):
         return f"The value of {name} must be a path to an existing file"
     return None
+
 
 def _check_is_path_to_file(value, name):
     """Check if a value is a path to an existing file.
@@ -100,6 +107,7 @@ def _check_is_path_to_file(value, name):
         return f"The value of {name} must be a path to a file (not a directory)"
     return None
 
+
 def _check_is_path_to_dir(value, name):
     """Check if a value is a path to an existing directory.
     Args:
@@ -114,6 +122,7 @@ def _check_is_path_to_dir(value, name):
         return f"The value of {name} must be a path to a directory (not a file)"
     return None
 
+
 def _check_is_path_to_dir_or_empty(value, name):
     """Check if a value is a path to an existing directory or empty.
     Args:
@@ -124,6 +133,7 @@ def _check_is_path_to_dir_or_empty(value, name):
     if value is None or len(value) == 0:
         return None
     return _check_is_path_to_dir(value, name)
+
 
 def _check_is_date_or_none(value, name):
     """Check if a value is a date or empty.
@@ -143,6 +153,7 @@ def _check_is_date_or_none(value, name):
         return error_message
     return None
 
+
 def is_valid_blob_size(value):
     """Check if a value is a valid blob size.
     Args:
@@ -153,6 +164,7 @@ def is_valid_blob_size(value):
         return False
     pat = re.compile(r"[0-9]+[KMG]+")
     return re.fullmatch(pat, value)
+
 
 def _check_is_blob_size(value, name):
     """Check if a value is a string and a valid blob size.
@@ -168,6 +180,7 @@ def _check_is_blob_size(value, name):
     if not is_valid_blob_size(value):
         return f"{name} must be like 256K or 1M or 1G"
     return None
+
 
 # Example of how to check configuration
 def _get_config_error():
@@ -205,6 +218,7 @@ def _get_config_error():
     if error is not None:
         return error
 
+
 # Validate settings in config.py
 def validate():
     """Validate settings in config.py
@@ -214,4 +228,6 @@ def validate():
     """Validate settings in config.py"""
     error = _get_config_error()
     if error is not None:
-        raise SystemExit(f"CONFIG ERROR: {error}. Please check the settings in config.py")
+        raise SystemExit(
+            f"CONFIG ERROR: {error}. Please check the settings in config.py"
+        )

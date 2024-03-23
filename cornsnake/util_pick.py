@@ -6,6 +6,7 @@ Functions for randomly selecting text. The `pick_one_random` function chooses a 
 
 import random
 
+
 def pick_one_random(texts):
     """
     Function to pick a random text from a list.
@@ -18,6 +19,7 @@ def pick_one_random(texts):
     """
     return random.choice(texts)
 
+
 def pick_one_by_prompt(texts):
     """
     Function to prompt the user to pick a text from a list.
@@ -29,9 +31,9 @@ def pick_one_by_prompt(texts):
     str: The text selected by the user.
     """
     valid_selection = None
-    while (not valid_selection):
+    while not valid_selection:
         print(texts)
         selected = input("Please pick one >>")
-        if (selected in texts):
+        if selected in texts:
             valid_selection = selected
     return valid_selection

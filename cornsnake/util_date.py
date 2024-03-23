@@ -7,6 +7,7 @@ Functions for date manipulation. It includes functions to parse, format, add day
 from datetime import datetime, timedelta
 import re
 
+
 def parse_yyyy_mm_dd(arg_date):
     """
     Parse a date string in the yyyy-mm-dd format to a datetime object.
@@ -19,6 +20,7 @@ def parse_yyyy_mm_dd(arg_date):
     """
     return datetime.strptime(arg_date, "%Y-%m-%d")
 
+
 def _date_to_yyyy_mm_dd(arg_date):
     """
     Format a datetime object to a date string in the yyyy-mm-dd format.
@@ -30,6 +32,7 @@ def _date_to_yyyy_mm_dd(arg_date):
     str: Date string in the format yyyy-mm-dd.
     """
     return arg_date.strftime("%Y-%m-%d")
+
 
 def add_day_to_date(str_date, days):
     """
@@ -45,6 +48,7 @@ def add_day_to_date(str_date, days):
     date_value = parse_yyyy_mm_dd(str_date)
     date_value += timedelta(days)
     return _date_to_yyyy_mm_dd(date_value)
+
 
 def is_valid_date_yyyy_mm_dd(value):
     """

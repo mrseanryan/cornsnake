@@ -4,6 +4,7 @@ Functions for working with object attributes. The `get_attributes` function retr
 [Documentation](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/cornsnake/util_object.html)
 """
 
+
 def get_attributes(object):
     """
     Dynamically get all non-private attributes of an object (reflection).
@@ -17,9 +18,10 @@ def get_attributes(object):
     attributes = []
     all_properties = dir(object)
     for prop in all_properties:
-        if not prop.startswith('_'):  # skip built-ins
+        if not prop.startswith("_"):  # skip built-ins
             attributes.append(prop)
     return attributes
+
 
 def get_attribute_value(object, attribute_name):
     """
@@ -33,6 +35,7 @@ def get_attribute_value(object, attribute_name):
     The value of the specified attribute of the object.
     """
     return getattr(object, attribute_name)
+
 
 def set_attribute_value(object, attribute_name, value):
     """Dynamically set the value of the given attribute of that object.

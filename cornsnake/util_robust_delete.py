@@ -8,6 +8,7 @@ import os
 import shutil
 import stat
 
+
 def _rmrf(temp_dir):
     """
     Recursively delete a directory and its contents.
@@ -20,6 +21,7 @@ def _rmrf(temp_dir):
     st = os.stat(temp_dir)
     os.chmod(temp_dir, st.st_mode | stat.S_IXUSR | stat.S_IRUSR | stat.S_IWUSR)
     shutil.rmtree(temp_dir)
+
 
 def _delete_files_recursively(temp_dir):
     """
@@ -38,6 +40,7 @@ def _delete_files_recursively(temp_dir):
             except PermissionError:
                 pass  # Intentionally NOT passing exception onwards
 
+
 def _delete_dirs_recursively(temp_dir):
     """
     Recursively delete directories in a directory.
@@ -55,6 +58,7 @@ def _delete_dirs_recursively(temp_dir):
             except PermissionError:
                 pass  # Intentionally NOT passing exception onwards
 
+
 def _delete_dir_contents(temp_dir):
     """
     Delete files and directories in a directory.
@@ -64,6 +68,7 @@ def _delete_dir_contents(temp_dir):
     """
     _delete_files_recursively(temp_dir)
     _delete_dirs_recursively(temp_dir)
+
 
 def delete_dirs(temp_dirs_to_delete):
     """

@@ -11,6 +11,7 @@ from . import util_os
 from . import util_pdf
 from . import util_text
 
+
 def backup_file_by_copying(path_to_file, description, backup_dir, backup_filename):
     """
     Backup the given file by copying it to a new uniquely named file.
@@ -19,6 +20,7 @@ def backup_file_by_copying(path_to_file, description, backup_dir, backup_filenam
     path_to_backup = get_unique_filepath(path_to_backup)
     copy_file(path_to_file, path_to_backup)
     return path_to_backup
+
 
 def copy_file(from_path, to_path):
     """
@@ -29,6 +31,7 @@ def copy_file(from_path, to_path):
     to_path (str): The destination path to copy the file to.
     """
     shutil.copyfile(from_path, to_path)
+
 
 def get_unique_filepath(path_to_file):
     """
@@ -42,6 +45,7 @@ def get_unique_filepath(path_to_file):
         suffix += 1
     return path_to_file
 
+
 def get_this_script_dir(this_file):
     """
     Get the directory of the current script file.
@@ -54,6 +58,7 @@ def get_this_script_dir(this_file):
     """
     return os.path.dirname(os.path.realpath(this_file))
 
+
 def _get_long_file_path(path_to_file):
     """
     Get the long file path for Windows.
@@ -64,7 +69,8 @@ def _get_long_file_path(path_to_file):
     Returns:
     str: The long file path for Windows.
     """
-    return u"\\\\?\\" + path_to_file if util_os.is_windows() else path_to_file
+    return "\\\\?\\" + path_to_file if util_os.is_windows() else path_to_file
+
 
 def is_empty_directory_only_subdirectories(path_to_file):
     """
@@ -89,6 +95,7 @@ def is_empty_directory_only_subdirectories(path_to_file):
                 return False
     return True
 
+
 def is_empty_file(path_to_file):
     """
     Check if a file is empty.
@@ -107,6 +114,7 @@ def is_empty_file(path_to_file):
     size = os.path.getsize(fp_allow_long_path)
     return size == 0
 
+
 def read_lines_from_file(filepath, skip_comments=False):
     """
     Read lines from a text file.
@@ -119,11 +127,12 @@ def read_lines_from_file(filepath, skip_comments=False):
     list: A list of lines read from the file.
     """
     lines = []
-    with open(filepath, encoding='utf-8') as file:
+    with open(filepath, encoding="utf-8") as file:
         lines = [line.strip() for line in file]
     if skip_comments:
         lines = _remove_comments(lines)
     return lines
+
 
 def read_text_from_file(filepath):
     """
@@ -135,8 +144,9 @@ def read_text_from_file(filepath):
     Returns:
     str: The text read from the file.
     """
-    with open(filepath, encoding='utf-8') as file:
+    with open(filepath, encoding="utf-8") as file:
         return file.read()
+
 
 def _remove_comments(lines):
     """
@@ -150,9 +160,10 @@ def _remove_comments(lines):
     """
     filtered_lines = []
     for line in lines:
-        if not line.startswith('#'):
+        if not line.startswith("#"):
             filtered_lines.append(line)
     return filtered_lines
+
 
 def read_text_from_text_or_pdf_file_skipping_comments(filepath):
     """
@@ -170,6 +181,7 @@ def read_text_from_text_or_pdf_file_skipping_comments(filepath):
     filtered_lines = _remove_comments(lines)
     return util_text.LINE_END.join(filtered_lines)
 
+
 def write_text_lines_to_file(lines, filepath):
     """
     Write lines of text to a text file.
@@ -178,9 +190,10 @@ def write_text_lines_to_file(lines, filepath):
     lines (list): List of lines to write to the file.
     filepath (str): The path to the output text file.
     """
-    with open(filepath, encoding='utf-8', mode='w') as file:
+    with open(filepath, encoding="utf-8", mode="w") as file:
         for line in lines:
             file.write(line + util_text.LINE_END)
+
 
 def write_array_to_file_skipping_empty(PATH_TO_OUTPUT_TEXT_FILE, lines):
     """
@@ -190,10 +203,11 @@ def write_array_to_file_skipping_empty(PATH_TO_OUTPUT_TEXT_FILE, lines):
     PATH_TO_OUTPUT_TEXT_FILE (str): The path to the output text file.
     lines (list): List of lines to write to the file.
     """
-    with open(PATH_TO_OUTPUT_TEXT_FILE, 'w') as f:
+    with open(PATH_TO_OUTPUT_TEXT_FILE, "w") as f:
         for line in lines:
             if line is not None and len(line) > 0:
-                f.write(line + '\n')
+                f.write(line + "\n")
+
 
 def write_text_to_file(text, filepath):
     """
@@ -203,8 +217,9 @@ def write_text_to_file(text, filepath):
     text (str): The text to write to the file.
     filepath (str): The path to the output text file.
     """
-    with open(filepath, "w", encoding='utf-8') as f:
+    with open(filepath, "w", encoding="utf-8") as f:
         f.write(text)
+
 
 def get_last_part_of_path(file_path):
     """

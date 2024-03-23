@@ -7,6 +7,7 @@ Generating Markdown content. Functions like adding row separators, generating Ma
 MARKDOWN_COLUMN_SEPARATOR = "|"
 MARKDOWN_COLUMN_INDICATOR = "---"
 
+
 def add_row_separator(column_count):
     """
     Function to add row separators for a Markdown table.
@@ -23,6 +24,7 @@ def add_row_separator(column_count):
         column_count -= 1
     return row
 
+
 def generate_markdown_image(path_to_image, caption):
     """
     Function to generate Markdown image syntax.
@@ -34,7 +36,8 @@ def generate_markdown_image(path_to_image, caption):
     Returns:
     str: The Markdown image syntax.
     """
-    return f"![{caption}]({path_to_image} \"{caption}\" )"
+    return f'![{caption}]({path_to_image} "{caption}" )'
+
 
 def generate_italicised(text):
     """
