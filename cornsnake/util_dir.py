@@ -121,10 +121,11 @@ def get_unique_dirpath(path_to_dir):
         path_to_dir = path_to_dir[:-3]
 
     suffix = 2
-    while os.path.exists(path_to_dir):
-        path_to_dir = f"{path_to_dir}-{suffix:02}"
+    path_to_dir_new = path_to_dir
+    while os.path.exists(path_to_dir_new):
+        path_to_dir_new = f"{path_to_dir}-{suffix:02}"
         suffix += 1
-    return path_to_dir
+    return path_to_dir_new
 
 def is_empty_directory(path_to_file):
     """Check if a directory is empty.
