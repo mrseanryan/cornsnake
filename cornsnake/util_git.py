@@ -109,7 +109,7 @@ def list_git_remote_urls(repo_dir):
 
     return remote_urls
 
-def list_git_remote_push_url(repo_dir):
+def get_git_remote_push_url(repo_dir):
     """
     Get the remote origin *push* URL of the given git repository directory.
     """
