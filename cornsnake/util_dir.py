@@ -5,6 +5,7 @@ Working with directories, files, and file paths.
 """
 
 import os
+import re
 import shutil
 from pathlib import Path
 
@@ -61,6 +62,16 @@ def find_files(dir_path):
             found_files.append(path_to_sub)
     return found_files
 
+def get_dir_parts(path_to_file):
+    """
+    Get the directory components of the given file path.
+
+    Example: 'c:\temp\x\my-file.txt' -> ['c','temp','x']
+    """
+    path_to_dir = os.path.dirname(path_to_file)
+    path = os.path.normpath(path_to_dir)
+    return path.split(os.sep)
+
 def get_directory_of_this_script(____file__):
     """
     Get the directory that contains this script.
@@ -96,7 +107,19 @@ def get_total_dir_size_in_gigabytes(start_path):
     float: The total size of the directory in gigabytes."""
     return get_total_dir_size_in_bytes(start_path) / TOTAL_BYTES_IN_GIGABYTE
 
+
 def get_unique_dirpath(path_to_dir):
+    """
+    Get a unique directory path similar to the given path.
+    """
+    def _ends_with_hyphen_number(path):
+        m = re.search(r'-\d+$', path)
+        return m is not None
+
+    # Avoid appending like x-01-02-03
+    if _ends_with_hyphen_number(path_to_dir):
+        path_to_dir = path_to_dir[:-3]
+
     suffix = 2
     while os.path.exists(path_to_dir):
         path_to_dir = f"{path_to_dir}-{suffix:02}"

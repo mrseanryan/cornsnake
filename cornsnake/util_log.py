@@ -38,7 +38,7 @@ def log_exception(e):
     """
     # do NOT call util_print here (could be infinite loop)
     print(util_color.ERROR_COLOR + "!EXCEPTION!", e, util_color.END_COLORS)
-    logging.error("Exception occurred", exc_info=True)  # Log the exception and stack trace
+    logging.exception("Exception occurred")
 
 def getLogger(name_of_module):
     """

@@ -77,6 +77,49 @@ def get_last_commit_id(path_to_repo_dir, file_only=None):
     commit = parsed[0]
     return commit
 
+def has_git_remote_urls(repo_dir):
+    """
+    Does the given git repository directory have any remote origin URLs.
+    """
+    result = execute_command('remote', ['-v'], repo_dir)
+    return len(result.strip()) > 0
+
+def list_git_remote_urls(repo_dir):
+    """
+    List any remote origin URLs of the given git repository directory.
+    """
+    if not has_git_remote_urls(repo_dir):
+        return []
+
+    remote_urls = []
+    # git remote -v
+    result = execute_command('remote', ['-v'], repo_dir)
+    lines = result.split('\n')
+
+    for line in lines:
+        if not line.strip():
+            continue
+        # example:
+        # origin  https://git.api.mendix.com/b7a238f5-07a8-4008-83a7-b98590f40969.git/ (fetch)
+        parts = line.split()
+        if len(parts) == 3:
+            remote_urls.append(parts[1])
+        else:
+            raise RuntimeError(f"Cannot parse output of git remote: {line}")
+
+    return remote_urls
+
+def list_git_remote_push_url(repo_dir):
+    """
+    Get the remote origin *push* URL of the given git repository directory.
+    """
+    try:
+        # git remote get-url --push origin
+        return execute_command('remote', ['get-url', '--push', 'origin'], repo_dir).rstrip()
+    except Exception as e:
+        util_log.log_exception(e)
+        return ""
+
 def execute_command(command, git_args, working_dir):
     """Execute a Git command with specified arguments in the given working directory.
     Args:
