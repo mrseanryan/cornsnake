@@ -22,13 +22,16 @@ Setup a virtual environment:
 If you are contributing to this project, then you need to install these extra dev dependencies:
 
 ```
-python -m pip install build==1.0.3 bumpver==2023.1129 flake8==6.1.0 parameterized==0.9.0 pdoc==14.4.0 pip-tools==7.3.0 twine==4.0.2
+python -m pip install build~=1.0.3 bumpver~=2023.1129 parameterized~=0.9.0 pdoc~=14.4.0 pip-tools~=7.3.0 twine~=4.0.2 ruff~=0.3.4
 ```
+
+note: the '~=' means 'pick most recent compatible version'.
 
 - bumpver for release versioning
 - parameterized for unit tests
 - build and twine are for publishing to pypi
 - pip-tools is for compiling requirements.txt
+- ruff is for linting and formatting
 
 ## Linting
 
@@ -46,6 +49,12 @@ OR:
 
 ```
 ./test.unit.one.sh <name of test file>
+```
+
+## Format
+
+```
+./format.sh
 ```
 
 ## Publishing
