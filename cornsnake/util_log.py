@@ -6,6 +6,7 @@ Functions for logging exceptions and setting up logging configurations.
 
 import logging
 import os
+import re
 
 from . import config
 from . import util_color
@@ -61,3 +62,54 @@ def getLogger(name_of_module):
     Logger: A logger object for the specified module.
     """
     return logging.getLogger(name_of_module)
+
+
+def _mask_sensitive_text_for_sep(text, os_sep):
+    sensitive = os_sep + "Users" + os_sep
+
+    if sensitive in text:
+        pat = None
+        if os_sep == "/":
+            pat = re.compile(r".*/Users/(.*)/.*")
+        elif os_sep == "\\":
+            pat = re.compile(r".*\\Users\\(.*)\\.*")
+        else:
+            raise ValueError(f"Cannot mask sensitive text with OS separator {os_sep}")
+        matches = pat.match(text)
+        if matches:
+            for m in matches.groups():
+                text = text.replace(m, "<masked>")
+
+    return text
+
+
+def mask_sensitive_text(text, os_sep=os.sep):
+    """
+    Mask text that contains a user name.
+
+    Examples:
+    - Windows: C:\\Users\\Bob.Jones\\my-file.txt -> C:\\Users\\<masked>\\my-file.txt
+    - Mac: /Users/Bob.Jones/my-file.txt -> /Users/<masked>\my-file.txt
+    """
+    # Even on Windows, git config uses unix-style paths
+    os_seps = set(["/"])
+    os_seps.add(os_sep)
+
+    for os_sep in os_seps:
+        text = _mask_sensitive_text_for_sep(text, os_sep)
+
+    return text
+
+
+def log_sensitive_info(text, logger):
+    """
+    Log at info level, masking out any user name in the text.
+    """
+    logger.info(mask_sensitive_text(text))
+
+
+def log_sensitive_warn(text, logger):
+    """
+    Log at warn level, masking out any user name in the text.
+    """
+    logger.warn(mask_sensitive_text(text))
