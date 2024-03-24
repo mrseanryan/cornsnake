@@ -79,18 +79,23 @@ def mask_sensitive_text(text):
     - Windows: C:\\Users\\Bob.Jones\\my-file.txt -> C:\\Users\\<masked>\\my-file.txt
     - Mac: /Users/Bob.Jones/my-file.txt -> /Users/<masked>\my-file.txt
     """
-    sensitive_win = WINDOWS_SEP + "Users" + WINDOWS_SEP
-    sensitive_mac = MAC_SEP + "Users" + MAC_SEP
+    try:
+        sensitive_win = WINDOWS_SEP + "Users" + WINDOWS_SEP
+        sensitive_mac = MAC_SEP + "Users" + MAC_SEP
 
-    if (
-        sensitive_win in text or sensitive_mac in text
-    ):  # Both can occur with git on Windows
-        matches = set(pat.findall(text))
-
-        while matches:
-            for m in matches:
-                text = text.replace(m, "<masked>")
+        if (
+            sensitive_win in text or sensitive_mac in text
+        ):  # Both can occur with git on Windows
             matches = set(pat.findall(text))
+
+            while matches:
+                for m in matches:
+                    text = text.replace(m, "<masked>")
+                matches = set(pat.findall(text))
+    except ValueError:
+        pass  # logging code needs to be robust
+    except RuntimeError:
+        pass  # logging code needs to be robust
 
     return text
 
