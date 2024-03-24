@@ -64,26 +64,14 @@ def getLogger(name_of_module):
     return logging.getLogger(name_of_module)
 
 
-def _mask_sensitive_text_for_sep(text, os_sep):
-    sensitive = os_sep + "Users" + os_sep
+MASKED = "<masked>"
+pat = re.compile(r".*[/|\\]Users[/|\\]([A-Za-z.]*)[/|\\]{1}.*", re.M)
 
-    if sensitive in text:
-        pat = None
-        if os_sep == "/":
-            pat = re.compile(r".*/Users/(.*)/.*")
-        elif os_sep == "\\":
-            pat = re.compile(r".*\\Users\\(.*)\\.*")
-        else:
-            raise ValueError(f"Cannot mask sensitive text with OS separator {os_sep}")
-        matches = pat.match(text)
-        if matches:
-            for m in matches.groups():
-                text = text.replace(m, "<masked>")
-
-    return text
+WINDOWS_SEP = "\\"
+MAC_SEP = "/"
 
 
-def mask_sensitive_text(text, os_sep=os.sep):
+def mask_sensitive_text(text):
     """
     Mask text that contains a user name.
 
@@ -91,12 +79,18 @@ def mask_sensitive_text(text, os_sep=os.sep):
     - Windows: C:\\Users\\Bob.Jones\\my-file.txt -> C:\\Users\\<masked>\\my-file.txt
     - Mac: /Users/Bob.Jones/my-file.txt -> /Users/<masked>\my-file.txt
     """
-    # Even on Windows, git config uses unix-style paths
-    os_seps = set(["/"])
-    os_seps.add(os_sep)
+    sensitive_win = WINDOWS_SEP + "Users" + WINDOWS_SEP
+    sensitive_mac = MAC_SEP + "Users" + MAC_SEP
 
-    for os_sep in os_seps:
-        text = _mask_sensitive_text_for_sep(text, os_sep)
+    if (
+        sensitive_win in text or sensitive_mac in text
+    ):  # Both can occur with git on Windows
+        matches = set(pat.findall(text))
+
+        while matches:
+            for m in matches:
+                text = text.replace(m, "<masked>")
+            matches = set(pat.findall(text))
 
     return text
 
