@@ -45,3 +45,16 @@ def set_attribute_value(object, attribute_name, value):
     attribute_name: The name of the attribute to set the value of.
     """
     setattr(object, attribute_name, value)
+
+def has_attribute(object, attribute_name):
+    """
+    Dynamically check if the given object has an attribute with that name (reflection).
+
+    Args:
+    object: The object to retrieve attributes from.
+    attribute_name: The name of the attribute to find.
+
+    Returns:
+    True if that object has an attribute with that name. Else False.
+    """
+    return attribute_name in get_attributes(object)

@@ -8,6 +8,7 @@ import os
 import platform
 
 from . import util_log
+from . import util_object
 
 logger = util_log.getLogger(__name__)
 
@@ -39,7 +40,7 @@ def is_unix():
     Returns:
     bool: True if the OS is Unix, False otherwise.
     """
-    return not is_windows() and not is_mac()
+    return not is_windows() and not _is_mac() and util_object.has_attribute(os, 'uname')
 
 
 if is_windows():
