@@ -134,10 +134,22 @@ class TestUtilList(unittest.TestCase):
 
     @parameterized.expand(
         [
-            ([],5,[]),
-            (['aa','bb','cc','dd','ee','ff'],6,[['aa','bb','cc','dd','ee','ff']]),
-            (['aa','bb','cc','dd','ee','ff'],3,[['aa','bb','cc'],['dd','ee','ff']]),
-            (['aa','bb','cc','dd','ee','ff'],2,[['aa','bb'],['cc','dd'],['ee','ff']])
+            ([], 5, []),
+            (
+                ["aa", "bb", "cc", "dd", "ee", "ff"],
+                6,
+                [["aa", "bb", "cc", "dd", "ee", "ff"]],
+            ),
+            (
+                ["aa", "bb", "cc", "dd", "ee", "ff"],
+                3,
+                [["aa", "bb", "cc"], ["dd", "ee", "ff"]],
+            ),
+            (
+                ["aa", "bb", "cc", "dd", "ee", "ff"],
+                2,
+                [["aa", "bb"], ["cc", "dd"], ["ee", "ff"]],
+            ),
         ]
     )
     def test_chunk(self, list_a, number_of_chunks, expected):
@@ -159,12 +171,13 @@ class TestUtilList(unittest.TestCase):
 
     @parameterized.expand(
         [
-            ([],[]),
-            (['aa','bb','cc'],['aa','bb','cc']),
-            (['aa','','cc'],['aa','cc']),
-            (['aa',' ','cc'],['aa',' ','cc']),
-            (['aa',' ',' cc '],['aa',' ',' cc ']),
-        ])
+            ([], []),
+            (["aa", "bb", "cc"], ["aa", "bb", "cc"]),
+            (["aa", "", "cc"], ["aa", "cc"]),
+            (["aa", " ", "cc"], ["aa", " ", "cc"]),
+            (["aa", " ", " cc "], ["aa", " ", " cc "]),
+        ]
+    )
     def test_remove_empty_strings(self, list_a, expected):
         # Arrange
         # Act
@@ -174,18 +187,20 @@ class TestUtilList(unittest.TestCase):
 
     @parameterized.expand(
         [
-            ([],[]),
-            (['aa','bb','cc'],['aa','bb','cc']),
-            (['aa','','cc'],['aa','','cc']),
-            (['aa',' ','cc'],['aa','','cc']),
-            (['aa',' ',' cc '],['aa','','cc']),
-        ])
+            ([], []),
+            (["aa", "bb", "cc"], ["aa", "bb", "cc"]),
+            (["aa", "", "cc"], ["aa", "", "cc"]),
+            (["aa", " ", "cc"], ["aa", "", "cc"]),
+            (["aa", " ", " cc "], ["aa", "", "cc"]),
+        ]
+    )
     def test_strip_strings(self, list_a, expected):
         # Arrange
         # Act
         actual = util_list.strip_strings(list_a)
         # Assert
         self.assertEqual(expected, actual)
+
 
 if __name__ == "__main__":
     unittest.main()

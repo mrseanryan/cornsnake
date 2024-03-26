@@ -46,6 +46,7 @@ def set_attribute_value(object, attribute_name, value):
     """
     setattr(object, attribute_name, value)
 
+
 def has_attribute(object, attribute_name):
     """
     Dynamically check if the given object has an attribute with that name (reflection).

@@ -98,12 +98,14 @@ def has_git_remote_urls(repo_dir):
     result = execute_command("remote", ["-v"], repo_dir)
     return len(result.strip()) > 0
 
+
 def is_git_repo(repo_dir):
     """
     Is the given directory a git repository (contains .git folder)
     """
-    path_to_git_config = os.path.join(repo_dir, '.git', 'config')
+    path_to_git_config = os.path.join(repo_dir, ".git", "config")
     return util_file.does_file_exist(path_to_git_config)
+
 
 def list_git_remote_urls(repo_dir):
     """

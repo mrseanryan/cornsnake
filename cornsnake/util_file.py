@@ -59,6 +59,15 @@ def get_this_script_dir(this_file):
     return os.path.dirname(os.path.realpath(this_file))
 
 
+def is_file_under_dir(path_to_file, path_to_dir):
+    """
+    Does that file exist under that directory or a sub-directory.
+    """
+    path_to_file = os.path.normpath(path_to_file)
+    path_to_dir = os.path.normpath(path_to_dir) + os.sep
+    return path_to_file.startswith(path_to_dir)
+
+
 def _get_long_file_path(path_to_file):
     """
     Get the long file path for Windows.
