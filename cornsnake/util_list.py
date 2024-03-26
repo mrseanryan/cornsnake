@@ -5,7 +5,7 @@ Functions for manipulating lists of data. Functions include chunking lists, excl
 """
 
 
-def chunk(list_a, n):
+def chunk(list_a, CHUNK_SIZE):
     """
     Function to chunk a list into sublists of size n.
 
@@ -16,8 +16,8 @@ def chunk(list_a, n):
     Yields:
     list: Sublists of size n.
     """
-    for i in range(0, len(list_a), n):
-        yield list_a[i : i + n]
+    for i in range(0, len(list_a), CHUNK_SIZE):
+        yield list_a[i : i + CHUNK_SIZE]
 
 
 def excluding(list1, list2):

@@ -132,6 +132,60 @@ class TestUtilList(unittest.TestCase):
         # Assert
         self.assertEqual(expected, actual, f"test: {description}")
 
+    @parameterized.expand(
+        [
+            ([],5,[]),
+            (['aa','bb','cc','dd','ee','ff'],6,[['aa','bb','cc','dd','ee','ff']]),
+            (['aa','bb','cc','dd','ee','ff'],3,[['aa','bb','cc'],['dd','ee','ff']]),
+            (['aa','bb','cc','dd','ee','ff'],2,[['aa','bb'],['cc','dd'],['ee','ff']])
+        ]
+    )
+    def test_chunk(self, list_a, number_of_chunks, expected):
+        # Arrange
+        # Act
+        actual = list(util_list.chunk(list_a, number_of_chunks))
+        # Assert
+        self.assertEqual(expected, actual)
+
+    def test_chunk_size_zero_raises(self):
+        # Arrange
+        list_a = []
+        chunk_size = 0
+
+        chunk_with_zero = lambda: list(util_list.chunk(list_a, chunk_size))
+
+        # Act, Assert
+        self.assertRaises(ValueError, chunk_with_zero)
+
+    @parameterized.expand(
+        [
+            ([],[]),
+            (['aa','bb','cc'],['aa','bb','cc']),
+            (['aa','','cc'],['aa','cc']),
+            (['aa',' ','cc'],['aa',' ','cc']),
+            (['aa',' ',' cc '],['aa',' ',' cc ']),
+        ])
+    def test_remove_empty_strings(self, list_a, expected):
+        # Arrange
+        # Act
+        actual = util_list.remove_empty_strings(list_a)
+        # Assert
+        self.assertEqual(expected, actual)
+
+    @parameterized.expand(
+        [
+            ([],[]),
+            (['aa','bb','cc'],['aa','bb','cc']),
+            (['aa','','cc'],['aa','','cc']),
+            (['aa',' ','cc'],['aa','','cc']),
+            (['aa',' ',' cc '],['aa','','cc']),
+        ])
+    def test_strip_strings(self, list_a, expected):
+        # Arrange
+        # Act
+        actual = util_list.strip_strings(list_a)
+        # Assert
+        self.assertEqual(expected, actual)
 
 if __name__ == "__main__":
     unittest.main()
