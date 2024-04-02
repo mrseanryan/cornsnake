@@ -40,7 +40,13 @@ def get_branches_with_commits_in_origin_not_local(repo_dir, branches):
     """
     For all the given branches, find any missing commits: commits that are on origin but not this copy of the repository.
     """
+    if not has_git_remote_urls(repo_dir):
+        util_print.print_warning(
+            f"Cannot check for missing commits: the local repo {repo_dir} has no remote origin"
+        )
+        return []
     branches_with_missing_commits = []
+    fetch(repo_dir)
     for branch in branches:
         checkout_branch(branch, repo_dir)
         result = execute_command("rev-list", [f"HEAD..origin/{branch}"], repo_dir)
@@ -173,6 +179,16 @@ def execute_command_in_chunks(command, git_args, git_extra_args_to_chunk, workin
     chunks = util_list.chunk(git_extra_args_to_chunk, CHUNK_SIZE)
     for chunk in chunks:
         execute_command(command, git_args + chunk, working_dir)
+
+
+def fetch(working_dir):
+    """Fetch latest commits from a Git repository using the specified working directory.
+
+    Args:
+    working_dir (str): The working directory of the repository."""
+    execute_command(
+        "fetch", [], working_dir
+    )
 
 
 def fetch_notes(working_dir):
