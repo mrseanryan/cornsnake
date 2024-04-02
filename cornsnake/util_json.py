@@ -7,6 +7,22 @@ Functions for reading from and writing to a JSON file. The `read_from_json_file`
 import json
 
 
+def _json_to_string(value_json):
+    return json.dumps(value_json, indent=0)
+
+
+def are_same(settings1_json_str, settings2_json_str):
+    """Function to compare two JSON objects, ignoring differences in whitespace."""
+    # parse and serialize to ignore any formatting differences:
+    def _parse_and_serialize(json_str):
+        value_json = json.loads(json_str)
+        return _json_to_string(value_json)
+
+    return _parse_and_serialize(settings1_json_str) == _parse_and_serialize(
+        settings2_json_str
+    )
+
+
 def read_from_json_file(path_to_json, encoding="utf-8"):
     """
     Function to read JSON data from a file.
