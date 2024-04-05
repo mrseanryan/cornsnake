@@ -12,7 +12,7 @@ from . import util_pdf
 from . import util_text
 
 
-def backup_file_by_copying(path_to_file, description, backup_dir, backup_filename):
+def backup_file_by_copying(path_to_file, backup_dir, backup_filename):
     """
     Backup the given file by copying it to a new uniquely named file.
     """
@@ -31,6 +31,13 @@ def copy_file(from_path, to_path):
     to_path (str): The destination path to copy the file to.
     """
     shutil.copyfile(from_path, to_path)
+
+
+def delete_file(path_to_file):
+    """
+    Delete a file from the disk.
+    """
+    os.remove(path_to_file)
 
 
 def get_unique_filepath(path_to_file):
@@ -122,6 +129,15 @@ def is_empty_file(path_to_file):
     fp_allow_long_path = _get_long_file_path(path_to_file)
     size = os.path.getsize(fp_allow_long_path)
     return size == 0
+
+
+def move_file(from_filepath, to_filepath):
+    """
+    Recursively move a file or directory to another location. This is similar to the Unix "mv" command. Return the file or directory's destination.
+
+    If the destination is a directory or a symlink to a directory, the source is moved inside the directory. The destination path must not already exist.
+    """
+    shutil.move(from_filepath, to_filepath)
 
 
 def read_lines_from_file(filepath, skip_comments=False):

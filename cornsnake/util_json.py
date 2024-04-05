@@ -13,6 +13,7 @@ def _json_to_string(value_json):
 
 def are_same(settings1_json_str, settings2_json_str):
     """Function to compare two JSON objects, ignoring differences in whitespace."""
+
     # parse and serialize to ignore any formatting differences:
     def _parse_and_serialize(json_str):
         value_json = json.loads(json_str)

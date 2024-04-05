@@ -186,9 +186,7 @@ def fetch(working_dir):
 
     Args:
     working_dir (str): The working directory of the repository."""
-    execute_command(
-        "fetch", [], working_dir
-    )
+    execute_command("fetch", [], working_dir)
 
 
 def fetch_notes(working_dir):
