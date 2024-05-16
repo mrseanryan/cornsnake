@@ -5,6 +5,7 @@ Working with directories, files, and file paths.
 """
 
 import os
+from glob import glob
 import re
 import shutil
 from pathlib import Path
@@ -65,6 +66,11 @@ def find_files(dir_path):
         if os.path.isfile(path_to_sub):
             found_files.append(path_to_sub)
     return found_files
+
+
+def find_files_recursively(dir_path, extension = ".*"):
+    result = [y for x in os.walk(dir_path) for y in glob(os.path.join(x[0], f'*{extension}'))]
+    return result
 
 
 def get_dir_parts(path_to_file):
