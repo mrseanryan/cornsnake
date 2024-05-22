@@ -4,6 +4,7 @@ File operations including copying, reading, and writing text to files.
 [Documentation](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/cornsnake/util_file.html)
 """
 
+import datetime
 import os
 import shutil
 
@@ -38,6 +39,10 @@ def delete_file(path_to_file):
     Delete a file from the disk.
     """
     os.remove(path_to_file)
+
+
+def get_modified_date(path_to_file):
+    return datetime.datetime.fromtimestamp(os.path.getmtime(path_to_file))
 
 
 def get_unique_filepath(path_to_file):
