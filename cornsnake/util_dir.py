@@ -68,8 +68,10 @@ def find_files(dir_path):
     return found_files
 
 
-def find_files_recursively(dir_path, extension = ".*"):
-    result = [y for x in os.walk(dir_path) for y in glob(os.path.join(x[0], f'*{extension}'))]
+def find_files_recursively(dir_path, extension=".*"):
+    result = [
+        y for x in os.walk(dir_path) for y in glob(os.path.join(x[0], f"*{extension}"))
+    ]
     return result
 
 
