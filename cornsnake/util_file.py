@@ -33,7 +33,7 @@ def change_extension(input_filename, new_extension):
     - ('input3', '.xml') -> 'input3.xml')
     """
     if not new_extension.startswith("."):
-        raise ValueError(f"new_extension must start with a '.'. For example: '.txt'")
+        raise ValueError("new_extension must start with a '.'. For example: '.txt'")
     base_filename = input_filename
     if "." in input_filename:
         parts = input_filename.split(".")
