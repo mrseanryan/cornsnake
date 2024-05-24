@@ -163,36 +163,38 @@ def move_file(from_filepath, to_filepath):
     shutil.move(from_filepath, to_filepath)
 
 
-def read_lines_from_file(filepath, skip_comments=False):
+def read_lines_from_file(filepath, skip_comments=False, encoding="utf-8"):
     """
     Read lines from a text file.
 
     Args:
     filepath (str): The path to the text file.
     skip_comments (bool): Whether to skip lines starting with '#'. Default is False.
+    encoding (str): The file encoding to apply - defaults to utf-8.
 
     Returns:
     list: A list of lines read from the file.
     """
     lines = []
-    with open(filepath, encoding="utf-8") as file:
+    with open(filepath, encoding=encoding) as file:
         lines = [line.strip() for line in file]
     if skip_comments:
         lines = _remove_comments(lines)
     return lines
 
 
-def read_text_from_file(filepath):
+def read_text_from_file(filepath, encoding="utf-8"):
     """
     Read text from a text file.
 
     Args:
     filepath (str): The path to the text file.
+    encoding (str): The file encoding to apply - defaults to utf-8.
 
     Returns:
     str: The text read from the file.
     """
-    with open(filepath, encoding="utf-8") as file:
+    with open(filepath, encoding=encoding) as file:
         return file.read()
 
 
@@ -230,15 +232,16 @@ def read_text_from_text_or_pdf_file_skipping_comments(filepath):
     return util_text.LINE_END.join(filtered_lines)
 
 
-def write_text_lines_to_file(lines, filepath):
+def write_text_lines_to_file(lines, filepath, encoding="utf-8"):
     """
     Write lines of text to a text file.
 
     Args:
     lines (list): List of lines to write to the file.
     filepath (str): The path to the output text file.
+    encoding (str): The file encoding to apply - defaults to utf-8.
     """
-    with open(filepath, encoding="utf-8", mode="w") as file:
+    with open(filepath, encoding=encoding, mode="w") as file:
         for line in lines:
             file.write(line + util_text.LINE_END)
 
@@ -257,15 +260,16 @@ def write_array_to_file_skipping_empty(PATH_TO_OUTPUT_TEXT_FILE, lines):
                 f.write(line + "\n")
 
 
-def write_text_to_file(text, filepath):
+def write_text_to_file(text, filepath, encoding="utf-8"):
     """
     Write text to a text file.
 
     Args:
     text (str): The text to write to the file.
     filepath (str): The path to the output text file.
+    encoding (str): The file encoding to apply - defaults to utf-8.
     """
-    with open(filepath, "w", encoding="utf-8") as f:
+    with open(filepath, "w", encoding=encoding) as f:
         f.write(text)
 
 
