@@ -6,7 +6,6 @@ Download files or make a POST request without adding extra libraries.
 
 from datetime import datetime
 import os
-import requests
 import urllib.request
 
 from . import util_log
@@ -14,7 +13,7 @@ from . import util_log
 logger = util_log.getLogger(__name__)
 
 
-def get_file(url, local_path_to_write_file, timeout=60):
+def get_file(url, local_path_to_write_file, timeout=60, headers={}):
     """
     Function to download a file from a URL to a local file path, via a HTTP GET request.
 
@@ -22,14 +21,22 @@ def get_file(url, local_path_to_write_file, timeout=60):
     url (str): The URL to download from, via a GET request.
     timeout (int): Optional timeout for the request in seconds.
     """
-    response = requests.get(url, timeout=timeout)
-    if response.status_code == 200:
-        with open(local_path_to_write_file, "wb") as file:
-            file.write(response.content)
-    else:
-        raise RuntimeError(
-            f"File download failed. HTTP status code: {response.status_code}"
-        )
+    req = urllib.request.Request(
+        url=url,
+        data=None,
+        headers=headers,
+        origin_req_host=None,
+        unverifiable=False,
+        method="GET",
+    )
+    with urllib.request.urlopen(req, timeout=timeout) as response:
+        if response.status == 200:
+            with open(local_path_to_write_file, "wb") as file:
+                file.write(response.content)
+        else:
+            raise RuntimeError(
+                f"File download failed. HTTP status code: {response.status_code}"
+            )
 
 
 def _get_file_name_from_url(url, text_file_extensions):
