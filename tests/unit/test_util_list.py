@@ -164,7 +164,8 @@ class TestUtilList(unittest.TestCase):
         list_a = []
         chunk_size = 0
 
-        chunk_with_zero = lambda: list(util_list.chunk(list_a, chunk_size))
+        def chunk_with_zero():
+            return list(util_list.chunk(list_a, chunk_size))
 
         # Act, Assert
         self.assertRaises(ValueError, chunk_with_zero)

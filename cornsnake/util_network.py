@@ -32,7 +32,7 @@ def get_file(url, local_path_to_write_file, timeout=60, headers={}):
     with urllib.request.urlopen(req, timeout=timeout) as response:
         if response.status == 200:
             with open(local_path_to_write_file, "wb") as file:
-                file.write(response.content)
+                file.write(response.read())
         else:
             raise RuntimeError(
                 f"File download failed. HTTP status code: {response.status_code}"
