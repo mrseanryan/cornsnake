@@ -108,6 +108,28 @@ def input_list_of_branches(question, default):
     return items
 
 
+def input_required(question, default):
+    """
+    Function to get a required user input.
+
+    Args:
+    question (str): The question to prompt the user.
+    default: The default value for the input.
+
+    Returns:
+    str: The user input.
+    """
+    question = (
+        util_color.colorize(question, QUESTION_COLOR)
+        + f" [default is {default}]"
+        + prompt_token
+    )
+    while True:
+        answer = input_custom(question, default)
+        if len(answer) > 0:
+            return answer
+
+
 def input_branch_name_required(question, default):
     """
     Function to get a required branch name from user input.
