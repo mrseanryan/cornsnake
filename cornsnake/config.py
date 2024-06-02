@@ -20,7 +20,7 @@ blob_size = "512K"
 # SYSTEM CONFIG
 IS_COLOR_ENABLED = True
 IS_INTERACTIVE = (
-    False  # Normally True. Set to False for 'hands free' mode for automation
+    True  # Normally True. Set to False for 'hands free' mode for automation
 )
 LOGGING_LEVEL = logging.INFO
 LOG_FILENAME = "my-log.log"
