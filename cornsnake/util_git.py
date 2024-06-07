@@ -453,7 +453,7 @@ def delete_branches_except(branches_to_keep, path_to_local_repo):
     # OR this one seems more reliable:
     #   git branch -r | grep -Eo 'origin/.*' | grep -v 'origin/main$' | sed 's/origin\///' | xargs git push -d origin
     branches = get_all_origin_branches(path_to_local_repo)
-    branches_to_delete = util_list.except_for(branches, branches_to_keep)
+    branches_to_delete = util_list.excluding(branches, branches_to_keep)
 
     execute_command_in_chunks(
         "push", ["-d", "origin"], branches_to_delete, path_to_local_repo

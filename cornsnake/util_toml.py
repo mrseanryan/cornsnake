@@ -49,7 +49,7 @@ def _write_data_to_config(data, config_object, filename):
     config_attributes = util_object.get_attributes(config_object)
     data_attributes = data.keys()
 
-    unexpected_data = util_list.except_for(data_attributes, config_attributes)
+    unexpected_data = util_list.excluding(data_attributes, config_attributes)
     if len(unexpected_data) > 0:
         raise ValueError(
             f"{filename} has unexpected items: [{' '.join(unexpected_data)}] - please review."
