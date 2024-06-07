@@ -38,10 +38,10 @@ def _read_ini_file(path_to_ini):
             sys.exit(101)
 
 
-def read_config_ini_file(path_to_file):
+def read_config_ini_file(path_to_file, config_object=config):
     """Read TOML data from a file and write it to a config object."""
     data = _read_ini_file(path_to_file)
-    _write_data_to_config(data, config, path_to_file)
+    _write_data_to_config(data, config_object, path_to_file)
 
 
 def _write_data_to_config(data, config_object, filename):
