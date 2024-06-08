@@ -5,7 +5,7 @@ Function for creating a zip archive from a directory. The `create_zip` function 
 """
 
 import shutil
-
+import zipfile
 
 def create_zip(source_dir, output_zip_file):
     """
@@ -21,3 +21,25 @@ def create_zip(source_dir, output_zip_file):
     if output_zip_file.endswith(".zip"):
         output_zip_file = output_zip_file[:-4]
     shutil.make_archive(output_zip_file, "zip", source_dir)
+
+def create_zip_of_files(files_to_include, root_dir, path_to_output_zipfile):
+    """
+    Function to create a zip archive from a list of files.
+
+    Args:
+    files_to_include (list[str]): List of filepaths to include.
+    root_dir (str): The root dir to use when deciding the relative path inside the ZIP.
+    path_to_output_zipfile (str): The path to the output zip file.
+
+    Returns:
+    list[str]: List of file paths inside the ZIP.
+    """
+    if not files_to_include:
+        return []
+    with zipfile.ZipFile(path_to_output_zipfile, 'w') as zip:
+        file_names = []
+        for file_name in files_to_include:
+            short_file_name = file_name.replace(root_dir, "")
+            file_names.append(short_file_name)
+            zip.write(file_name, short_file_name)
+        return file_names
