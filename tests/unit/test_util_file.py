@@ -27,6 +27,23 @@ class TestUtilFile(unittest.TestCase):
         # Assert
         self.assertEqual(expected, actual)
 
+    @parameterized.expand(
+        [
+            # convert invalid names:
+            ("temp\\x.txt", "temp_x.txt"),
+            ("??asdfs 234 : 123^%&%.my .txt", "__asdfs_234___123____.my_.txt"),
+            # no-op tests:
+            ("x.txt", "x.txt"),
+        ]
+    )
+    def test_make_filename_valid(self, filename, expected):
+        # Arrange
+
+        # Act
+        actual = util_file.make_filename_valid(filename)
+
+        # Assert
+        self.assertEqual(expected, actual)
 
 if __name__ == "__main__":
     unittest.main()

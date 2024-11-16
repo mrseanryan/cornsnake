@@ -6,6 +6,7 @@ File operations including copying, reading, and writing text to files.
 
 import datetime
 import os
+import re
 import shutil
 
 from . import util_os
@@ -39,6 +40,20 @@ def change_extension(input_filename, new_extension):
         parts = input_filename.split(".")
         base_filename = ".".join(parts[:-1])
     return base_filename + new_extension
+
+
+def make_filename_valid(filename):
+    """
+    Return an altered filename so that it is valid.
+    - the new filename will only have alphanumerics, underscore and full-stop.
+    """
+    def _is_ok(c):
+        return re.match('^[a-zA-Z0-9_\.]+$', c)
+
+    def _process_char(c):
+        return c if _is_ok(c) else "_"
+
+    return "".join([_process_char(c) for c in filename])
 
 
 def copy_file(from_path, to_path):
