@@ -47,8 +47,9 @@ def make_filename_valid(filename):
     Return an altered filename so that it is valid.
     - the new filename will only have alphanumerics, underscore and full-stop.
     """
+
     def _is_ok(c):
-        return re.match('^[a-zA-Z0-9_\.]+$', c)
+        return re.match("^[a-zA-Z0-9_\.]+$", c)
 
     def _process_char(c):
         return c if _is_ok(c) else "_"

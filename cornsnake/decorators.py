@@ -1,5 +1,6 @@
 from . import util_time
 
+
 def timer(original_function):
     def wrapper(*args, **kwargs):
         start = util_time.start_timer()
@@ -11,4 +12,5 @@ def timer(original_function):
         print(f"[time taken: {util_time.describe_elapsed_seconds(elapsed)}]")
 
         return result
+
     return wrapper
