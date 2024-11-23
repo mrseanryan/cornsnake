@@ -6,12 +6,12 @@ File operations including copying, reading, and writing text to files.
 
 import datetime
 import os
-import re
 import shutil
 
 from . import util_os
 from . import util_pdf
 from . import util_text
+from . import util_string
 
 
 def backup_file_by_copying(path_to_file, backup_dir, backup_filename):
@@ -47,14 +47,7 @@ def make_filename_valid(filename):
     Return an altered filename so that it is valid.
     - the new filename will only have alphanumerics, underscore and full-stop.
     """
-
-    def _is_ok(c):
-        return re.match("^[a-zA-Z0-9_\.]+$", c)
-
-    def _process_char(c):
-        return c if _is_ok(c) else "_"
-
-    return "".join([_process_char(c) for c in filename])
+    return util_string.filter_string_via_regex(text=filename, regex="^[a-zA-Z0-9_\.]+$", replacement_char="_")
 
 
 def copy_file(from_path, to_path):

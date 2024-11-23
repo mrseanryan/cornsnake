@@ -7,6 +7,22 @@ Check if a text string is empty. The `is_empty` function checks if a text string
 """
 
 
+def filter_string_via_regex(text: str, regex: str, replacement_char: str):
+    """
+    Filter the given string, to only characters that match the given regex.
+      - characters that do not match are replaced with 'replacement_char'
+
+    Example: filter_string_via_regex("this is a test 123 !@#", "_") -> "this_is_a_test_123____"
+    """
+    def _is_ok(c):
+        return re.match(regex, c)
+
+    def _process_char(c):
+        return c if _is_ok(c) else replacement_char
+
+    return "".join([_process_char(c) for c in text])
+
+
 def is_empty(text):
     """
     Function to check if a text string is empty or '-'.
