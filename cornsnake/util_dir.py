@@ -45,6 +45,8 @@ def find_files_by_extension(dir_path, extension):
     dir_path (str): The path of the directory to search for files.
     extension (str): The file extension to search for.
 
+    Example: ('c:\\temp\\x', '.json') -> ['c:\\temp\\x\\1.json', 'c:\\temp\\x\\2.json']
+
     Returns:
     list: A list of file paths with the specified extension.
     """
