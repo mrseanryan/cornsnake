@@ -5,49 +5,46 @@ Reading TOML (ini) files and updating the global config in memory (from config.p
 """
 
 import tomllib
-import sys
+import typing
 
 from . import config
+from . import util_dict
 from . import util_list
 from . import util_object
-from . import util_print
 
 # ref https://toml.io/en/
 
 
-def _read_ini_file(path_to_ini):
+def _read_ini_file(path_to_ini: str) -> dict[str, typing.Any]:
     """Read TOML data from a file."""
-    success = False
     try:
         with open(path_to_ini, "rb") as f:
             data = tomllib.load(f)
-            success = True
             return data
     except FileNotFoundError as fileNotFound:
-        util_print.print_error(
+        raise RuntimeError(
             f"The configuration file {path_to_ini} is missing - {str(fileNotFound)}"
         )
         # NO log available yet
     except tomllib.TOMLDecodeError as tomlError:
-        util_print.print_error(
+        raise RuntimeError(
             f"Please check the configuration file {path_to_ini} - {str(tomlError)}"
         )
         # NO log available yet
-    finally:
-        if not success:
-            sys.exit(101)
 
 
-def read_config_ini_file(path_to_file, config_object=config):
+def read_config_ini_file(path_to_file: str, config_object: typing.Any = config) -> None:
     """Read TOML data from a file and write it to a config object."""
     data = _read_ini_file(path_to_file)
     _write_data_to_config(data, config_object, path_to_file)
 
 
-def _write_data_to_config(data, config_object, filename):
+def _write_data_to_config(
+    data: dict[str, typing.Any], config_object: typing.Any, filename: str
+) -> None:
     """Write data from TOML file to the global config object."""
     config_attributes = util_object.get_attributes(config_object)
-    data_attributes = data.keys()
+    data_attributes = util_dict.get_keys(data)
 
     unexpected_data = util_list.excluding(data_attributes, config_attributes)
     if len(unexpected_data) > 0:

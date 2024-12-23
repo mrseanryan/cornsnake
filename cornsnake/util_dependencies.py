@@ -20,7 +20,7 @@ GIT_MAJOR = 2
 GIT_MIN_MINOR = 42
 
 
-def _raise_versions_error(program, message):
+def _raise_versions_error(program: str, message:str) -> None:
     """
     Helper function to raise a SystemExit error with a specific message.
     """
@@ -29,7 +29,7 @@ def _raise_versions_error(program, message):
     )
 
 
-def _check_major_versions_equal(program, actual, expected):
+def _check_major_versions_equal(program:str, actual:int, expected:int) -> None:
     """
     Check if the major version of a program matches the expected version.
     """
@@ -41,8 +41,8 @@ def _check_major_versions_equal(program, actual, expected):
 
 
 def _check_minor_version_greater_than_or_equal(
-    program, actual, expected_major, expected_minor
-):
+    program:str, actual:int, expected_major:int, expected_minor:int
+) -> None:
     """
     Check if the minor version of a program is greater than or equal to the expected version.
     """
@@ -53,14 +53,14 @@ def _check_minor_version_greater_than_or_equal(
         )
 
 
-def _dump_current_version(program, version):
+def _dump_current_version(program:str, version:str) -> None:
     """
     Print the current version of a program.
     """
     util_print.print_custom_with_logger(f"Using {program} version {version}", logger)
 
 
-def check_python_version():
+def check_python_version() -> None:
     """
     Check the version of Python being used.
     """
@@ -73,7 +73,7 @@ def check_python_version():
     )
 
 
-def check_git_version():
+def check_git_version() -> None:
     """
     Check the version of Git being used.
     """

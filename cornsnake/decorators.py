@@ -1,8 +1,9 @@
+from typing import Any, Callable
 from . import util_time
 
 
-def timer(original_function):
-    def wrapper(*args, **kwargs):
+def timer(original_function: Callable) -> Any:
+    def wrapper(*args: Any, **kwargs: Any) -> Any:
         start = util_time.start_timer()
 
         # Call the original function

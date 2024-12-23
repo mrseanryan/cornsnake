@@ -16,7 +16,7 @@ prompt_token = " >"
 QUESTION_COLOR = util_color.bcolors.OKCYAN
 
 
-def input_custom(question, default):
+def input_custom(question: str, default: str) -> str:
     """
     Function to get user input with default value.
 
@@ -35,7 +35,7 @@ def input_custom(question, default):
     return input(question).strip() or default
 
 
-def input_with_format_date(question, default):
+def input_with_format_date(question: str, default: str) -> str:
     """
     Function to get user input with date format validation.
 
@@ -57,7 +57,7 @@ def input_with_format_date(question, default):
             return answer
 
 
-def boolToYorN(value):
+def boolToYorN(value: bool) -> str:
     """
     Function to convert boolean value to Y or N.
 
@@ -72,7 +72,7 @@ def boolToYorN(value):
     return "N"
 
 
-def input_list_of_branches(question, default):
+def input_list_of_branches(question: str, default: list[str]) -> list[str]:
     """
     Function to get a list of branch names from user input.
 
@@ -95,7 +95,7 @@ def input_list_of_branches(question, default):
     while not is_valid:
         answer = input_custom(question, "")
         if len(answer) > 0:
-            error = util_validate.check_is_branch_name_or_empty(answer, "branch name")
+            error = util_validate.check_is_branch_name_or_empty(answer)
             if error:
                 print(error)
             else:
@@ -108,7 +108,7 @@ def input_list_of_branches(question, default):
     return items
 
 
-def input_required(question, default):
+def input_required(question: str, default: str) -> str:
     """
     Function to get a required user input.
 
@@ -130,7 +130,7 @@ def input_required(question, default):
             return answer
 
 
-def input_branch_name_required(question, default):
+def input_branch_name_required(question: str, default: str) -> str:
     """
     Function to get a required branch name from user input.
 
@@ -145,14 +145,14 @@ def input_branch_name_required(question, default):
     while True:
         answer = input_custom(question, default)
         if answer and len(answer) > 0:
-            error = util_validate.check_is_branch_name_or_empty(answer, "branch name")
+            error = util_validate.check_is_branch_name_or_empty(answer)
             if error:
                 print(error)
             else:
                 return answer
 
 
-def input_required__dir_path(question, default):
+def input_required__dir_path(question: str, default: str) -> str:
     """
     Function to get a required directory path from user input.
 
@@ -177,7 +177,7 @@ def input_required__dir_path(question, default):
                 return answer
 
 
-def input_with_format_y_or_n(question, default):
+def input_with_format_y_or_n(question: str, default: bool) -> bool:
     """
     Function to get user input with Y or N format validation.
 
@@ -188,15 +188,16 @@ def input_with_format_y_or_n(question, default):
     Returns:
     bool: True for 'Y', False for 'N'.
     """
+    default_str = boolToYorN(default)
     question = (
         util_color.colorize(question, QUESTION_COLOR)
-        + f" [Y or N] [default is {boolToYorN(default)}]"
+        + f" [Y or N] [default is {default_str}]"
         + prompt_token
     )
     while True:
-        answer = input_custom(question, default)
+        answer = input_custom(question, default_str)
         if not config.IS_INTERACTIVE:
-            return answer
+            return default
         if len(answer) == 0 and default is not None:
             return default
         if answer == "Y":
@@ -205,7 +206,7 @@ def input_with_format_y_or_n(question, default):
             return False
 
 
-def input_with_format_git_filter_repo_size(question, default):
+def input_with_format_git_filter_repo_size(question: str, default: str) -> str:
     """
     Function to get user input with Git filter repo size format validation.
 
@@ -229,7 +230,7 @@ def input_with_format_git_filter_repo_size(question, default):
             return answer
 
 
-def input_optional(question, default):
+def input_optional(question: str, default: str) -> str:
     """
     Function to get optional user input.
 

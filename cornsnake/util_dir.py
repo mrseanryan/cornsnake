@@ -18,7 +18,7 @@ TOTAL_BYTES_IN_GIGABYTE = 1000000000
 delete_dirs = util_robust_delete.delete_dirs  # allow access via this file
 
 
-def copy_directory(from_path, to_path):
+def copy_directory(from_path: str, to_path: str) -> None:
     """
     Copy a directory from one location to another.
 
@@ -29,7 +29,7 @@ def copy_directory(from_path, to_path):
     shutil.copytree(from_path, to_path)
 
 
-def ensure_dir_exists(temp_git_fixer_dir):
+def ensure_dir_exists(temp_git_fixer_dir: str) -> None:
     """
     Ensure that a directory exists, creating it if necessary.
 
@@ -40,7 +40,7 @@ def ensure_dir_exists(temp_git_fixer_dir):
         os.makedirs(temp_git_fixer_dir)
 
 
-def find_files_by_extension(dir_path, extension):
+def find_files_by_extension(dir_path: str, extension: str) -> list[str]:
     """
     Find files in a directory by a specific file extension.
 
@@ -62,7 +62,7 @@ def find_files_by_extension(dir_path, extension):
     return found_files
 
 
-def find_files(dir_path):
+def find_files(dir_path: str) -> list[str]:
     """Find all files in the given directory."""
     found_files = []
     contents = os.listdir(dir_path)
@@ -73,14 +73,14 @@ def find_files(dir_path):
     return found_files
 
 
-def find_files_recursively(dir_path, extension=".*"):
+def find_files_recursively(dir_path: str, extension: str = ".*") -> list[str]:
     result = [
         y for x in os.walk(dir_path) for y in glob(os.path.join(x[0], f"*{extension}"))
     ]
     return result
 
 
-def get_dir_parts(path_to_file):
+def get_dir_parts(path_to_file: str) -> list[str]:
     """
     Get the directory components of the given file path.
 
@@ -91,7 +91,7 @@ def get_dir_parts(path_to_file):
     return path.split(os.sep)
 
 
-def get_directory_of_this_script(____file__):
+def get_directory_of_this_script(____file__: str) -> str:
     """
     Get the directory that contains this script.
 
@@ -103,12 +103,12 @@ def get_directory_of_this_script(____file__):
     return os.path.dirname(os.path.realpath(____file__))
 
 
-def get_parent_dir(my_path):
+def get_parent_dir(my_path: str) -> str:
     """Get the absolute path of the parent directory of the given directory."""
-    return Path(my_path).parent.absolute()
+    return str(Path(my_path).parent.absolute())
 
 
-def get_total_dir_size_in_bytes(start_path):
+def get_total_dir_size_in_bytes(start_path: str) -> int:
     total_size = 0
     for dirpath, _dirnames, filenames in os.walk(start_path):
         for f in filenames:
@@ -121,7 +121,7 @@ def get_total_dir_size_in_bytes(start_path):
     return total_size
 
 
-def get_total_dir_size_in_gigabytes(start_path):
+def get_total_dir_size_in_gigabytes(start_path: str) -> float:
     """Calculate the total size of a directory in gigabytes.
     Args:
     start_path (str): The path of the directory to calculate size of.
@@ -130,12 +130,12 @@ def get_total_dir_size_in_gigabytes(start_path):
     return get_total_dir_size_in_bytes(start_path) / TOTAL_BYTES_IN_GIGABYTE
 
 
-def get_unique_dirpath(path_to_dir):
+def get_unique_dirpath(path_to_dir: str) -> str:
     """
     Get a unique directory path similar to the given path.
     """
 
-    def _ends_with_hyphen_number(path):
+    def _ends_with_hyphen_number(path: str) -> bool:
         m = re.search(r"-\d+$", path)
         return m is not None
 
@@ -151,7 +151,7 @@ def get_unique_dirpath(path_to_dir):
     return path_to_dir_new
 
 
-def is_empty_directory(path_to_file):
+def is_empty_directory(path_to_file: str) -> bool:
     """Check if a directory is empty.
     Args:
     path_to_file (str): The path of the directory to check.
@@ -163,12 +163,13 @@ def is_empty_directory(path_to_file):
     return len(contents) == 0
 
 
-def is_empty_directory_only_subdirectories(path_to_file):
+def is_empty_directory_only_subdirectories(path_to_file: str) -> bool:
     """Check if a directory is empty by inspecting subdirectories.
     Args:
     path_to_file (str): The path of the directory to check.
     Returns:
-    bool: True if the directory is empty or only contains empty subdirectories, False otherwise."""
+    bool: True if the directory is empty or only contains empty subdirectories, False otherwise.
+    """
     if os.path.isfile(path_to_file):
         return False
     contents = os.listdir(path_to_file)
@@ -183,5 +184,5 @@ def is_empty_directory_only_subdirectories(path_to_file):
     return True
 
 
-def move_directory(path_to_dir, path_to_dir_renamed):
+def move_directory(path_to_dir: str, path_to_dir_renamed: str) -> None:
     shutil.move(path_to_dir, path_to_dir_renamed)

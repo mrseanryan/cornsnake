@@ -14,7 +14,9 @@ from . import util_text
 from . import util_string
 
 
-def backup_file_by_copying(path_to_file, backup_dir, backup_filename):
+def backup_file_by_copying(
+    path_to_file: str, backup_dir: str, backup_filename: str
+) -> str:
     """
     Backup the given file by copying it to a new uniquely named file.
     """
@@ -24,7 +26,7 @@ def backup_file_by_copying(path_to_file, backup_dir, backup_filename):
     return path_to_backup
 
 
-def change_extension(input_filename, new_extension):
+def change_extension(input_filename: str, new_extension: str) -> str:
     """
     Change the extension of the given filename.
 
@@ -45,7 +47,7 @@ def change_extension(input_filename, new_extension):
     return base_filename + new_extension
 
 
-def make_filename_valid(filename):
+def make_filename_valid(filename: str) -> str:
     """
     Return an altered filename so that it is valid.
     - the new filename will only have alphanumerics, underscore and full-stop.
@@ -55,7 +57,7 @@ def make_filename_valid(filename):
     )
 
 
-def copy_file(from_path, to_path):
+def copy_file(from_path: str, to_path: str) -> None:
     """
     Copy a file from one path to another.
 
@@ -66,18 +68,18 @@ def copy_file(from_path, to_path):
     shutil.copyfile(from_path, to_path)
 
 
-def delete_file(path_to_file):
+def delete_file(path_to_file: str) -> None:
     """
     Delete a file from the disk.
     """
     os.remove(path_to_file)
 
 
-def get_modified_date(path_to_file):
+def get_modified_date(path_to_file: str) -> datetime.datetime:
     return datetime.datetime.fromtimestamp(os.path.getmtime(path_to_file))
 
 
-def get_unique_filepath(path_to_file):
+def get_unique_filepath(path_to_file: str) -> str:
     """
     Get a unique new filepath, similar to the given path.
     """
@@ -90,7 +92,7 @@ def get_unique_filepath(path_to_file):
     return path_to_file
 
 
-def get_this_script_dir(this_file):
+def get_this_script_dir(this_file: str) -> str:
     """
     Get the directory of the current script file.
 
@@ -103,7 +105,7 @@ def get_this_script_dir(this_file):
     return os.path.dirname(os.path.realpath(this_file))
 
 
-def is_file_under_dir(path_to_file, path_to_dir):
+def is_file_under_dir(path_to_file: str, path_to_dir: str) -> bool:
     """
     Does that file exist under that directory or a sub-directory.
     """
@@ -112,7 +114,7 @@ def is_file_under_dir(path_to_file, path_to_dir):
     return path_to_file.startswith(path_to_dir)
 
 
-def _get_long_file_path(path_to_file):
+def _get_long_file_path(path_to_file: str) -> str:
     """
     Get the long file path for Windows.
 
@@ -125,7 +127,7 @@ def _get_long_file_path(path_to_file):
     return "\\\\?\\" + path_to_file if util_os.is_windows() else path_to_file
 
 
-def is_empty_directory_only_subdirectories(path_to_file):
+def is_empty_directory_only_subdirectories(path_to_file: str) -> bool:
     """
     Check if a directory is empty (only subdirectories are empty).
 
@@ -149,7 +151,7 @@ def is_empty_directory_only_subdirectories(path_to_file):
     return True
 
 
-def is_empty_file(path_to_file):
+def is_empty_file(path_to_file: str) -> bool:
     """
     Check if a file is empty.
 
@@ -168,7 +170,7 @@ def is_empty_file(path_to_file):
     return size == 0
 
 
-def move_file(from_filepath, to_filepath):
+def move_file(from_filepath: str, to_filepath: str) -> None:
     """
     Recursively move a file or directory to another location. This is similar to the Unix "mv" command. Return the file or directory's destination.
 
@@ -177,7 +179,9 @@ def move_file(from_filepath, to_filepath):
     shutil.move(from_filepath, to_filepath)
 
 
-def read_lines_from_file(filepath, skip_comments=False, encoding="utf-8"):
+def read_lines_from_file(
+    filepath: str, skip_comments: bool = False, encoding: str = "utf-8"
+) -> list[str]:
     """
     Read lines from a text file.
 
@@ -197,7 +201,7 @@ def read_lines_from_file(filepath, skip_comments=False, encoding="utf-8"):
     return lines
 
 
-def read_text_from_file(filepath, encoding="utf-8"):
+def read_text_from_file(filepath: str, encoding: str = "utf-8") -> str:
     """
     Read text from a text file.
 
@@ -212,7 +216,7 @@ def read_text_from_file(filepath, encoding="utf-8"):
         return file.read()
 
 
-def _remove_comments(lines):
+def _remove_comments(lines: list[str]) -> list[str]:
     """
     Remove lines starting with '#' from a list of lines.
 
@@ -229,7 +233,7 @@ def _remove_comments(lines):
     return filtered_lines
 
 
-def read_text_from_text_or_pdf_file_skipping_comments(filepath):
+def read_text_from_text_or_pdf_file_skipping_comments(filepath: str) -> str:
     """
     Read text from a text or PDF file, skipping comments.
 
@@ -246,7 +250,9 @@ def read_text_from_text_or_pdf_file_skipping_comments(filepath):
     return util_text.LINE_END.join(filtered_lines)
 
 
-def write_text_lines_to_file(lines, filepath, encoding="utf-8"):
+def write_text_lines_to_file(
+    lines: list[str], filepath: str, encoding: str = "utf-8"
+) -> None:
     """
     Write lines of text to a text file.
 
@@ -260,7 +266,9 @@ def write_text_lines_to_file(lines, filepath, encoding="utf-8"):
             file.write(line + util_text.LINE_END)
 
 
-def write_array_to_file_skipping_empty(PATH_TO_OUTPUT_TEXT_FILE, lines):
+def write_array_to_file_skipping_empty(
+    path_to_output_text_file: str, lines: list[str]
+) -> None:
     """
     Write non-empty lines from an array to a file, skipping empty lines.
 
@@ -268,13 +276,13 @@ def write_array_to_file_skipping_empty(PATH_TO_OUTPUT_TEXT_FILE, lines):
     PATH_TO_OUTPUT_TEXT_FILE (str): The path to the output text file.
     lines (list): List of lines to write to the file.
     """
-    with open(PATH_TO_OUTPUT_TEXT_FILE, "w") as f:
+    with open(path_to_output_text_file, "w") as f:
         for line in lines:
             if line is not None and len(line) > 0:
                 f.write(line + "\n")
 
 
-def write_text_to_file(text, filepath, encoding="utf-8"):
+def write_text_to_file(text: str, filepath: str, encoding: str = "utf-8") -> None:
     """
     Write text to a text file.
 
@@ -287,11 +295,11 @@ def write_text_to_file(text, filepath, encoding="utf-8"):
         f.write(text)
 
 
-def _get_last_part_of_path(file_path, sep):
+def _get_last_part_of_path(file_path: str, sep: str) -> str:
     return file_path.split(sep)[-1]
 
 
-def get_last_part_of_path(file_path):
+def get_last_part_of_path(file_path: str) -> str:
     """
     Get the last part of a file path (filename).
 

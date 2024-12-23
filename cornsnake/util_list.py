@@ -5,7 +5,11 @@ Functions for manipulating lists of data. Functions include chunking lists, excl
 """
 
 
-def chunk(list_a, CHUNK_SIZE):
+from typing import Generator
+import typing
+
+
+def chunk(list_a: list, CHUNK_SIZE: int) -> Generator[list]:
     """
     Function to chunk a list into sublists of size n.
 
@@ -20,7 +24,7 @@ def chunk(list_a, CHUNK_SIZE):
         yield list_a[i : i + CHUNK_SIZE]
 
 
-def excluding(list1, list2):
+def excluding(list1: list, list2: list)-> list:
     """
     Function to exclude elements from list1 that are present in list2.
 
@@ -34,7 +38,7 @@ def excluding(list1, list2):
     return [x for x in list1 if x not in list2]
 
 
-def intersecting(list1, list2):
+def intersecting(list1: list, list2: list)-> list:
     """
     Function to find the intersection of two lists.
 
@@ -48,19 +52,19 @@ def intersecting(list1, list2):
     return [value for value in list1 if value in list2]
 
 
-def first_or_none(my_list):
+def first_or_none(my_list:list) -> typing.Any|None:
     """Function to return the first element of a list or None if the list is empty."""
     if len(my_list) > 0:
         return my_list[0]
     return None
 
 
-def flatten(my_list):
+def flatten(my_list: list) -> list:
     """Function to flatten a list of lists into a single list."""
     return [item for sublist in my_list for item in sublist]
 
 
-def list_with_first_or_empty(my_list):
+def list_with_first_or_empty(my_list: list) -> list:
     """Function to return a list containing the first element of the input list, or an empty list if the input list is empty."""
     first_or_none_value = first_or_none(my_list)
     if first_or_none_value is None:
@@ -68,12 +72,12 @@ def list_with_first_or_empty(my_list):
     return [first_or_none_value]
 
 
-def not_none_and_unique(my_list):
+def not_none_and_unique(my_list: list) -> list:
     """Function to return a list with unique non-None elements."""
     return list(set(filter(lambda f: (f is not None), my_list)))
 
 
-def remove_empty_strings(list_of_strings):
+def remove_empty_strings(list_of_strings: list[str]) -> list[str]:
     """Function to remove empty strings from a list of strings."""
     parts_filtered = []
     for part in list_of_strings:
@@ -82,7 +86,7 @@ def remove_empty_strings(list_of_strings):
     return parts_filtered
 
 
-def strip_strings(list_of_strings):
+def strip_strings(list_of_strings: list[str]) -> list[str]:
     """Function to strip leading and trailing whitespace from strings in a list."""
     parts_stripped = []
     for part in list_of_strings:
@@ -90,6 +94,6 @@ def strip_strings(list_of_strings):
     return parts_stripped
 
 
-def unique(my_list):
+def unique(my_list:list) -> list:
     """Function to return a list with unique elements from the input list."""
     return list(set(my_list))

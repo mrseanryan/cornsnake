@@ -8,7 +8,7 @@ from datetime import datetime, timedelta
 import re
 
 
-def parse_yyyy_mm_dd(arg_date):
+def parse_yyyy_mm_dd(arg_date: str) -> datetime:
     """
     Parse a date string in the yyyy-mm-dd format to a datetime object.
 
@@ -21,7 +21,7 @@ def parse_yyyy_mm_dd(arg_date):
     return datetime.strptime(arg_date, "%Y-%m-%d")
 
 
-def _date_to_yyyy_mm_dd(arg_date):
+def _date_to_yyyy_mm_dd(arg_date: datetime) -> str:
     """
     Format a datetime object to a date string in the yyyy-mm-dd format.
 
@@ -34,7 +34,7 @@ def _date_to_yyyy_mm_dd(arg_date):
     return arg_date.strftime("%Y-%m-%d")
 
 
-def add_day_to_date(str_date, days):
+def add_day_to_date(str_date: str, days: int) -> str:
     """
     Add a specified number of days to a date string in the yyyy-mm-dd format.
 
@@ -50,7 +50,7 @@ def add_day_to_date(str_date, days):
     return _date_to_yyyy_mm_dd(date_value)
 
 
-def is_valid_date_yyyy_mm_dd(value):
+def is_valid_date_yyyy_mm_dd(value: str) -> bool:
     """
     Check if a date string is in the valid yyyy-mm-dd format.
 
@@ -61,4 +61,4 @@ def is_valid_date_yyyy_mm_dd(value):
     bool: True if the date string is in the correct format, False otherwise.
     """
     pat = re.compile(r"[0-9]{4}-[0-9]{2}-[0-9]{2}")
-    return re.fullmatch(pat, value)
+    return True if re.fullmatch(pat, value) else False

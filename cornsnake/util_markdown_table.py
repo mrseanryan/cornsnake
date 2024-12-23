@@ -8,7 +8,7 @@ MARKDOWN_COLUMN_SEPARATOR = "|"
 MARKDOWN_COLUMN_INDICATOR = "---"
 
 
-def add_row_separator(column_count):
+def add_row_separator(column_count: int) -> str:
     """
     Function to add row separators for a Markdown table.
 
@@ -25,7 +25,7 @@ def add_row_separator(column_count):
     return row
 
 
-def generate_markdown_image(path_to_image, caption):
+def generate_markdown_image(path_to_image: str, caption: str) -> str:
     """
     Function to generate Markdown image syntax.
 
@@ -39,7 +39,7 @@ def generate_markdown_image(path_to_image, caption):
     return f'![{caption}]({path_to_image} "{caption}" )'
 
 
-def generate_italicised(text):
+def generate_italicised(text: str) -> str:
     """
     Function to generate italicized text in Markdown.
 

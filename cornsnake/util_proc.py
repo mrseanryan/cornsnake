@@ -14,7 +14,7 @@ from . import util_os
 logger = util_log.getLogger(__name__)
 
 
-def _proc_print(message):
+def _proc_print(message: str) -> None:
     """
     Logs the message using the logger and prints it if config.IS_VERBOSE is True.
 
@@ -26,7 +26,7 @@ def _proc_print(message):
         print(message)
 
 
-def _proc_print_debug(message):
+def _proc_print_debug(message: str) -> None:
     """
     Logs the message at debug level using the logger and prints it if config.IS_VERBOSE is True.
 
@@ -38,7 +38,7 @@ def _proc_print_debug(message):
         print(message)
 
 
-def is_process_running(process_name):
+def is_process_running(process_name: str) -> bool:
     """
     Checks if the given process (identified by program filename) is running.
 
@@ -47,20 +47,21 @@ def is_process_running(process_name):
     """
     if util_os.is_windows():
         progs = str(subprocess.check_output("tasklist"))
-        if process_name in progs:
-            return True
-        else:
-            return False
+        return process_name in progs
     else:
         try:
-            subprocess.check_output(["pgrep", process_name])
+            progs = str(subprocess.check_output(["pgrep", process_name]))
+            return process_name in progs
         except subprocess.CalledProcessError:
             return False
 
 
 def run_process_and_get_output(
-    path_to_proc, arguments, working_directory, output_errors=True
-):
+    path_to_proc: str,
+    arguments: list[str],
+    working_directory: str,
+    output_errors: bool = True,
+) -> str:
     """
     Executes a process with specified arguments and working directory, capturing the output.
 
@@ -88,33 +89,40 @@ def run_process_and_get_output(
     )
     std_out, std_err = pipes.communicate()
 
-    if not isinstance(std_out, str):
-        std_out = std_out.decode()
-    if not isinstance(std_err, str):
-        std_err = std_err.decode()
+    std_out_str = ""
+    if isinstance(std_out, str):
+        std_out_str = std_out
+    else:
+        std_out_str = std_out.decode()
+
+    std_err_str = ""
+    if isinstance(std_err, str):
+        std_err_str = std_err
+    else:
+        std_err_str = std_err.decode()
 
     if pipes.returncode != 0:
         # an error happened!
-        err_msg = "%s. Code: %s" % (std_err.strip(), pipes.returncode)
+        err_msg = f"{std_err_str.strip()}. Code: {pipes.returncode}"
         if output_errors:
             print(err_msg)
         else:
             logger.debug(err_msg)
         raise RuntimeError(err_msg, pipes.returncode)
-    elif len(std_err):
+    elif len(std_err_str):
         # return code is 0 (no error), but we may want to
         # do something with the info on std_err
         if output_errors:
-            print(std_err)
+            print(std_err_str)
         else:
-            logger.debug(std_err)
+            logger.debug(std_err_str)
 
-    _proc_print_debug(f" >>> {std_out}")
+    _proc_print_debug(f" >>> {std_out_str}")
 
-    return std_out
+    return std_out_str
 
 
-def open_windows_explorer_at(path_to_dir):
+def open_windows_explorer_at(path_to_dir: str) -> None:
     """
     Opens Windows Explorer or Mac Finder at the specified directory if the OS is Windows.
 

@@ -7,6 +7,7 @@ Functions for logging exceptions and setting up logging configurations.
 import logging
 import os
 import re
+import typing
 
 from . import config
 from . import util_color
@@ -16,7 +17,7 @@ from . import util_color
 log_format = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 
 
-def set_log_dir_and_get_path_to_logfile(log_dir):
+def set_log_dir_and_get_path_to_logfile(log_dir: str) -> str:
     """
     Set the log directory and get the path to the log file.
 
@@ -36,7 +37,7 @@ def set_log_dir_and_get_path_to_logfile(log_dir):
     return path_to_logfile
 
 
-def log_exception(e):
+def log_exception(e: typing.Any) -> None:
     """
     Log an exception.
     -  Call from inside a Try..Except
@@ -49,7 +50,7 @@ def log_exception(e):
     logging.exception("Exception occurred")
 
 
-def getLogger(name_of_module):
+def getLogger(name_of_module: str) -> logging.Logger:
     """
     Get a logger with the specified name.
 
@@ -71,7 +72,7 @@ WINDOWS_SEP = "\\"
 MAC_SEP = "/"
 
 
-def mask_sensitive_text(text):
+def mask_sensitive_text(text:str)-> str:
     """
     Mask text that contains a user name.
 
@@ -100,14 +101,14 @@ def mask_sensitive_text(text):
     return text
 
 
-def log_sensitive_info(text, logger):
+def log_sensitive_info(text: str, logger: logging.Logger) -> None:
     """
     Log at info level, masking out any user name in the text.
     """
     logger.info(mask_sensitive_text(text))
 
 
-def log_sensitive_warn(text, logger):
+def log_sensitive_warn(text:str, logger: logging.Logger) -> None:
     """
     Log at warn level, masking out any user name in the text.
     """

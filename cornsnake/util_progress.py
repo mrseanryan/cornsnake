@@ -8,10 +8,10 @@ import sys
 
 from . import config
 
-previous_percent = 0
+previous_percent: float = 0.0
 
 
-def progress(count, total):
+def progress(count: int, total: int) -> None:
     """
     Function to update progress based on count and total.
 
@@ -38,7 +38,7 @@ def progress(count, total):
     _update_progress(percent)
 
 
-def _update_progress(percent):
+def _update_progress(percent: float) -> None:
     """
     Function to update the progress bar based on percentage.
 
@@ -59,7 +59,7 @@ def _update_progress(percent):
     sys.stdout.flush()
 
 
-def complete():
+def complete() -> None:
     """
     Function to complete the progress bar by updating it to 100% and printing a new line.
 

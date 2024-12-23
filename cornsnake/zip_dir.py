@@ -8,7 +8,7 @@ import shutil
 import zipfile
 
 
-def create_zip(source_dir, output_zip_file):
+def create_zip(source_dir: str, output_zip_file: str) -> None:
     """
     Function to create a zip archive from a directory.
 
@@ -24,7 +24,9 @@ def create_zip(source_dir, output_zip_file):
     shutil.make_archive(output_zip_file, "zip", source_dir)
 
 
-def create_zip_of_files(files_to_include, root_dir, path_to_output_zipfile):
+def create_zip_of_files(
+    files_to_include: list[str], root_dir: str, path_to_output_zipfile: str
+) -> list[str]:
     """
     Function to create a zip archive from a list of files.
 

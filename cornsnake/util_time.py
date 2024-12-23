@@ -8,7 +8,7 @@ from datetime import timedelta
 import time
 
 
-def start_timer():
+def start_timer()-> float:
     """
     Function to start a timer.
 
@@ -18,7 +18,7 @@ def start_timer():
     return time.time()
 
 
-def end_timer(start):
+def end_timer(start: float) -> float:
     """
     Function to end the timer and calculate elapsed time.
 
@@ -33,7 +33,7 @@ def end_timer(start):
     return seconds_elapsed
 
 
-def describe_elapsed_seconds(seconds_elapsed):
+def describe_elapsed_seconds(seconds_elapsed:float)-> str:
     """
     Function to describe the elapsed time in hours/minutes/seconds.
 

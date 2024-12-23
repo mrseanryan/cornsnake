@@ -9,7 +9,7 @@ import shutil
 import stat
 
 
-def _rmrf(temp_dir):
+def _rmrf(temp_dir: str) -> None:
     """
     Recursively delete a directory and its contents.
 
@@ -23,7 +23,7 @@ def _rmrf(temp_dir):
     shutil.rmtree(temp_dir)
 
 
-def _delete_files_recursively(temp_dir):
+def _delete_files_recursively(temp_dir: str) -> None:
     """
     Recursively delete files in a directory.
 
@@ -41,7 +41,7 @@ def _delete_files_recursively(temp_dir):
                 pass  # Intentionally NOT passing exception onwards
 
 
-def _delete_dirs_recursively(temp_dir):
+def _delete_dirs_recursively(temp_dir: str) -> None:
     """
     Recursively delete directories in a directory.
 
@@ -59,7 +59,7 @@ def _delete_dirs_recursively(temp_dir):
                 pass  # Intentionally NOT passing exception onwards
 
 
-def _delete_dir_contents(temp_dir):
+def _delete_dir_contents(temp_dir: str) -> None:
     """
     Delete files and directories in a directory.
 
@@ -70,7 +70,7 @@ def _delete_dir_contents(temp_dir):
     _delete_dirs_recursively(temp_dir)
 
 
-def delete_dirs(temp_dirs_to_delete):
+def delete_dirs(temp_dirs_to_delete: str) -> None:
     """
     Delete directories and their contents.
     - Python holds on to some paths - so delete as much as we can

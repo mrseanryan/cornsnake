@@ -6,6 +6,7 @@ Functions for checking the operating system and logging OS information. The func
 
 import os
 import platform
+import typing
 
 from . import util_log
 from . import util_object
@@ -13,7 +14,7 @@ from . import util_object
 logger = util_log.getLogger(__name__)
 
 
-def is_windows():
+def is_windows() -> bool:
     """
     Check if the current OS is Windows.
 
@@ -23,7 +24,7 @@ def is_windows():
     return os.name == "nt"
 
 
-def is_mac():
+def is_mac() -> bool:
     """
     Check if the current OS is Mac.
 
@@ -33,7 +34,7 @@ def is_mac():
     return platform.system() == "Darwin"
 
 
-def is_unix():
+def is_unix() -> bool:
     """
     Check if the current OS is Unix.
 
@@ -45,8 +46,9 @@ def is_unix():
 
 if is_windows():
     import winreg
+    from winreg import _KeyType
 
-    def get_registry_key(top_key, reg_path, name):
+    def get_registry_key(top_key: _KeyType, reg_path:str, name:str) -> typing.Any|None:
         """
         Get a value from Windows registry.
 
@@ -66,7 +68,7 @@ if is_windows():
         except WindowsError:
             return None
 
-    def is_windows_max_path_setting_on():
+    def is_windows_max_path_setting_on() -> bool:
         """
         Check if the Windows max path setting is enabled.
 
@@ -81,7 +83,7 @@ if is_windows():
         return str(value) == "1"
 
 
-def log_os():
+def log_os() -> None:
     """
     Log OS information including platform, system, name, and release.
     """
@@ -90,7 +92,7 @@ def log_os():
     logger.info(f"DETAILS: {platform.system()} - {os.name} - {platform.release()}")
 
 
-def _os_platform():
+def _os_platform() -> str:
     """
     Determine the platform of the OS.
 

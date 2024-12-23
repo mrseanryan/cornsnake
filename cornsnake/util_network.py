@@ -13,7 +13,12 @@ from . import util_log
 logger = util_log.getLogger(__name__)
 
 
-def get_file(url, local_path_to_write_file, timeout=60, headers={}):
+def get_file(
+    url: str,
+    local_path_to_write_file: str,
+    timeout: int = 60,
+    headers: dict[str, str] = {},
+) -> None:
     """
     Function to download a file from a URL to a local file path, via a HTTP GET request.
 
@@ -39,7 +44,7 @@ def get_file(url, local_path_to_write_file, timeout=60, headers={}):
             )
 
 
-def _get_file_name_from_url(url, text_file_extensions):
+def _get_file_name_from_url(url: str, text_file_extensions: list[str]) -> str:
     # credit to scottleibrand
 
     # Strip any trailing /'s from the end of the URL
@@ -55,7 +60,7 @@ def _get_file_name_from_url(url, text_file_extensions):
     return base_name + ".html"
 
 
-def _get_timestamped_filename(filename):
+def _get_timestamped_filename(filename: str) -> str:
     # add timestamp to make unique filename, since URL content may have changed
     now = datetime.now()
     timestamp = now.strftime("%Y_%m_%d__%H%M%S")
@@ -70,12 +75,12 @@ def _get_timestamped_filename(filename):
 
 
 def get_file_timestamped(
-    url,
-    path_to_dir,
-    prefix="",
-    text_file_extensions=[".txt", ".html", ".md", ".yaml"],
-    timeout=60,
-):
+    url: str,
+    path_to_dir: str,
+    prefix: str = "",
+    text_file_extensions: list[str] = [".txt", ".html", ".md", ".yaml"],
+    timeout: int = 60,
+) -> str:
     """
     Function to download a *timestamped* file from a URL to an automatically generated local file path, via a HTTP GET request.
     This helps to ensure the latest copy of the URL is saved, in case there was a previous download.
@@ -99,7 +104,7 @@ def get_file_timestamped(
     return local_filepath
 
 
-def post_request(api_url, headers, timeout=60):
+def post_request(api_url: str, headers: dict[str, str], timeout: int = 60) -> bool:
     """
     Function to make a POST request to a specified API URL.
 

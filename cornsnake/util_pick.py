@@ -7,7 +7,7 @@ Functions for randomly selecting text. The `pick_one_random` function chooses a 
 import random
 
 
-def pick_one_random(texts):
+def pick_one_random(texts: list[str]) -> str:
     """
     Function to pick a random text from a list.
 
@@ -17,10 +17,13 @@ def pick_one_random(texts):
     Returns:
     str: A randomly selected text from the list.
     """
+    if not texts:
+        raise RuntimeError("Arg texts is empty")
+
     return random.choice(texts)
 
 
-def pick_one_by_prompt(texts):
+def pick_one_by_prompt(texts: list[str]) -> str:
     """
     Function to prompt the user to pick a text from a list.
 
@@ -30,6 +33,9 @@ def pick_one_by_prompt(texts):
     Returns:
     str: The text selected by the user.
     """
+    if not texts:
+        raise RuntimeError("Arg texts is empty")
+
     valid_selection = None
     while not valid_selection:
         print(texts)

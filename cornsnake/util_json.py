@@ -5,17 +5,18 @@ Functions for reading from and writing to a JSON file. The `read_from_json_file`
 """
 
 import json
+import typing
 
 
-def _json_to_string(value_json):
+def _json_to_string(value_json: typing.Any) -> str:
     return json.dumps(value_json, indent=0)
 
 
-def are_same(settings1_json_str, settings2_json_str):
+def are_same(settings1_json_str: str, settings2_json_str: str) -> bool:
     """Function to compare two JSON objects, ignoring differences in whitespace."""
 
     # parse and serialize to ignore any formatting differences:
-    def _parse_and_serialize(json_str):
+    def _parse_and_serialize(json_str: str) -> str:
         value_json = json.loads(json_str)
         return _json_to_string(value_json)
 
@@ -24,7 +25,7 @@ def are_same(settings1_json_str, settings2_json_str):
     )
 
 
-def read_from_json_file(path_to_json, encoding="utf-8"):
+def read_from_json_file(path_to_json: str, encoding: str = "utf-8") -> typing.Any:
     """
     Function to read JSON data from a file.
 
@@ -40,7 +41,9 @@ def read_from_json_file(path_to_json, encoding="utf-8"):
         return data
 
 
-def write_to_json_file(dict, file_path, encoding="utf-8", indent=2):
+def write_to_json_file(
+    dict: dict, file_path: str, encoding: str = "utf-8", indent: int = 2
+) -> None:
     """
     Function to write JSON data to a file.
 
