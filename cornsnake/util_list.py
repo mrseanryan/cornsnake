@@ -8,7 +8,7 @@ from typing import Generator
 import typing
 
 
-def chunk(list_a: list, CHUNK_SIZE: int) -> Generator[list]:
+def chunk(list_a: list, CHUNK_SIZE: int) -> Generator[list, None, None]:
     """
     Function to chunk a list into sublists of size n.
 
