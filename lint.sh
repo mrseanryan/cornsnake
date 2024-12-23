@@ -1,6 +1,8 @@
 # so future errors halt the script.
 set -e
 
+./format.sh
+
 echo Linting ...
 
 ruff check cornsnake
