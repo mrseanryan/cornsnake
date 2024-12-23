@@ -1,5 +1,5 @@
 """
-Function for creating a zip archive from a directory. The `create_zip` function creates a zip archive of a specified directory.
+Functions for creating a zip archive from a directory or a list of files.
 
 [Documentation](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/cornsnake/zip_dir.html)
 """

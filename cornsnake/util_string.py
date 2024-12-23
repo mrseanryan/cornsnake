@@ -14,6 +14,7 @@ def filter_string_via_regex(text: str, regex: str, replacement_char: str):
 
     Example: filter_string_via_regex("this is a test 123 !@#", "_") -> "this_is_a_test_123____"
     """
+
     def _is_ok(c):
         return re.match(regex, c)
 

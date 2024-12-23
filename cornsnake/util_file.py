@@ -32,6 +32,7 @@ def change_extension(input_filename, new_extension):
     - ('input1.txt', '.yaml') -> 'input1.yaml')
     - ('input2', '.yaml.txt') -> 'input2.yaml.txt')
     - ('input3', '.xml') -> 'input3.xml')
+    - ('input1.txt.zip', '.zip') -> 'input1.zip')
     """
     if not new_extension.startswith("."):
         raise ValueError("new_extension must start with a '.'. For example: '.txt'")
@@ -39,6 +40,8 @@ def change_extension(input_filename, new_extension):
     if "." in input_filename:
         parts = input_filename.split(".")
         base_filename = ".".join(parts[:-1])
+    if base_filename.endswith(new_extension):
+        return base_filename
     return base_filename + new_extension
 
 
@@ -47,7 +50,9 @@ def make_filename_valid(filename):
     Return an altered filename so that it is valid.
     - the new filename will only have alphanumerics, underscore and full-stop.
     """
-    return util_string.filter_string_via_regex(text=filename, regex="^[a-zA-Z0-9_\.]+$", replacement_char="_")
+    return util_string.filter_string_via_regex(
+        text=filename, regex="^[a-zA-Z0-9_\.]+$", replacement_char="_"
+    )
 
 
 def copy_file(from_path, to_path):

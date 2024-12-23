@@ -22,20 +22,35 @@ class TestUtilString(unittest.TestCase):
         # Assert
         self.assertEqual(expected, actual, f"test: {description}")
 
-
     @parameterized.expand(
         [
-            ("convert invalid file name", "temp\\x.txt", "^[a-zA-Z0-9_\.]+$", "=", "temp=x.txt"),
-            ("convert to letters only", "??asdfs 234 : 123^%&%.my .txt", "^[a-zA-Z]+$", "X", "XXasdfsXXXXXXXXXXXXXXXmyXXtxt"),
+            (
+                "convert invalid file name",
+                "temp\\x.txt",
+                "^[a-zA-Z0-9_\.]+$",
+                "=",
+                "temp=x.txt",
+            ),
+            (
+                "convert to letters only",
+                "??asdfs 234 : 123^%&%.my .txt",
+                "^[a-zA-Z]+$",
+                "X",
+                "XXasdfsXXXXXXXXXXXXXXXmyXXtxt",
+            ),
             # no-op tests:
             ("no-op", "all letters OK", "^[a-zA-Z ]+$", "!", "all letters OK"),
         ]
     )
-    def test_filter_string_via_regex(self, description, text, regex, replacement_char, expected):
+    def test_filter_string_via_regex(
+        self, description, text, regex, replacement_char, expected
+    ):
         # Arrange
 
         # Act
-        actual = util_string.filter_string_via_regex(text=text, regex=regex, replacement_char=replacement_char)
+        actual = util_string.filter_string_via_regex(
+            text=text, regex=regex, replacement_char=replacement_char
+        )
 
         # Assert
         self.assertEqual(expected, actual, f"test: {description}")

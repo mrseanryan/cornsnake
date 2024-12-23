@@ -11,8 +11,11 @@ import shutil
 from pathlib import Path
 
 from . import util_os
+from . import util_robust_delete
 
 TOTAL_BYTES_IN_GIGABYTE = 1000000000
+
+delete_dirs = util_robust_delete.delete_dirs  # allow access via this file
 
 
 def copy_directory(from_path, to_path):
