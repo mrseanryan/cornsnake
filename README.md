@@ -77,6 +77,7 @@ For examples see the [unit tests](https://github.com/mrseanryan/cornsnake/tree/m
 | util_color | Defines color constants and a function for colorizing text output for terminal. | [util_color docs](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/cornsnake/util_color.html) |
 | util_date | Functions for date manipulation. It includes functions to parse, format, add days to, and validate dates in the yyyy-mm-dd format. | [util_date docs](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/cornsnake/util_date.html) |
 | util_dependencies | Functions for checking the versions of Python and Git. It ensures that the major and minor versions of these dependencies meet the required criteria. | [util_dependencies docs](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/cornsnake/util_dependencies.html) |
+| util_dict | Functions for working with Python dictionaries (dict or {}). | [util_dict docs](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/cornsnake/util_dict.html) |
 | util_dir | Working with directories, files, and file paths. | [util_dir docs](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/cornsnake/util_dir.html) |
 | util_file | File operations including copying, reading, and writing text to files. | [util_file docs](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/cornsnake/util_file.html) |
 | util_git | Functions for interacting with a Git repository. It includes functions for executing Git commands, checking out branches, handling commits, and managing Git configuration settings. | [util_git docs](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/cornsnake/util_git.html) |
@@ -96,9 +97,11 @@ For examples see the [unit tests](https://github.com/mrseanryan/cornsnake/tree/m
 | util_robust_delete | Functions for recursively deleting directories and their contents. | [util_robust_delete docs](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/cornsnake/util_robust_delete.html) |
 | util_string | Check if a text string is empty. The `is_empty` function checks if a text string is None or contains only whitespace or a hyphen. | [util_string docs](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/cornsnake/util_string.html) |
 | util_text | Defines text constant variables - including for line endings. | [util_text docs](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/cornsnake/util_text.html) |
+| util_time | Functions for timing operations. The `start_timer` function starts a timer, `end_timer` ends the timer and calculates elapsed time, and `describe_elapsed_seconds` describes the elapsed time in seconds.| [util_time docs](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/cornsnake/util_time.html) |
 | util_toml | Reading TOML (ini) files and updating the global config in memory (from config.py). | [util_toml docs](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/cornsnake/util_toml.html) |
 | util_validate | Functions for checking and validating configuration settings in the config.py file. | [util_validate docs](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/cornsnake/util_validate.html) |
 | util_wait | Function for waiting for a specified number of seconds. The `wait_seconds` function pauses the program execution for the specified number of seconds. | [util_wait docs](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/cornsnake/util_wait.html) |
+| util_zip | Alias for zip_dir | [util_zip docs](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/cornsnake/util_zip.html) |
 | zip_dir | Function for creating a zip archive from a directory. The `create_zip` function creates a zip archive of a specified directory. | [zip_dir docs](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/cornsnake/zip_dir.html) |
 
 ## References
