@@ -72,7 +72,7 @@ WINDOWS_SEP = "\\"
 MAC_SEP = "/"
 
 
-def mask_sensitive_text(text:str)-> str:
+def mask_sensitive_text(text: str) -> str:
     """
     Mask text that contains a user name.
 
@@ -108,7 +108,7 @@ def log_sensitive_info(text: str, logger: logging.Logger) -> None:
     logger.info(mask_sensitive_text(text))
 
 
-def log_sensitive_warn(text:str, logger: logging.Logger) -> None:
+def log_sensitive_warn(text: str, logger: logging.Logger) -> None:
     """
     Log at warn level, masking out any user name in the text.
     """

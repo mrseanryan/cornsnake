@@ -7,7 +7,7 @@ Function for waiting for a specified number of seconds. The `wait_seconds` funct
 import time
 
 
-def wait_seconds(seconds:int)-> None:
+def wait_seconds(seconds: int) -> None:
     """
     Function to pause program execution for a specified number of seconds.
 

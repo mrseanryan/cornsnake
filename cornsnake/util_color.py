@@ -23,7 +23,7 @@ class bcolors:
     UNDERLINE = "\033[4m"
 
 
-def colorize(text: str, color:str) -> str:
+def colorize(text: str, color: str) -> str:
     """
     Function to colorize text output for terminal.
 

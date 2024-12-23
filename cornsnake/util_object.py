@@ -4,7 +4,6 @@ Functions for working with object attributes. The `get_attributes` function retr
 [Documentation](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/cornsnake/util_object.html)
 """
 
-
 import typing
 
 
@@ -26,7 +25,7 @@ def get_attributes(object: typing.Any) -> list[str]:
     return attributes
 
 
-def get_attribute_value(object: typing.Any, attribute_name:str) -> typing.Any:
+def get_attribute_value(object: typing.Any, attribute_name: str) -> typing.Any:
     """
     Dynamically get the value of a specific attribute of an object.
 
@@ -40,7 +39,9 @@ def get_attribute_value(object: typing.Any, attribute_name:str) -> typing.Any:
     return getattr(object, attribute_name)
 
 
-def set_attribute_value(object:typing.Any, attribute_name:str, value:typing.Any) -> None:
+def set_attribute_value(
+    object: typing.Any, attribute_name: str, value: typing.Any
+) -> None:
     """Dynamically set the value of the given attribute of that object.
 
     Args:
@@ -50,7 +51,7 @@ def set_attribute_value(object:typing.Any, attribute_name:str, value:typing.Any)
     setattr(object, attribute_name, value)
 
 
-def has_attribute(object:typing.Any, attribute_name:str) -> bool:
+def has_attribute(object: typing.Any, attribute_name: str) -> bool:
     """
     Dynamically check if the given object has an attribute with that name (reflection).
 

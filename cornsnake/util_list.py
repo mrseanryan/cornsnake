@@ -4,7 +4,6 @@ Functions for manipulating lists of data. Functions include chunking lists, excl
 [Documentation](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/cornsnake/util_list.html)
 """
 
-
 from typing import Generator
 import typing
 
@@ -24,7 +23,7 @@ def chunk(list_a: list, CHUNK_SIZE: int) -> Generator[list]:
         yield list_a[i : i + CHUNK_SIZE]
 
 
-def excluding(list1: list, list2: list)-> list:
+def excluding(list1: list, list2: list) -> list:
     """
     Function to exclude elements from list1 that are present in list2.
 
@@ -38,7 +37,7 @@ def excluding(list1: list, list2: list)-> list:
     return [x for x in list1 if x not in list2]
 
 
-def intersecting(list1: list, list2: list)-> list:
+def intersecting(list1: list, list2: list) -> list:
     """
     Function to find the intersection of two lists.
 
@@ -52,7 +51,7 @@ def intersecting(list1: list, list2: list)-> list:
     return [value for value in list1 if value in list2]
 
 
-def first_or_none(my_list:list) -> typing.Any|None:
+def first_or_none(my_list: list) -> typing.Any | None:
     """Function to return the first element of a list or None if the list is empty."""
     if len(my_list) > 0:
         return my_list[0]
@@ -94,6 +93,6 @@ def strip_strings(list_of_strings: list[str]) -> list[str]:
     return parts_stripped
 
 
-def unique(my_list:list) -> list:
+def unique(my_list: list) -> list:
     """Function to return a list with unique elements from the input list."""
     return list(set(my_list))

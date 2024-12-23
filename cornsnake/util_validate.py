@@ -223,6 +223,7 @@ def _get_config_error() -> str | None:
 
     return None
 
+
 # Validate settings in config.py
 def validate() -> None:
     """Validate settings in config.py

@@ -23,7 +23,7 @@ def extract_text_from_pdf(filepath: str) -> str:
         return text
 
 
-def is_pdf(filepath:str) -> bool:
+def is_pdf(filepath: str) -> bool:
     """
     Function to check if a file is a PDF.
 
