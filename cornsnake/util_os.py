@@ -46,10 +46,9 @@ def is_unix() -> bool:
 
 if is_windows():
     import winreg
-    from winreg import _KeyType
 
     def get_registry_key(
-        top_key: _KeyType, reg_path: str, name: str
+        top_key: typing.Any, reg_path: str, name: str
     ) -> typing.Any | None:
         """
         Get a value from Windows registry.
