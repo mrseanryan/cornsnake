@@ -1,3 +1,9 @@
+"""
+base64 encode/decode utility functions.
+
+[Documentation](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/cornsnake/util_base64.html)
+"""
+
 import base64
 from typing import Any
 

@@ -74,6 +74,8 @@ For examples see the [unit tests](https://github.com/mrseanryan/cornsnake/tree/m
 | Module | Description | Documentation |
 |---|---|---|
 | config | Globally accessible config object. Can be configured by for example reading from command line arguments or TOML file (via tomllib), and then writing to the properties in-memory. See util_toml.py for an example of reading from an ini file (TOML format). | [config docs](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/cornsnake/config.html) |
+| decorators | Decorators for your Python code, including a timer to help instrument your functions. | [decorators docs](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/cornsnake/decorators.html) |
+| util_base64 | Base64 encode/decode utility functions. | [util_base64 docs](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/cornsnake/util_base64.html) |
 | util_color | Defines color constants and a function for colorizing text output for terminal. | [util_color docs](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/cornsnake/util_color.html) |
 | util_date | Functions for date manipulation. It includes functions to parse, format, add days to, and validate dates in the yyyy-mm-dd format. | [util_date docs](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/cornsnake/util_date.html) |
 | util_dependencies | Functions for checking the versions of Python and Git. It ensures that the major and minor versions of these dependencies meet the required criteria. | [util_dependencies docs](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/cornsnake/util_dependencies.html) |
