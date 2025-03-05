@@ -29,15 +29,15 @@ def copy_directory(from_path: str, to_path: str) -> None:
     shutil.copytree(from_path, to_path)
 
 
-def ensure_dir_exists(temp_git_fixer_dir: str) -> None:
+def ensure_dir_exists(target_dir: str) -> None:
     """
     Ensure that a directory exists, creating it if necessary.
 
     Args:
-    temp_git_fixer_dir (str): The path of the directory to ensure existence of.
+    target_dir (str): The path of the directory to ensure existence of.
     """
-    if not os.path.exists(temp_git_fixer_dir):
-        os.makedirs(temp_git_fixer_dir)
+    if not os.path.exists(target_dir):
+        os.makedirs(target_dir)
 
 
 def find_files_by_extension(dir_path: str, extension: str) -> list[str]:

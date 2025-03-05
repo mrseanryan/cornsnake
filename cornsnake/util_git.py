@@ -258,17 +258,17 @@ def check_has_no_changes(path_to_local_repo: str) -> None:
 
 
 def _prepare_local_clone(
-    path_to_repo_dir: str, temp_git_fixer_dir: str, is_mirror: bool
+    path_to_repo_dir: str, target_dir: str, is_mirror: bool
 ) -> str:
     """Prepare a local clone of the repository with the specified parameters.
     Args:
     path_to_repo_dir (str): The path to the repository directory.
-    temp_git_fixer_dir (str): The temporary directory for fixing Git issues.
+    target_dir (str): The temporary directory for fixing Git issues.
     is_mirror (bool): A flag indicating whether the clone is a mirror.
     Returns:
     str: The path to the prepared local clone directory."""
     local_clone_dir = os.path.join(
-        temp_git_fixer_dir, "lm"
+        target_dir, "lm"
     )  # lm = local_mirror (keeping path short)
     util_dir.ensure_dir_exists(local_clone_dir)
     args = [path_to_repo_dir]
@@ -285,24 +285,24 @@ def _prepare_local_clone(
     return os.path.join(local_clone_dir, local_repo_name)
 
 
-def prepare_local_full_clone(path_to_repo_dir: str, temp_git_fixer_dir: str) -> str:
+def prepare_local_full_clone(path_to_repo_dir: str, target_dir: str) -> str:
     """Prepare a full local clone of the repository using the specified paths.
     Args:
     path_to_repo_dir (str): The path to the repository directory.
-    temp_git_fixer_dir (str): The temporary directory for fixing Git issues.
+    target_dir (str): The temporary directory for fixing Git issues.
     Returns:
     str: The path to the prepared full local clone directory."""
-    return _prepare_local_clone(path_to_repo_dir, temp_git_fixer_dir, False)
+    return _prepare_local_clone(path_to_repo_dir, target_dir, False)
 
 
-def prepare_local_mirror_clone(path_to_repo_dir: str, temp_git_fixer_dir: str) -> str:
+def prepare_local_mirror_clone(path_to_repo_dir: str, target_dir: str) -> str:
     """Prepare a mirror local clone of the repository using the specified paths.
     Args:
     path_to_repo_dir (str): The path to the repository directory.
-    temp_git_fixer_dir (str): The temporary directory for fixing Git issues.
+    target_dir (str): The temporary directory for fixing Git issues.
     Returns:
     str: The path to the prepared mirror local clone directory."""
-    return _prepare_local_clone(path_to_repo_dir, temp_git_fixer_dir, True)
+    return _prepare_local_clone(path_to_repo_dir, target_dir, True)
 
 
 def gc_expire_reflog(repo_dir: str) -> None:
