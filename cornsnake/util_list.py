@@ -71,6 +71,11 @@ def list_with_first_or_empty(my_list: list) -> list:
     return [first_or_none_value]
 
 
+def not_none(my_list: list) -> list:
+    """Function to return a list with non-None elements."""
+    return list(filter(lambda f: (f is not None), my_list))
+
+
 def not_none_and_unique(my_list: list) -> list:
     """Function to return a list with unique non-None elements."""
     return list(set(filter(lambda f: (f is not None), my_list)))
