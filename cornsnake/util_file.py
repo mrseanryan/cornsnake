@@ -53,7 +53,7 @@ def make_filename_valid(filename: str) -> str:
     - the new filename will only have alphanumerics, underscore and full-stop.
     """
     return util_string.filter_string_via_regex(
-        text=filename, regex="^[a-zA-Z0-9_\.]+$", replacement_char="_"
+        text=filename, regex="^[a-zA-Z0-9_\\.]+$", replacement_char="_"
     )
 
 

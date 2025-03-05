@@ -31,6 +31,7 @@ class TestUtilFile(unittest.TestCase):
         [
             # convert invalid names:
             ("temp\\x.txt", "temp_x.txt"),
+            ("temp.z\\x.txt", "temp.z_x.txt"),
             ("??asdfs 234 : 123^%&%.my .txt", "__asdfs_234___123____.my_.txt"),
             # no-op tests:
             ("x.txt", "x.txt"),

@@ -78,7 +78,7 @@ def mask_sensitive_text(text: str) -> str:
 
     Examples:
     - Windows: C:\\Users\\Bob.Jones\\my-file.txt -> C:\\Users\\<masked>\\my-file.txt
-    - Mac: /Users/Bob.Jones/my-file.txt -> /Users/<masked>\my-file.txt
+    - Mac: /Users/Bob.Jones/my-file.txt -> /Users/<masked>\\my-file.txt
     """
     try:
         sensitive_win = WINDOWS_SEP + "Users" + WINDOWS_SEP
