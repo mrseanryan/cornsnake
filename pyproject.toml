@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "cornsnake"
-version = "0.0.85"
+version = "0.0.79"
 description = "Wrap common Python utilities for working with files, git, ZIP, lists, processes, dates and times."
 readme = "README.md"
 authors = [{ name = "Sean Ryan", email = "mr.sean.ryan@gmail.com" }]
@@ -26,7 +26,7 @@ dependencies = [
 requires-python = ">=3.11"
 
 [project.optional-dependencies]
-dev = ["bumpver~=2023.1129", "parameterized~=0.9.0", "build~=1.0.3", "bumpver~=2023.1129", "parameterized~=0.9.0", "pdoc~=14.4.0", "pip-tools~=7.3.0", "twine~=4.0.2", "ruff~=0.3.4", "mypy~=1.14.0"]
+dev = ["bumpver~=2023.1129", "parameterized~=0.9.0", "build~=1.0.3", "bumpver~=2023.1129", "parameterized~=0.9.0", "pdoc~=14.4.0", "pip-tools~=7.3.0", "twine~=5.0.0", "ruff~=0.3.4", "mypy~=1.14.0", "pkginfo~=1.12.1.2"]
 
 [project.urls]
 Homepage = "https://github.com/mrseanryan/cornsnake"

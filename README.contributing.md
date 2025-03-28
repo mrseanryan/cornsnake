@@ -22,7 +22,7 @@ Setup a virtual environment:
 If you are contributing to this project, then you need to install these extra dev dependencies:
 
 ```
-python -m pip install build~=1.0.3 bumpver~=2023.1129 parameterized~=0.9.0 pdoc~=14.4.0 pip-tools~=7.3.0 twine~=4.0.2 ruff~=0.3.4 mypy~=1.14.0
+python -m pip install build~=1.0.3 bumpver~=2023.1129 parameterized~=0.9.0 pdoc~=14.4.0 pip-tools~=7.3.0 twine~=5.0.0 ruff~=0.3.4 mypy~=1.14.0 pkginfo~=1.12.1.2
 ```
 
 note: the '~=' means 'pick most recent compatible version'.
