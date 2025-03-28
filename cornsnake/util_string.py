@@ -59,35 +59,36 @@ def replace_keep_case(word__for_regex: str, replacement: str, text: str) -> str:
 
     return re.sub(word__for_regex, func, text, flags=re.I)
 
-def split_into_lines(text, max_length=200):
+
+def split_into_lines(text: str, max_length:int=200) -> list[str]:
     """
     Split text into lines of maximum length at word boundaries.
-    
+
     Args:
         text (str): Text to split
         max_length (int): Maximum line length (default: 200)
-    
+
     Returns:
         list: List of lines
     """
     if not text:
         return []
-        
+
     result = []
     current_line = ""
-    
+
     for word in text.split():
         # Check if adding word would exceed max_length
         if len(current_line) + len(word) + (1 if current_line else 0) <= max_length:
             # Add word with a space if not the first word
-            current_line += (" " + word if current_line else word)
+            current_line += " " + word if current_line else word
         else:
             # Line would be too long, start a new one
             result.append(current_line)
             current_line = word
-    
+
     # Add the last line if it has content
     if current_line:
         result.append(current_line)
-    
+
     return result
