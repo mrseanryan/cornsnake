@@ -4,7 +4,7 @@ Functions for date manipulation. It includes functions to parse, format, add day
 [Documentation](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/cornsnake/util_date.html)
 """
 
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 import re
 
 
@@ -71,4 +71,4 @@ def get_now_for_system_timezone() -> datetime:
     Returns:
     datetime: Date and time for the system timezone.
     """
-    return datetime.now(datetime.timezone.utc).astimezone()
+    return datetime.now(datetime.utc).astimezone()
