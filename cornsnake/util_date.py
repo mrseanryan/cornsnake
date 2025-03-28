@@ -62,3 +62,13 @@ def is_valid_date_yyyy_mm_dd(value: str) -> bool:
     """
     pat = re.compile(r"[0-9]{4}-[0-9]{2}-[0-9]{2}")
     return True if re.fullmatch(pat, value) else False
+
+
+def get_now_for_system_timezone() -> datetime:
+    """
+    Get the current date and time, for the system timezone.
+
+    Returns:
+    datetime: Date and time for the system timezone.
+    """
+    return datetime.now(datetime.timezone.utc).astimezone()
