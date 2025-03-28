@@ -8,15 +8,14 @@ version = "0.0.81"
 description = "Wrap common Python utilities for working with files, git, ZIP, lists, processes, dates and times."
 readme = "README.md"
 authors = [{ name = "Sean Ryan", email = "mr.sean.ryan@gmail.com" }]
-license = { file = "LICENSE" }
+license = {text = "MIT License"}
+license-files = ["LICENSE"]
 classifiers = [
-    "License :: OSI Approved :: MIT License",
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
     "Development Status :: 5 - Production/Stable",
     "Environment :: Console",
     "Intended Audience :: Developers",
-    "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
     "Topic :: Software Development :: Libraries :: Python Modules",
 ]
