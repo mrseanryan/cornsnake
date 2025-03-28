@@ -60,7 +60,7 @@ def replace_keep_case(word__for_regex: str, replacement: str, text: str) -> str:
     return re.sub(word__for_regex, func, text, flags=re.I)
 
 
-def split_into_lines(text: str, max_length:int=200) -> list[str]:
+def split_into_lines(text: str, max_length: int = 200) -> list[str]:
     """
     Split text into lines of maximum length at word boundaries.
 

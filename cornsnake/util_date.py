@@ -71,4 +71,4 @@ def get_now_for_system_timezone() -> datetime:
     Returns:
     datetime: Date and time for the system timezone.
     """
-    return datetime.now(datetime.utc).astimezone()
+    return datetime.now(timezone.utc).astimezone()
