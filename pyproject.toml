@@ -4,11 +4,11 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "cornsnake"
-version = "0.0.81"
+version = "0.0.82"
 description = "Wrap common Python utilities for working with files, git, ZIP, lists, processes, dates and times."
 readme = "README.md"
 authors = [{ name = "Sean Ryan", email = "mr.sean.ryan@gmail.com" }]
-license = {text = "MIT License"}
+license = "MIT"
 license-files = ["LICENSE"]
 classifiers = [
     "Programming Language :: Python",
@@ -35,7 +35,7 @@ Issues = "https://github.com/mrseanryan/cornsnake/issues"
 Source = "https://github.com/mrseanryan/cornsnake"
 
 [tool.bumpver]
-current_version = "0.0.81"
+current_version = "0.0.82"
 version_pattern = "MAJOR.MINOR.PATCH"
 commit_message = "bump version {old_version} -> {new_version}"
 tag_message = "{new_version}"
