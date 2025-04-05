@@ -6,7 +6,7 @@ A collection of utilities for working with files, git, ZIP, lists, processes, da
 [Homepage](https://github.com/mrseanryan/cornsnake) | [Documentation](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/) | [Donate](https://ko-fi.com/K3K73ALBJ)
 """
 
-__version__ = "0.0.86"
+__version__ = "0.0.87"
 
 from . import config
 from . import util_color
