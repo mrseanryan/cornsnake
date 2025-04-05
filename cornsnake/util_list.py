@@ -8,19 +8,28 @@ from typing import Generator
 import typing
 
 
-def chunk(list_a: list, CHUNK_SIZE: int) -> Generator[list, None, None]:
+def chunk(
+    list_a: list, CHUNK_SIZE: int, merge_solitary: bool = False
+) -> Generator[list, None, None]:
     """
     Function to chunk a list into sublists of size n.
 
     Args:
     list_a (list): The input list to be chunked.
     n (int): The size of each chunk.
+    merge_solitary: If True, then avoid a 'solitary' item in the final chunk, by including it in the penultimate chunk.
 
     Yields:
     list: Sublists of size n.
     """
     for i in range(0, len(list_a), CHUNK_SIZE):
-        yield list_a[i : i + CHUNK_SIZE]
+        list_end = i + CHUNK_SIZE
+        if merge_solitary and len(list_a) - list_end == 1:
+            list_end += 1
+            yield list_a[i:list_end]
+            break
+
+        yield list_a[i:list_end]
 
 
 def excluding(list1: list, list2: list) -> list:

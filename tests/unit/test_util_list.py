@@ -158,7 +158,10 @@ class TestUtilList(unittest.TestCase):
             (
                 ["aa", "bb", "cc", "dd", "ee", "ff"],
                 5,
-                [["aa", "bb", "cc", "dd", "ee"], ["ff"]],  # we get a solitary item in the last chunk
+                [
+                    ["aa", "bb", "cc", "dd", "ee"],
+                    ["ff"],
+                ],  # we get a solitary item in the last chunk
             ),
         ]
     )
@@ -195,7 +198,7 @@ class TestUtilList(unittest.TestCase):
             (
                 ["aa", "bb", "cc", "dd", "ee", "ff"],
                 5,
-                [["aa", "bb", "cc", "dd", "ee", "ff"]], # size 6 to avoid a solitary
+                [["aa", "bb", "cc", "dd", "ee", "ff"]],  # size 6 to avoid a solitary
             ),
         ]
     )
