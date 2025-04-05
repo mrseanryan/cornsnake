@@ -174,38 +174,92 @@ class TestUtilList(unittest.TestCase):
 
     @parameterized.expand(
         [
-            ([], 5, []),
+            ([], 5, 5, []),
             (
                 ["aa", "bb", "cc", "dd", "ee", "ff"],
                 6,
+                None,
                 [["aa", "bb", "cc", "dd", "ee", "ff"]],
             ),
             (
                 ["aa", "bb", "cc", "dd", "ee", "ff"],
                 3,
+                None,
                 [["aa", "bb", "cc"], ["dd", "ee", "ff"]],
             ),
             (
                 ["aa", "bb", "cc", "dd", "ee", "ff"],
                 2,
+                None,
                 [["aa", "bb"], ["cc", "dd"], ["ee", "ff"]],
             ),
             (
                 ["aa", "bb", "cc", "dd", "ee", "ff"],
                 4,
+                None,
                 [["aa", "bb", "cc", "dd"], ["ee", "ff"]],
             ),
             (
                 ["aa", "bb", "cc", "dd", "ee", "ff"],
+                4,
+                3,
+                [
+                    ["aa", "bb", "cc", "dd", "ee", "ff"]
+                ],  # size 6 to have at least 2 in a chunk
+            ),
+            (
+                ["aa", "bb", "cc", "dd", "ee", "ff"],
                 5,
-                [["aa", "bb", "cc", "dd", "ee", "ff"]],  # size 6 to avoid a solitary
+                2,
+                [
+                    ["aa", "bb", "cc", "dd", "ee", "ff"]
+                ],  # size 6 to have at least 2 in a chunk
+            ),
+            (
+                ["aa", "bb", "cc", "dd", "ee", "ff", "gg"],
+                3,
+                None,
+                [["aa", "bb", "cc"], ["dd", "ee", "ff"], ["gg"]],
+            ),
+            (
+                ["aa", "bb", "cc", "dd", "ee", "ff", "gg"],
+                3,
+                2,
+                [
+                    ["aa", "bb", "cc"],
+                    ["dd", "ee", "ff", "gg"],
+                ],  # last chunk has 4, to avoid a last chunk with < 2
+            ),
+            (
+                ["aa", "bb", "cc", "dd", "ee", "ff", "gg"],
+                5,
+                None,
+                [["aa", "bb", "cc", "dd", "ee"], ["ff", "gg"]],
+            ),
+            (
+                ["aa", "bb", "cc", "dd", "ee", "ff", "gg"],
+                5,
+                2,
+                [["aa", "bb", "cc", "dd", "ee"], ["ff", "gg"]],
+            ),
+            (
+                ["aa", "bb", "cc", "dd", "ee", "ff", "gg"],
+                5,
+                3,
+                [
+                    ["aa", "bb", "cc", "dd", "ee", "ff", "gg"]
+                ],  # last chunk is full, to avoid a last chunk with < 3
             ),
         ]
     )
-    def test_chunk_merge_orphans(self, list_a, chunk_size, expected):
+    def test_chunk_merge_orphans(self, list_a, chunk_size, min_chunk_size, expected):
         # Arrange
         # Act
-        actual = list(util_list.chunk(list_a, chunk_size, merge_solitary=True))
+        if not min_chunk_size:
+            min_chunk_size = 1
+        actual = list(
+            util_list.chunk(list_a, chunk_size, min_chunk_size=min_chunk_size)
+        )
         # Assert
         self.assertEqual(expected, actual)
 

@@ -9,7 +9,7 @@ import typing
 
 
 def chunk(
-    list_a: list, CHUNK_SIZE: int, merge_solitary: bool = False
+    list_a: list, CHUNK_SIZE: int, min_chunk_size: int = 1
 ) -> Generator[list, None, None]:
     """
     Function to chunk a list into sublists of size n.
@@ -17,15 +17,15 @@ def chunk(
     Args:
     list_a (list): The input list to be chunked.
     n (int): The size of each chunk.
-    merge_solitary: If True, then avoid a 'solitary' item in the final chunk, by including it in the penultimate chunk.
+    min_chunk_size: The minimum size for a chunk. Set to avoid a smaller chunk at the end, instead add its contents to the penultimate chunk.
 
     Yields:
     list: Sublists of size n.
     """
     for i in range(0, len(list_a), CHUNK_SIZE):
         list_end = i + CHUNK_SIZE
-        if merge_solitary and len(list_a) - list_end == 1:
-            list_end += 1
+        if len(list_a) - list_end < min_chunk_size:
+            list_end = len(list_a)
             yield list_a[i:list_end]
             break
 
