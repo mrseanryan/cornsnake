@@ -48,7 +48,13 @@ note: the '~=' means 'pick most recent compatible version'.
 OR:
 
 ```
-./test.unit.one.sh <name of test file>
+./test.unit.one.sh <name of test module>
+```
+
+example:
+
+```
+./test.unit.one.sh  tests.unit.test_util_list
 ```
 
 ## Format

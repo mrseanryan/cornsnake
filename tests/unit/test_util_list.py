@@ -150,12 +150,59 @@ class TestUtilList(unittest.TestCase):
                 2,
                 [["aa", "bb"], ["cc", "dd"], ["ee", "ff"]],
             ),
+            (
+                ["aa", "bb", "cc", "dd", "ee", "ff"],
+                4,
+                [["aa", "bb", "cc", "dd"], ["ee", "ff"]],
+            ),
+            (
+                ["aa", "bb", "cc", "dd", "ee", "ff"],
+                5,
+                [["aa", "bb", "cc", "dd", "ee"], ["ff"]],  # we get a solitary item in the last chunk
+            ),
         ]
     )
-    def test_chunk(self, list_a, number_of_chunks, expected):
+    def test_chunk(self, list_a, chunk_size, expected):
         # Arrange
         # Act
-        actual = list(util_list.chunk(list_a, number_of_chunks))
+        actual = list(util_list.chunk(list_a, chunk_size))
+        # Assert
+        self.assertEqual(expected, actual)
+
+    @parameterized.expand(
+        [
+            ([], 5, []),
+            (
+                ["aa", "bb", "cc", "dd", "ee", "ff"],
+                6,
+                [["aa", "bb", "cc", "dd", "ee", "ff"]],
+            ),
+            (
+                ["aa", "bb", "cc", "dd", "ee", "ff"],
+                3,
+                [["aa", "bb", "cc"], ["dd", "ee", "ff"]],
+            ),
+            (
+                ["aa", "bb", "cc", "dd", "ee", "ff"],
+                2,
+                [["aa", "bb"], ["cc", "dd"], ["ee", "ff"]],
+            ),
+            (
+                ["aa", "bb", "cc", "dd", "ee", "ff"],
+                4,
+                [["aa", "bb", "cc", "dd"], ["ee", "ff"]],
+            ),
+            (
+                ["aa", "bb", "cc", "dd", "ee", "ff"],
+                5,
+                [["aa", "bb", "cc", "dd", "ee", "ff"]], # size 6 to avoid a solitary
+            ),
+        ]
+    )
+    def test_chunk_merge_orphans(self, list_a, chunk_size, expected):
+        # Arrange
+        # Act
+        actual = list(util_list.chunk(list_a, chunk_size, merge_solitary=True))
         # Assert
         self.assertEqual(expected, actual)
 
