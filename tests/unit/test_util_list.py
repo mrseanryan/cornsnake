@@ -265,14 +265,17 @@ class TestUtilList(unittest.TestCase):
 
     def test_chunk_size_zero_raises(self):
         # Arrange
-        list_a = []
-        chunk_size = 0
+        # Act, Assert
+        with self.assertRaises(ValueError):
+            list(util_list.chunk(list_a=[], CHUNK_SIZE=0))
 
-        def chunk_with_zero():
-            return list(util_list.chunk(list_a, chunk_size))
+    def test_bad_min_chunk_size_raises(self):
+        # Arrange
+        list_a = []
 
         # Act, Assert
-        self.assertRaises(ValueError, chunk_with_zero)
+        with self.assertRaises(ValueError):
+            list(util_list.chunk(list_a, CHUNK_SIZE=2, min_chunk_size=3))
 
     @parameterized.expand(
         [

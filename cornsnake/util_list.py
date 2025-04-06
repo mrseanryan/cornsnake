@@ -22,6 +22,12 @@ def chunk(
     Yields:
     list: Sublists of size n.
     """
+
+    if min_chunk_size > CHUNK_SIZE:
+        raise ValueError(
+            f"min_chunk_size {min_chunk_size} is greater than CHUNK_SIZE {CHUNK_SIZE}"
+        )
+
     for i in range(0, len(list_a), CHUNK_SIZE):
         list_end = i + CHUNK_SIZE
         if len(list_a) - list_end < min_chunk_size:
