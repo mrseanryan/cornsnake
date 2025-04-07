@@ -47,6 +47,17 @@ def change_extension(input_filename: str, new_extension: str) -> str:
     return base_filename + new_extension
 
 
+def get_file_extension(filename: str, to_lower: bool = True) -> str:
+    """Get the extension part of the filename - for example '.txt'."""
+    _, extension = os.path.splitext(filename)
+    return extension.lower() if to_lower else extension
+
+
+def remove_file_extension(filename: str) -> str:
+    """Remove the extension part of the file name - for example 'my-file.txt' -> 'my-file'."""
+    return filename.removesuffix(get_file_extension(filename=filename, to_lower=False))
+
+
 def make_filename_valid(filename: str) -> str:
     """
     Return an altered filename so that it is valid.
