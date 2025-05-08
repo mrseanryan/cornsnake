@@ -55,6 +55,28 @@ class TestUtilString(unittest.TestCase):
         # Assert
         self.assertEqual(expected, actual, f"test: {description}")
 
+    @parameterized.expand(
+        [
+            ("empty", "", 0),
+            ("space", " ", 0),
+            ("1 word", "one", 1),
+            ("2 word", "one two", 2),
+            (
+                "Simple sentence",
+                "Functions for working with strings: filtering by regex, checking if is mostly empty, replacing whilst maintaining casing, splitting into lines, counting words.",
+                22,
+            ),
+        ]
+    )
+    def test_count_words(self, description, text, expected):
+        # Arrange
+
+        # Act
+        actual = util_string.count_words(text=text)
+
+        # Assert
+        self.assertEqual(expected, actual, f"test: {description}")
+
 
 if __name__ == "__main__":
     unittest.main()

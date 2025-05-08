@@ -1,10 +1,11 @@
 """
-Functions for working with strings: filtering by regex, checking if is mostly empty, replacing whilst maintaining casing.
+Functions for working with strings: filtering by regex, checking if is mostly empty, replacing whilst maintaining casing, splitting into lines, counting words.
 
 [Documentation](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/cornsnake/util_string.html)
 """
 
 import re
+import string
 
 
 def filter_string_via_regex(text: str, regex: str, replacement_char: str) -> str:
@@ -92,3 +93,11 @@ def split_into_lines(text: str, max_length: int = 200) -> list[str]:
         result.append(current_line)
 
     return result
+
+
+def count_words(text: str) -> int:
+    # Remove punctuation
+    cleaned = text.translate(str.maketrans("", "", string.punctuation))
+    # Split by whitespace
+    words = cleaned.split()
+    return len(words)
