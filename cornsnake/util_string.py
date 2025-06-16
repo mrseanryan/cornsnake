@@ -8,6 +8,14 @@ import re
 import string
 
 
+def count_words(text: str) -> int:
+    # Remove punctuation
+    cleaned = text.translate(str.maketrans("", "", string.punctuation))
+    # Split by whitespace
+    words = cleaned.split()
+    return len(words)
+
+
 def filter_string_via_regex(text: str, regex: str, replacement_char: str) -> str:
     """
     Filter the given string, to only characters that match the given regex.
@@ -61,6 +69,13 @@ def replace_keep_case(word__for_regex: str, replacement: str, text: str) -> str:
     return re.sub(word__for_regex, func, text, flags=re.I)
 
 
+def shorten(s: str, max_length: int = 40) -> str:
+    """Shorten a string to max_length, adding ellipsis if truncated."""
+    if len(s) <= max_length:
+        return s
+    return s[: max_length - 1] + "…"
+
+
 def split_into_lines(text: str, max_length: int = 200) -> list[str]:
     """
     Split text into lines of maximum length at word boundaries.
@@ -93,11 +108,3 @@ def split_into_lines(text: str, max_length: int = 200) -> list[str]:
         result.append(current_line)
 
     return result
-
-
-def count_words(text: str) -> int:
-    # Remove punctuation
-    cleaned = text.translate(str.maketrans("", "", string.punctuation))
-    # Split by whitespace
-    words = cleaned.split()
-    return len(words)
