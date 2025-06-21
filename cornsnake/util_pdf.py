@@ -5,22 +5,37 @@ Functions for extracting text from a PDF file and checking if a file is a PDF.
 """
 
 
-def extract_text_from_pdf(filepath: str) -> str:
+def extract_text_from_pdf(
+    filepath: str, start_page: int = -1, end_page: int = -1
+) -> str:
     """
     Function to extract text from a PDF file.
 
     Args:
     filepath (str): The path to the PDF file.
+    start_page (int, optional): The page to start extracting from (1-indexed).
+    end_page (int, optional): The last page to extract (1-indexed).
 
     Returns:
     str: The extracted text from the PDF file.
     """
     import fitz  # try avoid forcing install of PyMuPDF unless actually used
 
-    with fitz.open(filepath) as doc:
-        FORM_FEED = 12
-        text = chr(FORM_FEED).join([page.get_text() for page in doc])
-        return text
+    doc = fitz.open(filepath)
+    text = []
+
+    # Clamp page numbers to valid range
+    start = max(start_page, 1)
+    end = min(end_page, doc.page_count)
+    if end == -1:
+        end = doc.page_count
+
+    for page_num in range(start - 1, end):  # zero-based index for fitz
+        page = doc.load_page(page_num)
+        text.append(page.get_text())
+
+    doc.close()
+    return "\n".join(text)
 
 
 def is_pdf(filepath: str) -> bool:
