@@ -77,6 +77,134 @@ class TestUtilString(unittest.TestCase):
         # Assert
         self.assertEqual(expected, actual, f"test: {description}")
 
+    @parameterized.expand(
+        [
+            ("empty", "", ""),
+            ("short", "short", "short"),
+            (
+                "long",
+                "This is a very long string that should be shortened.",
+                "This is a very long string th…",
+            ),
+            (
+                "exact length",
+                "This is exactly thirty charact",
+                "This is exactly thirty charact",
+            ),
+        ]
+    )
+    def test_shorten(self, description, text, expected):
+        # Arrange
+        max_length = 30
+
+        # Act
+        actual = util_string.shorten(s=text, max_length=max_length)
+
+        # Assert
+        self.assertEqual(
+            expected,
+            actual,
+            f"test: {description} - Shortened string does not match expected.",
+        )
+
+    @parameterized.expand(
+        [
+            ("empty", "", ""),
+            ("short", "short", "short"),
+            (
+                "long",
+                "This is a very long string that should be shortened.",
+                "This is a very…d be shortened.",
+            ),
+            (
+                "exact length",
+                "This is exactly thirty charact",
+                "This is exactly thirty charact",
+            ),
+        ]
+    )
+    def test_shorten_at_middle(self, description, text, expected):
+        # Arrange
+        max_length = 30
+
+        # Act
+        actual = util_string.shorten_at_middle(s=text, max_length=max_length)
+
+        # Assert
+        self.assertEqual(
+            expected,
+            actual,
+            f"test: {description} - Shortened string does not match expected.",
+        )
+
+    @parameterized.expand(
+        [
+            ("empty", "", ""),
+            ("short", "short", "short"),
+            (
+                "long",
+                "This is a very long string that should be shortened.",
+                "…ing that should be shortened.",
+            ),
+            (
+                "exact length",
+                "This is exactly thirty charact",
+                "This is exactly thirty charact",
+            ),
+        ]
+    )
+    def test_shorten_at_start(self, description, text, expected):
+        # Arrange
+        max_length = 30
+
+        # Act
+        actual = util_string.shorten_at_start(s=text, max_length=max_length)
+
+        # Assert
+        self.assertEqual(
+            expected,
+            actual,
+            f"test: {description} - Shortened string does not match expected.",
+        )
+
+    @parameterized.expand(
+        [
+            ("empty", "", []),
+            ("short", "short", ["short"]),
+            (
+                "long",
+                "This is a very long string that should be split into multiple lines.",
+                [
+                    "This is a very long string that should be split",
+                    "into multiple lines.",
+                ],
+            ),
+            (
+                "split at word boundaries",
+                "This is a long text that needs to be split into lines of maximum length.",
+                [
+                    "This is a long text that needs to be split into",
+                    "lines of maximum length.",
+                ],
+            ),
+        ]
+    )
+    def test_split_into_lines(self, description, text, expected):
+        # Arrange
+        max_length = 50
+
+        # Act
+        actual = util_string.split_into_lines(text=text, max_length=max_length)
+
+        # Assert
+        self.assertEqual(
+            expected, actual, f"test: {description} - Lines do not match expected."
+        )
+        self.assertTrue(
+            all(len(line) <= max_length for line in actual),
+            f"test: {description} - Some lines exceed max length of {max_length}.",
+        )
+
 
 if __name__ == "__main__":
     unittest.main()

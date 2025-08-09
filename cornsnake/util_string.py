@@ -70,10 +70,32 @@ def replace_keep_case(word__for_regex: str, replacement: str, text: str) -> str:
 
 
 def shorten(s: str, max_length: int = 40) -> str:
-    """Shorten a string to max_length, adding ellipsis if truncated."""
+    """Shorten a string to max_length by removing characters from the end. Add ellipsis if truncated."""
     if len(s) <= max_length:
         return s
     return s[: max_length - 1] + "…"
+
+
+def shorten_at_middle(s: str, max_length: int = 40) -> str:
+    """Shorten a string to max_length by removing characters from the middle. Add ellipsis if truncated."""
+    if len(s) <= max_length:
+        return s
+    # Calculate the number of characters to remove
+    num_chars_to_remove = len(s) - max_length + 1
+    # Remove characters from the middle
+    start = (len(s) - num_chars_to_remove) // 2  # // also rounds down
+    end = start + num_chars_to_remove
+    return s[:start] + "…" + s[end:]
+
+
+def shorten_at_start(s: str, max_length: int = 40) -> str:
+    """Shorten a string to max_length by removing characters from the start. Add ellipsis if truncated."""
+    if len(s) <= max_length:
+        return s
+    # Calculate the number of characters to remove
+    num_chars_to_remove = len(s) - max_length + 1
+    # Remove characters from the start
+    return "…" + s[num_chars_to_remove:]
 
 
 def split_into_lines(text: str, max_length: int = 200) -> list[str]:
