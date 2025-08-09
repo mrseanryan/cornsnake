@@ -76,6 +76,11 @@ def shorten(s: str, max_length: int = 40) -> str:
     return s[: max_length - 1] + "…"
 
 
+def shorten_at_end(s: str, max_length: int = 40) -> str:
+    """[alias for shorten()] Shorten a string to max_length by removing characters from the end. Add ellipsis if truncated."""
+    return shorten(s, max_length)
+
+
 def shorten_at_middle(s: str, max_length: int = 40) -> str:
     """Shorten a string to max_length by removing characters from the middle. Add ellipsis if truncated."""
     if len(s) <= max_length:

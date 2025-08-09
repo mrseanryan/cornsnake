@@ -99,12 +99,18 @@ class TestUtilString(unittest.TestCase):
 
         # Act
         actual = util_string.shorten(s=text, max_length=max_length)
+        actual_2 = util_string.shorten_at_end(s=text, max_length=max_length)
 
         # Assert
         self.assertEqual(
             expected,
             actual,
             f"test: {description} - Shortened string does not match expected.",
+        )
+        self.assertEqual(
+            actual,
+            actual_2,
+            f"test: {description} - shorten() and shorten_at_end() should return the same result.",
         )
 
     @parameterized.expand(
