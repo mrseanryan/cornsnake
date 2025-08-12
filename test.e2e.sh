@@ -1,3 +1,4 @@
+#!/bin/bash
 pushd ./tests/e2e
 
 pip install PyMuPDF --quiet

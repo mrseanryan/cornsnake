@@ -1,3 +1,4 @@
+#!/bin/bash
 # git should have no changes
 if [[ `git status --porcelain` ]]; then
   # Changes

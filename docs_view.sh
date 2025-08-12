@@ -1,3 +1,4 @@
+#!/bin/bash
 pushd docs
 
 echo serving on http://localhost:8000
