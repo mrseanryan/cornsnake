@@ -61,6 +61,7 @@ def run_process_and_get_output(
     arguments: list[str],
     working_directory: str,
     output_errors: bool = True,
+    raise_if_str_error: bool = False,
 ) -> str:
     """
     Executes a process with specified arguments and working directory, capturing the output.
@@ -69,7 +70,8 @@ def run_process_and_get_output(
     path_to_proc (str): The path to the process to execute.
     arguments (list): List of arguments for the process.
     working_directory (str): The working directory for the process.
-    output_errors (bool): Flag to output errors. Default is True.
+    output_errors (bool): Flag to print out errors. Default is True (but only if config.IS_VERBOSITY).
+    raise_if_str_error (bool): Flag to raise an exception if stderr was a non-empty string (useful for programs that return 0 exit code, even though they populated stderr). Default is False.
 
     Returns:
     str: The standard output of the process.
@@ -116,6 +118,9 @@ def run_process_and_get_output(
             print(std_err_str)
         else:
             logger.debug(std_err_str)
+        if raise_if_str_error:
+            err_msg = f"{std_err_str.strip()}. Code: {pipes.returncode}"
+            raise RuntimeError(err_msg, pipes.returncode)
 
     _proc_print_debug(f" >>> {std_out_str}")
 
