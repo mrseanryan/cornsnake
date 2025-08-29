@@ -42,7 +42,11 @@ def read_from_json_file(path_to_json: str, encoding: str = "utf-8") -> typing.An
 
 
 def write_to_json_file(
-    dict: dict, file_path: str, encoding: str = "utf-8", indent: int = 2
+    dict: dict,
+    file_path: str,
+    encoding: str = "utf-8",
+    indent: int = 2,
+    sort_keys: bool = False,
 ) -> None:
     """
     Function to write JSON data to a file.
@@ -52,8 +56,18 @@ def write_to_json_file(
     file_path (str): The path to the output JSON file.
     encoding (str): The encoding of the file. Default is 'utf-8'.
     indent (int): The number of spaces to use for indentation. Default is 2.
+    sort_keys (bool): Whether to sort the keys in the output JSON. Default is False.
     """
-    json_object = json.dumps(dict, indent=indent)
+    json_object = json.dumps(dict, indent=indent, sort_keys=sort_keys)
 
     with open(file_path, "w", encoding=encoding) as outfile:
         outfile.write(json_object)
+
+
+def sort_json_to_str(data: dict) -> str:
+    """Function to return a JSON string with sorted keys.
+
+    Args:
+        data (dict): The dictionary to be converted to a JSON string.
+    """
+    return json.dumps(data, sort_keys=True)
