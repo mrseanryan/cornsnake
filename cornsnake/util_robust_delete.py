@@ -70,7 +70,7 @@ def _delete_dir_contents(temp_dir: str) -> None:
     _delete_dirs_recursively(temp_dir)
 
 
-def delete_dirs(temp_dirs_to_delete: str) -> None:
+def delete_dirs(temp_dirs_to_delete: list[str]) -> None:
     """
     Delete directories and their contents.
     - Python holds on to some paths - so delete as much as we can
