@@ -8,6 +8,19 @@ from datetime import datetime, timedelta, timezone
 import re
 
 
+def build_timestamp_str() -> str:
+    """
+    Build a timestamp string in the format yyyy-mm-dd__HH_MM_SS__[+/-HH:MM]."""
+    timestamp = get_now_for_system_timezone()
+    timestamp_str: str = timestamp.strftime("%Y-%m-%d__%H_%M_%S")
+    # Get offset with colon (e.g. +02:00)
+    offset = timestamp.strftime("%z")  # gives +0200
+    if offset:
+        offset = offset[:3] + ":" + offset[3:]  # insert colon
+        timestamp_str += f"__[{offset}]"
+    return timestamp_str
+
+
 def parse_yyyy_mm_dd(arg_date: str) -> datetime:
     """
     Parse a date string in the yyyy-mm-dd format to a datetime object.
