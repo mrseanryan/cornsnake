@@ -89,11 +89,48 @@ class TestUtilList(unittest.TestCase):
 
     @parameterized.expand(
         [
+            ("not_none [1,2,3]", [1, 2, 3], [1, 2, 3]),
+            ("not_none [1,2,3,None]", [1, 2, 3, None], [1, 2, 3]),
+            (
+                "not_none [1,4,2,3,None]",
+                [1, 4, 2, 3, None],
+                [1, 4, 2, 3],
+            ),
+            (
+                "not_none [1,4, None,2,3]",
+                [1, 4, None, 2, 3],
+                [1, 4, 2, 3],
+            ),
+            (
+                "not_none [1,2,3,3,4,4,4,None]",
+                [1, 2, 3, 3, 4, 4, 4, None],
+                [1, 2, 3, 3, 4, 4, 4],
+            ),
+            ("not_none [1]", [1], [1]),
+            ("not_none []", [], []),
+            ("not_none [None]", [None], []),
+        ]
+    )
+    def test_not_none(self, description, input, expected):
+        # Arrange
+        # Act
+        actual = util_list.not_none(input)
+
+        # Assert
+        self.assertEqual(expected, actual, f"test: {description}")
+
+    @parameterized.expand(
+        [
             ("not_none_and_unique [1,2,3]", [1, 2, 3], [1, 2, 3]),
             ("not_none_and_unique [1,2,3,None]", [1, 2, 3, None], [1, 2, 3]),
             (
                 "not_none_and_unique_ordering [1,4,2,3,None]",
                 [1, 4, 2, 3, None],
+                [1, 4, 2, 3],
+            ),
+            (
+                "not_none [1,4, None,2,3]",
+                [1, 4, None, 2, 3],
                 [1, 4, 2, 3],
             ),
             (
@@ -119,9 +156,14 @@ class TestUtilList(unittest.TestCase):
             ("unique [1,2,3]", [1, 2, 3], [1, 2, 3]),
             ("unique [None,1,2,3]", [None, 1, 2, 3], [None, 1, 2, 3]),
             (
-                "none_and_unique_ordering [1,4,2,3,None]",
+                "unique [1,4,2,3,None]",
                 [1, 4, 2, 3, None],
                 [1, 4, 2, 3, None],
+            ),
+            (
+                "unique [1,4, None,2,3]",
+                [1, 4, None, 2, 3],
+                [1, 4, None, 2, 3],
             ),
             (
                 "unique [None,1,2,3,3,4,4,4]",

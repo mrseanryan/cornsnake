@@ -4,8 +4,9 @@ Functions for manipulating lists of data. Functions include chunking lists, excl
 [Documentation](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/cornsnake/util_list.html)
 """
 
-from typing import Generator
-import typing
+from typing import Generator, TypeVar
+
+T = TypeVar("T")
 
 
 def chunk(
@@ -66,19 +67,19 @@ def intersecting(list1: list, list2: list) -> list:
     return [value for value in list1 if value in list2]
 
 
-def first_or_none(my_list: list) -> typing.Any | None:
+def first_or_none(my_list: list[T]) -> T | None:
     """Function to return the first element of a list or None if the list is empty."""
     if len(my_list) > 0:
         return my_list[0]
     return None
 
 
-def flatten(my_list: list) -> list:
+def flatten(my_list: list[list[T]]) -> list[T]:
     """Function to flatten a list of lists into a single list."""
     return [item for sublist in my_list for item in sublist]
 
 
-def list_with_first_or_empty(my_list: list) -> list:
+def list_with_first_or_empty(my_list: list[T]) -> list[T]:
     """Function to return a list containing the first element of the input list, or an empty list if the input list is empty."""
     first_or_none_value = first_or_none(my_list)
     if first_or_none_value is None:
@@ -86,15 +87,19 @@ def list_with_first_or_empty(my_list: list) -> list:
     return [first_or_none_value]
 
 
-def not_none(my_list: list) -> list:
+def not_none(my_list: list[T]) -> list[T]:
     """Function to return a list with non-None elements."""
-    return list(filter(lambda f: (f is not None), my_list))
+    result: list[T] = []
+    for item in my_list:
+        if item is not None:
+            result.append(item)
+    return result
 
 
-def not_none_and_unique(my_list: list) -> list:
+def not_none_and_unique(my_list: list[T]) -> list[T]:
     """Function to return a list with unique non-None elements, preserving the order."""
-    seen = set()
-    result = []
+    seen: set[T] = set()
+    result: list[T] = []
     for item in my_list:
         if item is not None and item not in seen:
             seen.add(item)
@@ -119,10 +124,10 @@ def strip_strings(list_of_strings: list[str]) -> list[str]:
     return parts_stripped
 
 
-def unique(my_list: list) -> list:
-    """Function to return a list with unique elements from the input list, preserving the order."""
-    seen = set()
-    result = []
+def unique(my_list: list[T]) -> list[T]:
+    """Return a list with unique elements from the input list, preserving order."""
+    seen: set[T] = set()
+    result: list[T] = []
     for item in my_list:
         if item not in seen:
             seen.add(item)
