@@ -6,7 +6,7 @@ set -e
 
 echo Linting ...
 
-ruff check cornsnake
+python -m ruff check cornsnake
 
 python -m mypy --install-types --non-interactive cornsnake
 

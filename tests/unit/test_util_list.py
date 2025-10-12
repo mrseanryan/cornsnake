@@ -92,6 +92,11 @@ class TestUtilList(unittest.TestCase):
             ("not_none_and_unique [1,2,3]", [1, 2, 3], [1, 2, 3]),
             ("not_none_and_unique [1,2,3,None]", [1, 2, 3, None], [1, 2, 3]),
             (
+                "not_none_and_unique_ordering [1,4,2,3,None]",
+                [1, 4, 2, 3, None],
+                [1, 4, 2, 3],
+            ),
+            (
                 "not_none_and_unique [1,2,3,3,4,4,4,None]",
                 [1, 2, 3, 3, 4, 4, 4, None],
                 [1, 2, 3, 4],
@@ -112,11 +117,16 @@ class TestUtilList(unittest.TestCase):
     @parameterized.expand(
         [
             ("unique [1,2,3]", [1, 2, 3], [1, 2, 3]),
-            ("unique [None,1,2,3]", [None, 1, 2, 3], [1, 2, 3, None]),
+            ("unique [None,1,2,3]", [None, 1, 2, 3], [None, 1, 2, 3]),
+            (
+                "none_and_unique_ordering [1,4,2,3,None]",
+                [1, 4, 2, 3, None],
+                [1, 4, 2, 3, None],
+            ),
             (
                 "unique [None,1,2,3,3,4,4,4]",
                 [None, 1, 2, 3, 3, 4, 4, 4],
-                [1, 2, 3, 4, None],
+                [None, 1, 2, 3, 4],
             ),
             ("unique [1]", [1], [1]),
             ("unique []", [], []),
