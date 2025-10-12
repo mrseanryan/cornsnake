@@ -98,11 +98,11 @@ def not_none(my_list: list[T]) -> list[T]:
 
 def not_none_and_unique(my_list: list[T]) -> list[T]:
     """Function to return a list with unique non-None elements, preserving the order."""
-    seen: set[T] = set()
+    seen: list[T] = []
     result: list[T] = []
     for item in my_list:
         if item is not None and item not in seen:
-            seen.add(item)
+            seen.append(item)
             result.append(item)
     return result
 
@@ -126,10 +126,10 @@ def strip_strings(list_of_strings: list[str]) -> list[str]:
 
 def unique(my_list: list[T]) -> list[T]:
     """Return a list with unique elements from the input list, preserving order."""
-    seen: set[T] = set()
+    seen: list[T] = []
     result: list[T] = []
     for item in my_list:
         if item not in seen:
-            seen.add(item)
+            seen.append(item)
             result.append(item)
     return result
