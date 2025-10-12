@@ -150,6 +150,16 @@ def reset_section_count() -> None:
     section_id = 1
 
 
+def print_highlighted(text: str) -> None:
+    """
+    Print text with a highlighted (stand-out) color.
+
+    Args:
+    text (str): The text to print.
+    """
+    print_with_color(text, util_color.HIGHLIGHTED)
+
+
 def print_result(text: str) -> None:
     """
     Print a result message with a specific color.

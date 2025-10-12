@@ -42,6 +42,7 @@ def colorize(text: str, color: str) -> str:
 
 # Theming
 CONFIG_COLOR = bcolors.DARK_MAGENTA
+HIGHLIGHTED = bcolors.MAGENTA
 IMPORTANT = bcolors.WARNING
 QUESTION_COLOR = bcolors.DARK_CYAN
 RESULT_COLOR = bcolors.OKGREEN + bcolors.BOLD
