@@ -85,6 +85,16 @@ def print_error(message: str) -> None:
     print_with_color(message, util_color.ERROR_COLOR)
 
 
+def print_highlighted(text: str) -> None:
+    """
+    Print text with a highlighted (stand-out) color.
+
+    Args:
+    text (str): The text to print.
+    """
+    print_with_color(text, util_color.HIGHLIGHTED)
+
+
 def print_important(text: str) -> None:
     """
     Print important text with a specific color.
@@ -148,16 +158,6 @@ def reset_section_count() -> None:
     """
     global section_id
     section_id = 1
-
-
-def print_highlighted(text: str) -> None:
-    """
-    Print text with a highlighted (stand-out) color.
-
-    Args:
-    text (str): The text to print.
-    """
-    print_with_color(text, util_color.HIGHLIGHTED)
 
 
 def print_result(text: str) -> None:
