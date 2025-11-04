@@ -42,6 +42,8 @@ python -m pip install --upgrade cornsnake
 
 - Python 3.11 or higher
 
+- Optional: (only if using `util_pdf.py`)
+
 ```
 pip install PyMuPDF
 ```

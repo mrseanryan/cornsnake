@@ -4,5 +4,3 @@
 #
 #    pip-compile --strip-extras pyproject.toml
 #
-pymupdf==1.26.5
-    # via cornsnake (pyproject.toml)
