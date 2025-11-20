@@ -9,11 +9,15 @@ A collection of utilities for working with files, git, ZIP, lists, processes, da
 __version__ = "0.1.1"
 
 from . import config
+
+from . import decorators
+from . import util_base64
 from . import util_color
 from . import util_date
 from . import util_dependencies
 from . import util_dict
 from . import util_dir
+from . import util_env
 from . import util_file
 from . import util_git
 from . import util_input
@@ -36,5 +40,6 @@ from . import util_time
 from . import util_toml
 from . import util_validate
 from . import util_wait
+from . import util_yaml
 from . import util_zip
 from . import zip_dir

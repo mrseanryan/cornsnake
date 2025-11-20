@@ -83,6 +83,7 @@ For examples see the [unit tests](https://github.com/mrseanryan/cornsnake/tree/m
 | util_dependencies | Functions for checking the versions of Python and Git. It ensures that the major and minor versions of these dependencies meet the required criteria. | [util_dependencies docs](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/cornsnake/util_dependencies.html) |
 | util_dict | Functions for working with Python dictionaries (dict or {}). | [util_dict docs](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/cornsnake/util_dict.html) |
 | util_dir | Working with directories, files, and file paths. | [util_dir docs](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/cornsnake/util_dir.html) |
+| util_env | Utility functions for environment detection. | [util_env docs](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/cornsnake/util_env.html) |
 | util_file | File operations including copying, reading, and writing text to files. | [util_file docs](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/cornsnake/util_file.html) |
 | util_git | Functions for interacting with a Git repository. It includes functions for executing Git commands, checking out branches, handling commits, and managing Git configuration settings. | [util_git docs](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/cornsnake/util_git.html) |
 | util_input | Functions for handling user input with various formats and validations. | [util_input docs](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/cornsnake/util_input.html) |
@@ -105,6 +106,7 @@ For examples see the [unit tests](https://github.com/mrseanryan/cornsnake/tree/m
 | util_toml | Reading TOML (ini) files and updating the global config in memory (from config.py). | [util_toml docs](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/cornsnake/util_toml.html) |
 | util_validate | Functions for checking and validating configuration settings in the config.py file. | [util_validate docs](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/cornsnake/util_validate.html) |
 | util_wait | Function for waiting for a specified number of seconds. The `wait_seconds` function pauses the program execution for the specified number of seconds. | [util_wait docs](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/cornsnake/util_wait.html) |
+| util_yaml | Utility functions for YAML-like data structures. | [util_yaml docs](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/cornsnake/util_yaml.html) |
 | util_zip | Alias for zip_dir | [util_zip docs](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/cornsnake/util_zip.html) |
 | zip_dir | Function for creating a zip archive from a directory. The `create_zip` function creates a zip archive of a specified directory. | [zip_dir docs](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/cornsnake/zip_dir.html) |
 

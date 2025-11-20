@@ -1,3 +1,9 @@
+"""
+Utility functions for YAML-like data structures.
+
+[Documentation](http://docs.mrseanryan.cornsnake.s3-website-eu-west-1.amazonaws.com/cornsnake/util_yaml.html)
+"""
+
 import json
 from typing import Any, Dict, List, Union
 
