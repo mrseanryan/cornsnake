@@ -3,4 +3,4 @@ set -e
 
 echo Formatting ...
 
-ruff format
+uv run ruff format

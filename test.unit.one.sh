@@ -3,4 +3,4 @@
 # example: ./test.unit.one.sh  tests.unit.test_util_list
 set -e
 
-python -m unittest $1
+uv run python -m unittest $1

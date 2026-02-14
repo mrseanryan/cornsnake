@@ -9,17 +9,12 @@
 Switch to Python 3.11.6:
 
 ```
-pyenv install 3.11.6
-pyenv local 3.11.6
+uv python install 3.11.6
+uv venv --python 3.11.6
+uv sync --all-extras
 ```
 
-Setup a virtual environment:
-
-```
-./create_env.sh
-```
-
-If you are contributing to this project, then you need to install these extra dev dependencies:
+If you are contributing to this project, then you need to install these extra dev dependencies (`uv sync --all-extras`):
 
 ```
 python -m pip install build~=1.0.3 bumpver~=2023.1129 parameterized~=0.9.0 pdoc~=14.4.0 pip-tools~=7.3.0 twine~=5.0.0 ruff~=0.3.4 mypy~=1.14.0 pkginfo~=1.12.1.2
