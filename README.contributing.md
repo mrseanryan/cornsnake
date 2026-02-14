@@ -6,6 +6,8 @@
 
 ## Install
 
+First install [uv](https://github.com/astral-sh/uv).
+
 Switch to Python 3.11.6:
 
 ```
@@ -59,6 +61,10 @@ example:
 ```
 
 ## Publishing
+
+0. Set a pypi token on your machine.
+
+- see https://pypi.org/manage/account/token/
 
 1. [OPTIONAL][if dependencies have changed] update dependencies (requirements.txt)
 
