@@ -14,7 +14,7 @@ fi
 
 ./test.sh
 
-python -m build
-twine check dist/*
+uv run python -m build
+uv run twine check dist/*
 
 ls -al dist

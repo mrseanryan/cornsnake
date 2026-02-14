@@ -3,10 +3,10 @@ set -e
 
 ./test.sh
 
-twine check dist/*
+uv run twine check dist/*
 
 # twine upload -r testpypi dist/*
-twine upload dist/*
+uv run twine upload dist/*
 
 echo To install the package:
 echo python -m pip install cornsnake
